@@ -31,8 +31,8 @@ jobs:
       
       - name: Configure Git user
         run: |
-          git config --global user.nirzaf "github-actions[bot]"
-          git config --global user.mfmfazrin1986@gmail.com "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "M.F.M Fazrin"
+          git config --global user.email "mfmfazrin1986@gmail.com"
       
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/master'
