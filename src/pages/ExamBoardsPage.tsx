@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 const examBoards = [
   {
@@ -34,6 +34,18 @@ const examBoards = [
 ];
 
 export default function ExamBoardsPage() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => 
+        prevIndex === examBoards.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,32 +56,43 @@ export default function ExamBoardsPage() {
           </p>
         </div>
 
-        <div className="space-y-12">
-          {examBoards.map((board) => (
-            <div key={board.name} className="bg-white rounded-lg shadow-sm hover:shadow-md transition p-6">
-              <div className="md:flex items-start space-x-6">
-                <div className="md:w-1/4 mb-4 md:mb-0">
-                  <img
-                    src={board.logo}
-                    alt={`${board.name} Logo`}
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-                <div className="md:w-3/4">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">{board.name}</h2>
-                  <p className="text-gray-600 mb-4">{board.description}</p>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Subjects Offered:</h3>
-                    <ul className="grid grid-cols-2 gap-2">
-                      {board.subjects.map((subject) => (
-                        <li key={subject} className="text-gray-600">• {subject}</li>
-                      ))}
-                    </ul>
+        <div className="relative">
+          <div className="overflow-hidden">
+            <div
+              className="whitespace-nowrap transition-transform duration-500"
+              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            >
+              {examBoards.map((board, index) => (
+                <div
+                  key={board.name}
+                  className="inline-block w-full bg-white rounded-lg shadow-sm hover:shadow-md transition p-6"
+                  style={{ minWidth: '100%' }}
+                >
+                  <div className="md:flex items-start space-x-6">
+                    <div className="md:w-1/4 mb-4 md:mb-0">
+                      <img
+                        src={board.logo}
+                        alt={`${board.name} Logo`}
+                        className="w-full h-auto object-contain"
+                      />
+                    </div>
+                    <div className="md:w-3/4">
+                      <h2 className="text-2xl font-bold text-gray-900 mb-2">{board.name}</h2>
+                      <p className="text-gray-600 mb-4">{board.description}</p>
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Subjects Offered:</h3>
+                        <ul className="grid grid-cols-2 gap-2">
+                          {board.subjects.map((subject) => (
+                            <li key={subject} className="text-gray-600">• {subject}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </div>

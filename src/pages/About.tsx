@@ -1,4 +1,3 @@
-import React from 'react';
 import { Users, Target, Globe2 } from 'lucide-react';
 
 export default function About() {
