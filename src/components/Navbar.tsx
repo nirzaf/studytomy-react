@@ -7,7 +7,7 @@ export default function Navbar() {
   const location = useLocation();
 
   const navigation = [
-    { name: 'Home', href: '/studytomy-react' },
+    { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Exam Boards', href: '/exam-boards' },
     { name: 'Contact', href: '/contact' },
