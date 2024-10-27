@@ -5,13 +5,13 @@
   "type": "module",
   "homepage": "https://dotnetblogs.net/studytomy-react",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
-  },
+  "dev": "vite",
+  "build": "vite build",
+  "lint": "eslint .",
+  "preview": "vite preview",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist -r https://x-access-token:${GITHUB_TOKEN}@github.com/<username>/<repository-name>.git"
+},
   "dependencies": {
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
