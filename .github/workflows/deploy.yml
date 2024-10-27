@@ -13,8 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +28,11 @@ jobs:
       
       - name: Build the app
         run: npm run build
+      
+      - name: Configure Git user
+        run: |
+          git config --global user.nirzaf "github-actions[bot]"
+          git config --global user.mfmfazrin1986@gmail.com "github-actions[bot]@users.noreply.github.com"
       
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/master'
