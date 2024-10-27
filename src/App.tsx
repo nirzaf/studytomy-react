@@ -13,7 +13,7 @@ function App() {
         <Navbar />
         <main className="flex-grow pt-16">
           <Routes>
-            <Route path="/index" element={<Home />} />
+            <Route path="/studytomy-react" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/exam-boards" element={<ExamBoardsPage />} />
             <Route path="/contact" element={<Contact />} />

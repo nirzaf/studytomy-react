@@ -1,4 +1,3 @@
-import React from 'react';
 import Hero from '../components/Hero';
 import Subjects from '../components/Subjects';
 import WhyUs from '../components/WhyUs';
