@@ -29,13 +29,14 @@ jobs:
       - name: Build the app
         run: npm run build
       
-      - name: Configure Git user
-        run: |
-          git config --global user.name "M.F.M Fazrin"
-          git config --global user.email "mfmfazrin1986@gmail.com"
+      # - name: Configure Git user
+      #   run: |
+      #     git config --global user.name "M.F.M Fazrin"
+      #     git config --global user.email "mfmfazrin1986@gmail.com"
       
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run deploy
+    
