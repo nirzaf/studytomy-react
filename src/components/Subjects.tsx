@@ -2,12 +2,12 @@ import React from 'react';
 import { BookOpen, Beaker, PiSquare, Globe2, Calculator, Microscope } from 'lucide-react';
 
 const subjects = [
-  { name: 'Mathematics', icon: Calculator, description: 'From algebra to calculus' },
-  { name: 'Physics', icon: PiSquare, description: 'Mechanics to quantum physics' },
-  { name: 'Chemistry', icon: Beaker, description: 'Organic to inorganic' },
-  { name: 'Biology', icon: Microscope, description: 'Cells to ecosystems' },
-  { name: 'English', icon: BookOpen, description: 'Literature and language' },
-  { name: 'Geography', icon: Globe2, description: 'Physical to human geography' },
+  { name: 'Mathematics', icon: Calculator, imageUrl: '/images/mathematics.png', description: 'From algebra to calculus' },
+  { name: 'Physics', icon: PiSquare, imageUrl: '/images/physics.png', description: 'Mechanics to quantum physics' },
+  { name: 'Chemistry', icon: Beaker, imageUrl: '/images/chemistry.png', description: 'Organic to inorganic' },
+  { name: 'Biology', icon: Microscope, imageUrl: '/images/biology.png', description: 'Cells to ecosystems' },
+  { name: 'English', icon: BookOpen, imageUrl: '/images/english.png', description: 'Literature and language' },
+  { name: 'Geography', icon: Globe2, imageUrl: '/images/geography.png', description: 'Physical to human geography' },
 ];
 
 export default function Subjects() {
@@ -43,6 +43,7 @@ export default function Subjects() {
                       {subject.name}
                     </a>
                   </h3>
+                  <img src={subject.imageUrl} alt={subject.name} className="mt-4 w-full h-32 object-cover" />
                   <p className="mt-2 text-sm text-gray-500">
                     {subject.description}
                   </p>

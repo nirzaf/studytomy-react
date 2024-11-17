@@ -1,4 +1,4 @@
-import React from 'react';
+// React import removed as it's not used in this component
 
 export default function DoubtSection() {
   return (
