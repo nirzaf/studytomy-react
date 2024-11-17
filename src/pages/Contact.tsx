@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Contact() {
   return (
@@ -16,17 +16,21 @@ export default function Contact() {
           <div className="text-center p-6 bg-orange-50 rounded-lg">
             <Mail className="w-12 h-12 text-orange-500 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-gray-900 mb-2">Email</h3>
-            <p className="text-gray-600">support@educonnect.com</p>
+            <p className="text-gray-600">info@studytomy.com</p>
           </div>
           <div className="text-center p-6 bg-orange-50 rounded-lg">
             <Phone className="w-12 h-12 text-orange-500 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-gray-900 mb-2">Phone</h3>
-            <p className="text-gray-600">+1 (555) 123-4567</p>
+            <p className="text-gray-600">+61 461 367 702</p>
           </div>
           <div className="text-center p-6 bg-orange-50 rounded-lg">
-            <MessageSquare className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-gray-900 mb-2">WhatsApp</h3>
-            <p className="text-gray-600">+1 (555) 987-6543</p>
+            <MapPin className="w-12 h-12 text-orange-500 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-gray-900 mb-2">Address</h3>
+            <p className="text-gray-600">
+              2202/4 Kurringal Court<br />
+              Fannie Bay, NT 0820<br />
+              Australia
+            </p>
           </div>
         </div>
 
