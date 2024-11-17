@@ -8,7 +8,6 @@ const Career = () => {
   return (
     <section id="why-choose-us" className="mt-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Join Studytomy as Tutor</h2>
         <div className="w-full">
           <iframe 
             src="https://baserow.io/form/9TGwYrZSkDNQ1591Aom8mQ8Ku4lxkot5aNKnAGkppFo" 
