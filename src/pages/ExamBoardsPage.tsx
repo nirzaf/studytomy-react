@@ -62,7 +62,7 @@ export default function ExamBoardsPage() {
               className="whitespace-nowrap transition-transform duration-500"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {examBoards.map((board, index) => (
+              {examBoards.map((board, _) => (
                 <div
                   key={board.name}
                   className="inline-block w-full bg-white rounded-lg shadow-sm hover:shadow-md transition p-6"
