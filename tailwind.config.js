@@ -20,6 +20,15 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
+      keyframes: {
+        'bounce-right': {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(-20px)' }
+        }
+      },
+      animation: {
+        'bounce-right': 'bounce-right 1s infinite'
+      }
     },
   },
   plugins: [],

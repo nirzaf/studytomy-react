@@ -1,14 +1,38 @@
-import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function Contact() {
+  const [showPointer, setShowPointer] = useState(true);
+
+  useEffect(() => {
+    // Hide the pointer after 5 seconds
+    const timer = setTimeout(() => {
+      setShowPointer(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="py-20">
+    <div className="py-20 relative">
+      {showPointer && (
+        <div className="hidden md:block fixed bottom-28 right-14 animate-bounce-right">
+          <div className="relative">
+            <div className="absolute transform -rotate-90">
+              👆
+            </div>
+            <p className="absolute top-0 right-8 whitespace-nowrap text-sm text-gray-600">
+              Click here to chat!
+            </p>
+          </div>
+        </div>
+      )}
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Have questions? We're here to help. Reach out to us through any of the following channels.
+            Have questions? We're here to help. Use live chattig or Reach out to us through any of the following channels.
           </p>
         </div>
 
