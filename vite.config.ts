@@ -4,7 +4,7 @@ import * as path from "node:path";
 
 export default defineConfig({
   plugins: [react()],
-  base: 'https://dotnetevangelist.net/studytomy-react/',
+  base: '/',
   build: {
     outDir: 'dist',
     emptyOutDir: true
