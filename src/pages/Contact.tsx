@@ -1,8 +1,59 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { supabase } from '../lib/supabaseClient';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Contact() {
   const [showPointer, setShowPointer] = useState(true);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  // Handle input changes
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    try {
+      const { error } = await supabase
+        .from('contacts')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            created_at: new Date()
+          }
+        ]);
+
+      if (error) throw error;
+
+      // Clear form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+
+      setShowSuccessModal(true);
+      setTimeout(() => setShowSuccessModal(false), 3000); // Auto hide after 3s
+    } catch (error) {
+      alert('Error sending message. Please try again.');
+    }
+  };
 
   useEffect(() => {
     // Hide the pointer after 5 seconds
@@ -59,7 +110,7 @@ export default function Contact() {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <form className="bg-white rounded-lg shadow-sm p-8">
+          <form className="bg-white rounded-lg shadow-sm p-8" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -68,8 +119,11 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500"
                   placeholder="Your name"
+                  required
                 />
               </div>
               <div>
@@ -79,8 +133,11 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500"
                   placeholder="your@email.com"
+                  required
                 />
               </div>
             </div>
@@ -91,8 +148,11 @@ export default function Contact() {
               <input
                 type="text"
                 id="subject"
+                value={formData.subject}
+                onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500"
                 placeholder="What is this about?"
+                required
               />
             </div>
             <div className="mb-6">
@@ -101,9 +161,12 @@ export default function Contact() {
               </label>
               <textarea
                 id="message"
+                value={formData.message}
+                onChange={handleChange}
                 rows={6}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500"
                 placeholder="Your message..."
+                required
               ></textarea>
             </div>
             <button
@@ -112,6 +175,24 @@ export default function Contact() {
             >
               Send Message
             </button>
+
+            <AnimatePresence>
+              {showSuccessModal && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="mt-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded"
+                >
+                  <div className="flex items-center justify-center">
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <p className="font-medium">Message sent successfully!</p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </form>
         </div>
       </div>
