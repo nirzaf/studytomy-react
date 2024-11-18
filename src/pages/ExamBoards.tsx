@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const examBoards = [
   {
@@ -116,6 +117,8 @@ const ExamBoards = () => {
             </motion.div>
           ))}
         </div>
+        
+        <WhatsAppButton />
       </div>
     </div>
   );

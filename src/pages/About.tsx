@@ -1,4 +1,5 @@
 import { Users, Target, Globe2 } from 'lucide-react';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 export default function About() {
   return (
@@ -73,6 +74,7 @@ export default function About() {
           </div>
         </div>
       </div>
+      <WhatsAppButton />
     </div>
   );
 }

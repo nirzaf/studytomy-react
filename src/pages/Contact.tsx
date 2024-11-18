@@ -2,6 +2,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { motion, AnimatePresence } from 'framer-motion';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 export default function Contact() {
   const [showPointer, setShowPointer] = useState(true);
@@ -196,6 +197,7 @@ export default function Contact() {
           </form>
         </div>
       </div>
+      <WhatsAppButton />
     </div>
   );
 }

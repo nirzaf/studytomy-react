@@ -5,10 +5,11 @@ import DoubtSection from '../components/DoubtSection';
 import ExamBoardsSection from '../components/ExamBoardsSection';
 import Testimonials from '../components/Testimonials';
 import GroupDiscount from '../components/GroupDiscount';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 export default function Home() {
   return (
-    <>
+    <div className="relative">
       <Hero />
       <Subjects />
       <WhyUs />
@@ -16,6 +17,7 @@ export default function Home() {
       <ExamBoardsSection />
       <Testimonials />
       <GroupDiscount />
-    </>
+      <WhatsAppButton />
+    </div>
   );
 }
