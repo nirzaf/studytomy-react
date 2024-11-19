@@ -6,6 +6,7 @@ import ExamBoardsSection from '../components/ExamBoardsSection';
 import Testimonials from '../components/Testimonials';
 import GroupDiscount from '../components/GroupDiscount';
 import WhatsAppButton from '../components/WhatsAppButton';
+import ImageGallery from '../components/ImageGallery';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <Subjects />
       <WhyUs />
+      <ImageGallery />
       <DoubtSection />
       <ExamBoardsSection />
       <Testimonials />

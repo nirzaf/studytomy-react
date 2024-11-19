@@ -1,0 +1,21 @@
+.subjects-carousel .swiper-button-next,
+.subjects-carousel .swiper-button-prev {
+  color: #4B5563; /* gray-600 */
+}
+
+.subjects-carousel .swiper-button-prev {
+  left: -2rem;
+}
+
+.subjects-carousel .swiper-button-next {
+  right: -2rem;
+}
+
+@media (max-width: 640px) {
+  .subjects-carousel .swiper-button-prev {
+    left: 0;
+  }
+  .subjects-carousel .swiper-button-next {
+    right: 0;
+  }
+} 
