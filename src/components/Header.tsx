@@ -10,7 +10,7 @@ const Header = () => {
     { path: "/exam-boards", label: "Exam Boards" },
     { path: "/home-school", label: "Home School" },
     { path: "/career", label: "Career" },
-    { path: "/contact", label: "Contact us" }
+    { path: "/contact", label: "Contact" }
   ];
 
   return (

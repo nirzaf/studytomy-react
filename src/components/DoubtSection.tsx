@@ -1,4 +1,4 @@
-// React import removed as it's not used in this component
+import { Link } from 'react-router-dom';
 
 export default function DoubtSection() {
   return (
@@ -10,9 +10,11 @@ export default function DoubtSection() {
         <p className="text-white mb-6">
           Got doubts and not a student of ours? No worries! Contact us for an exclusive doubt clearing session
         </p>
-        <button className="bg-white text-orange-500 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition">
-          Contact
-        </button>
+        <Link to="/contact">
+          <button className="bg-white text-orange-500 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition">
+            Contact
+          </button>
+        </Link>
       </div>
     </div>
   );

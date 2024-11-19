@@ -9,7 +9,8 @@ export default function Navbar() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Exam Boards', href: '/exam-boards' },
+    { name: 'Subjects', href: '/subjects' },
+    { name: 'Homeschool', href: '/homeschool' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -38,9 +39,9 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">
+            <Link to="/book-trial" className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">
               Book Free Trial
-            </button>
+            </Link>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -68,9 +69,9 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <button className="w-full text-left px-3 py-2 text-orange-500 font-medium">
+            <Link to="/book-trial" className="w-full text-left px-3 py-2 text-orange-500 font-medium">
               Book Free Trial
-            </button>
+            </Link>
           </div>
         </div>
       )}

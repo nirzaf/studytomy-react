@@ -1,0 +1,26 @@
+.testimonial-carousel .slick-track {
+  display: flex !important;
+}
+
+.testimonial-carousel .slick-slide {
+  height: inherit !important;
+  display: flex !important;
+}
+
+.testimonial-carousel .slick-slide > div {
+  display: flex;
+  flex: 1;
+}
+
+.testimonial-carousel .slick-dots li button:before {
+  color: #FB923C;
+}
+
+.testimonial-carousel .slick-dots li.slick-active button:before {
+  color: #FB923C;
+}
+
+.testimonial-carousel .slick-prev:before,
+.testimonial-carousel .slick-next:before {
+  color: #FB923C;
+}

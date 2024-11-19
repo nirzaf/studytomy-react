@@ -1,31 +1,109 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { Quote } from 'lucide-react';
+import { supabase } from '../lib/supabaseClient';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import '../styles/testimonials.css';
 
-const testimonials = [
-  {
-    image: "https://res.cloudinary.com/durxawmiv/image/upload/c_scale,w_90/v1696699864/6829b881ae314429369d7743331d48ea_ayikvw_-_Profile_Picture_fr5iy1.png",
-    content: "Studytomy tutors provided me with comprehensive preparation for my exam. They assisted me in fully comprehending and applying all the required content. They offered tips and strategies on how to answer questions precisely. Learning became simpler due to their expertise in the field. I wholeheartedly recommend anyone wishing to excel in their exams to use Studytomy.",
-    name: "Aysha (Qatar)",
-    course: "AS level edexcel biology & chemistry"
-  },
-  {
-    image: "https://res.cloudinary.com/durxawmiv/image/upload/c_scale,h_90,w_90/v1698599430/boy-avatar_noau3k.jpg",
-    content: "The best lecturer. You have the most attractive methods of explaining lessons without making the students bored. The friendly relationship that you build between the student and your self makes students feel free to learn from you easily",
-    name: "Dihursan (Qatar)",
-    course: "AS Edexcel Biology"
-  },
-  {
-    image: "https://res.cloudinary.com/durxawmiv/image/upload/c_scale,w_90/v1696699864/6829b881ae314429369d7743331d48ea_ayikvw_-_Profile_Picture_fr5iy1.png",
-    content: "The biology course at Studytomy has been extremely helpful and has enhanced my academic understanding on the subject. The mentor makes complex concepts easy to understand by giving detailed explanations and encourages critical thinking, which has really made my experience much more effective.",
-    name: "Yushfa (Qatar)",
-    course: "AS level Biology Edexcel"
-  }
-];
+interface Testimonial {
+  id: number;
+  student_id: string;
+  name: string;
+  gender: 'male' | 'female';
+  country: string;
+  syllabus: string;
+  comments: string;
+  image_url: string;
+  created_at: string;
+  subject: string;
+  is_active: boolean;
+}
+
+const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
+  <div className="px-4 h-full">
+    <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg flex flex-col h-full">
+      <div className="flex items-center mb-4">
+        <img
+          src={testimonial.image_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random`}
+          alt={testimonial.name}
+          className="w-16 h-16 rounded-full object-cover"
+        />
+        <div className="ml-auto">
+          <Quote className="w-8 h-8 text-orange-400" />
+        </div>
+      </div>
+      <div className="text-white flex-grow flex flex-col">
+        <p className="mb-4 text-sm leading-relaxed flex-grow">{testimonial.comments}</p>
+        <div className="mt-auto">
+          <h6 className="font-semibold">{testimonial.name} ({testimonial.country})</h6>
+          <span className="text-sm text-orange-400">{testimonial.syllabus} - {testimonial.subject}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetchTestimonials();
+  }, []);
+
+  const fetchTestimonials = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('testimonials')
+        .select('*')
+        .eq('is_active', true)
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setTestimonials(data || []);
+    } catch (error) {
+      console.error('Error fetching testimonials:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
+  };
+
+  if (isLoading) {
+    return <div className="py-20 text-center text-white">Loading testimonials...</div>;
+  }
+
   return (
     <section 
-      className="py-20 bg-cover bg-center relative"
+      className="py-20 bg-cover bg-center relative overflow-hidden"
       style={{
         backgroundImage: "url(https://ik.imagekit.io/studytomy/Studytomy_Testimonial_Background.jpg?updatedAt=1717449732211)"
       }}
@@ -37,26 +115,12 @@ export default function Testimonials() {
           <h2 className="text-3xl font-bold text-white">What they say</h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
-              <div className="flex items-center mb-4">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-16 h-16 rounded-full object-cover"
-                />
-                <div className="ml-auto">
-                  <Quote className="w-8 h-8 text-orange-400" />
-                </div>
-              </div>
-              <div className="text-white">
-                <p className="mb-4 text-sm leading-relaxed">{testimonial.content}</p>
-                <h6 className="font-semibold">{testimonial.name}</h6>
-                <span className="text-sm text-orange-400">{testimonial.course}</span>
-              </div>
-            </div>
-          ))}
+        <div className="testimonial-carousel">
+          <Slider {...sliderSettings}>
+            {testimonials.map((testimonial) => (
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+            ))}
+          </Slider>
         </div>
       </div>
     </section>

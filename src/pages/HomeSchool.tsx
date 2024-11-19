@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Target, Heart, Brain } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const benefits = [
   {
@@ -59,9 +60,12 @@ const HomeSchool = () => {
             <p className="text-xl text-gray-700 mb-8">
               Discover the freedom of personalized education with our comprehensive homeschooling solutions.
             </p>
-            <button className="bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl">
+            <Link 
+              to="/book-trial"
+              className="inline-block bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl"
+            >
               Start Your Journey
-            </button>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -201,9 +205,11 @@ const HomeSchool = () => {
             <p className="text-xl text-gray-600 mb-12 text-justify">
               Enhance your homeschooling journey with Studytomy's specialized online tutoring services. Our expert tutors provide targeted academic support to complement and strengthen your homeschool curriculum, helping students excel in their educational goals.
             </p>
-            <button className="bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl">
-              Book a Free Consultation
-            </button>
+            <Link to="/book-trial">
+              <button className="bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl">
+                Book a Free Consultation
+              </button>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -225,4 +231,4 @@ const HomeSchool = () => {
   );
 };
 
-export default HomeSchool; 
+export default HomeSchool;

@@ -34,11 +34,16 @@ export default function Hero() {
       <div className="relative z-10 pt-16 pb-20">
         {/* Logo Section */}
         <div className="container mx-auto px-4 text-center mb-12">
-          <img 
-            src="https://ik.imagekit.io/quadrate/Studytomy/Studytomy_Logobook-02.png?updatedAt=1731862139834"
-            alt="Studytomy Logo"
-            className="mx-auto w-[200px] mb-8"
-          />
+          <div className="relative inline-block">
+            <div className="absolute inset-0 animate-spin-slow">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/0 via-white/50 to-white/0 rotate-0 blur-lg"></div>
+            </div>
+            <img 
+              src="https://ik.imagekit.io/quadrate/Studytomy/Studytomy_Logobook-02.png?updatedAt=1731862139834"
+              alt="Studytomy Logo"
+              className="relative mx-auto w-[200px] mb-8"
+            />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#003049] mb-6">
             Transform Your Learning Journey
           </h1>

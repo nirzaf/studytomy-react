@@ -17,6 +17,10 @@ export default {
           900: '#7c2d12',
         },
       },
+      animation: {
+        'bounce-right': 'bounce-right 1s infinite',
+        'spin-slow': 'spin 8s linear infinite',
+      },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
@@ -26,9 +30,6 @@ export default {
           '50%': { transform: 'translateX(-20px)' }
         }
       },
-      animation: {
-        'bounce-right': 'bounce-right 1s infinite'
-      }
     },
   },
   plugins: [],
