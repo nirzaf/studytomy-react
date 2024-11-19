@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Shield, Users, UserCircle, Clock, GraduationCap, FileText } from 'lucide-react';
 import { useState } from 'react';
+import './WhyUs.css';
 
 interface CardProps {
   icon: React.ReactNode;
@@ -103,22 +104,6 @@ export default function WhyUs() {
           ))}
         </div>
       </div>
-
-      {/* Add required CSS */}
-      <style jsx global>{`
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-        .preserve-3d {
-          transform-style: preserve-3d;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
-        }
-        .rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-      `}</style>
     </section>
   );
 }
