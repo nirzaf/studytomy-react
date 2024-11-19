@@ -13,11 +13,23 @@ interface CardProps {
 const WhyUsCard = ({ icon, title, shortDesc, longDesc }: CardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    setIsFlipped(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault();
+    setIsFlipped(false);
+  };
+
   return (
     <motion.div
       className="relative h-[300px] w-full perspective-1000"
       onHoverStart={() => setIsFlipped(true)}
       onHoverEnd={() => setIsFlipped(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       initial="front"
     >
       <motion.div
@@ -32,6 +44,7 @@ const WhyUsCard = ({ icon, title, shortDesc, longDesc }: CardProps) => {
             </div>
             <h3 className="text-lg font-semibold text-[#003049] mb-2">{title}</h3>
             <p className="text-gray-600">{shortDesc}</p>
+            <span className="md:hidden text-xs text-gray-400 mt-4">Tap to learn more</span>
           </div>
         </div>
 
