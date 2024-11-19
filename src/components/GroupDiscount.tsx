@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Users, Gift, Percent } from 'lucide-react';
+import { Users, Gift, Percent, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import * as Tooltip from '@radix-ui/react-tooltip';
 
 interface FeatureCardProps {
   icon: React.ReactNode;
@@ -9,20 +10,43 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    className="bg-white p-6 rounded-xl shadow-lg"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5 }}
-  >
-    <div className="text-orange-500 mb-4">
-      {icon}
-    </div>
-    <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-    <p className="text-gray-600">{description}</p>
-  </motion.div>
+  <Tooltip.Provider>
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      className="bg-white p-6 rounded-xl shadow-lg relative min-h-[250px] flex flex-col"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      <div>
+        <div className="text-orange-500 mb-4">
+          {icon}
+        </div>
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
+        <p className="text-gray-600 mb-3">{description}</p>
+      </div>
+      <div className="mt-auto flex items-center gap-1">
+        <p className="text-gray-400 text-[10px] italic">Terms & Conditions apply</p>
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
+            <button className="text-gray-400 hover:text-gray-500 transition-colors">
+              <Info className="w-3 h-3" />
+            </button>
+          </Tooltip.Trigger>
+          <Tooltip.Portal>
+            <Tooltip.Content
+              className="bg-gray-900 text-white px-4 py-2 rounded-md text-xs max-w-[250px] shadow-lg"
+              sideOffset={5}
+            >
+              Discount rates may vary by region and are subject to periodic review by Studytomy management. Final discount amounts will be confirmed during booking.
+              <Tooltip.Arrow className="fill-gray-900" />
+            </Tooltip.Content>
+          </Tooltip.Portal>
+        </Tooltip.Root>
+      </div>
+    </motion.div>
+  </Tooltip.Provider>
 );
 
 export default function GroupDiscount() {

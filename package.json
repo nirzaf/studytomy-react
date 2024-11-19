@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@radix-ui/react-tooltip": "^1.1.4",
     "@supabase/supabase-js": "^2.46.1",
     "framer-motion": "^11.11.17",
     "lucide-react": "^0.344.0",
