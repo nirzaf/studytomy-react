@@ -13,6 +13,7 @@ export default function Contact() {
     message: ''
   });
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showFailureModal, setShowFailureModal] = useState(false);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -52,7 +53,8 @@ export default function Contact() {
       setShowSuccessModal(true);
       setTimeout(() => setShowSuccessModal(false), 3000); // Auto hide after 3s
     } catch (error) {
-      alert('Error sending message. Please try again.');
+      setShowFailureModal(true);
+      setTimeout(() => setShowFailureModal(false), 3000);
     }
   };
 
@@ -190,6 +192,24 @@ export default function Contact() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                     </svg>
                     <p className="font-medium">Message sent successfully!</p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <AnimatePresence>
+              {showFailureModal && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  className="mt-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded"
+                >
+                  <div className="flex items-center justify-center">
+                    <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <p className="font-medium">Error sending message. Please try again.</p>
                   </div>
                 </motion.div>
               )}

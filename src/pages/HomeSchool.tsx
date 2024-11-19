@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Clock, Users, Target, Heart, Brain, Sparkles, PersonStanding } from 'lucide-react';
+import { Clock, Target, Heart, Brain } from 'lucide-react';
 
 const benefits = [
   {
