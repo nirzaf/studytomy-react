@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { BookOpen } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -39,9 +41,25 @@ export default function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Link to="/book-trial" className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">
-              Book Free Trial
-            </Link>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="relative group"
+            >
+              <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 rounded-lg blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+              <Link 
+                to="/book-trial" 
+                className="relative flex items-center gap-2 px-6 py-3 bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-lg transform transition-all duration-300 shadow-lg hover:shadow-orange-500/50 overflow-hidden group"
+              >
+                <span className="absolute right-0 w-12 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-96 ease"></span>
+                <BookOpen className="w-5 h-5 animate-bounce-subtle" />
+                <span className="relative">Book Free Trial</span>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-1 h-1 bg-white rounded-full animate-sparkle-1"></div>
+                  <div className="w-1 h-1 bg-white rounded-full animate-sparkle-2"></div>
+                  <div className="w-1 h-1 bg-white rounded-full animate-sparkle-3"></div>
+                </div>
+              </Link>
+            </motion.div>
           </div>
 
           <div className="md:hidden flex items-center">

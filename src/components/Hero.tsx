@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { GraduationCap, Users, Globe2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import HeroButton from './HeroButton';
 
 const featureVariants = {
   hidden: { opacity: 0, scale: 0.5 },
@@ -50,12 +51,7 @@ export default function Hero() {
           <h2 className="text-2xl md:text-3xl text-gray-700 mb-8">
             With Expert Tutors Worldwide
           </h2>
-          <Link 
-            to="/book-trial"
-            className="inline-block bg-[#F77F00] text-white px-8 py-3 rounded-md font-semibold hover:bg-[#FCBF49] transition-colors"
-          >
-            Start Free Trial
-          </Link>
+          <HeroButton />
         </div>
 
         {/* Features Grid */}
