@@ -11,6 +11,8 @@ import HomeSchool from './pages/HomeSchool';
 import Career from './pages/Career';
 import Contact from './pages/Contact';
 import BookTrial from './pages/BookTrial';
+import ConsentForm from './components/ConsentForm';
+import Terms from './pages/Terms';
 
 const App = () => {
   useEffect(() => {
@@ -30,6 +32,8 @@ const App = () => {
             <Route path="/career" element={<Career />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/book-trial" element={<BookTrial />} />
+            <Route path="/consent-preferences" element={<ConsentForm />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </main>
         <Footer />

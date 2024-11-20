@@ -6,14 +6,14 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="text-center">
           <p>
-            <Link to="/consent" className="hover:text-primary">
-              Consent Preferences
+            <Link to="/consent-preferences" className="hover:text-primary">
+              Manage Cookie Preferences
             </Link>
           </p>
           <p>
             <Link to="/terms" className="hover:text-primary">
-              Terms of Service of
-            </Link> Studytomy
+              Terms of Service
+            </Link>
           </p>
           <p>
             Powered by{' '}
