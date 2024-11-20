@@ -23,7 +23,7 @@ export default function Hero() {
       {/* Hero Background Image */}
       <div className="absolute inset-0 -z-20">
         <img 
-          src="https://ik.imagekit.io/quadrate/Studytomy/studytomy-hero-image.jpg?updatedAt=1732017205290"
+          src="https://ik.imagekit.io/quadrate/Studytomy/studytomy-hero-image-compressed.jpg?updatedAt=1732129621752"
           alt="Studytomy Hero Background"
           className="w-full h-full object-cover opacity-20"
         />
