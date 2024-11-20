@@ -60,7 +60,19 @@ export default {
           '50%': { transform: 'translate(10px, 10px) scale(1.5)' }
         }
       },
+      zIndex: {
+        '50': '50',
+        '100': '100',
+      },
     },
   },
   plugins: [],
+  variants: {
+    extend: {
+      display: ['group-hover'],
+      visibility: ['group-hover'],
+      opacity: ['group-hover'],
+      transform: ['group-hover'],
+    },
+  },
 };
