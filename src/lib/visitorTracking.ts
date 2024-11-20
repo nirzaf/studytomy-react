@@ -20,41 +20,36 @@ function generateVisitorId(): string {
 
 // Array of IP lookup services to try
 const IP_SERVICES = [
-  'https://api.db-ip.com/v2/free/self',
-  'https://api.myip.com',
-  'https://ip.seeip.org/json'
+  'https://api.ipgeolocation.io/getip'
 ];
 
 // Fetch IP address in the background
 async function getIpAddress(): Promise<string | undefined> {
-  // Create an AbortController for the entire operation
   const controller = new AbortController();
-  
-  // Set a global timeout of 5 seconds for the entire IP lookup process
   const timeoutId = setTimeout(() => controller.abort(), 5000);
   
   try {
-    // Try all services in parallel and take the first successful response
     const promises = IP_SERVICES.map(service =>
       fetch(service, {
         signal: controller.signal,
-        headers: { 'Accept': 'application/json' }
+        headers: { 
+          'Accept': 'application/json'
+        }
       })
       .then(async response => {
         if (!response.ok) throw new Error('Service unavailable');
         const data = await response.json();
-        return data.ipAddress || data.ip || data.address;
+        return data.ip || data.ipAddress;
       })
-      .catch(() => null) // Convert failures to null
+      .catch(() => null)
     );
 
-    // Use Promise.race to get the first successful response
     const results = await Promise.race([
       Promise.all(promises),
-      new Promise<null>((resolve) => 
-        setTimeout(() => resolve(null), 3000) // Timeout after 3s
-      )
+      new Promise<null>((resolve) => setTimeout(() => resolve(null), 3000))
     ]);
+
+    clearTimeout(timeoutId);
 
     if (Array.isArray(results)) {
       const ip = results.find(result => result !== null);
@@ -65,8 +60,6 @@ async function getIpAddress(): Promise<string | undefined> {
   } catch (error) {
     console.log('IP lookup failed silently');
     return undefined;
-  } finally {
-    clearTimeout(timeoutId);
   }
 }
 
@@ -76,8 +69,11 @@ async function getLocationData(ip: string): Promise<VisitorData['location'] | un
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 3000);
 
-    const response = await fetch(`https://ipapi.co/${ip}/json/`, {
-      signal: controller.signal
+    const response = await fetch(`https://api.iplocation.net/?ip=${ip}`, {
+      signal: controller.signal,
+      headers: {
+        'Accept': 'application/json'
+      }
     });
     
     clearTimeout(timeoutId);
@@ -85,12 +81,11 @@ async function getLocationData(ip: string): Promise<VisitorData['location'] | un
     if (!response.ok) return undefined;
     
     const data = await response.json();
-    if (data.error) return undefined;
     
     return {
       country: data.country_name,
-      city: data.city,
-      region: data.region
+      city: undefined,
+      region: undefined
     };
   } catch (error) {
     return undefined;

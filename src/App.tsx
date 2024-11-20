@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { initGTM } from './lib/gtm';
+import GTMNoScript from './components/GTMNoScript';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -10,6 +13,10 @@ import Contact from './pages/Contact';
 import BookTrial from './pages/BookTrial';
 
 const App = () => {
+  useEffect(() => {
+    initGTM();
+  }, []);
+
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
@@ -26,6 +33,7 @@ const App = () => {
           </Routes>
         </main>
         <Footer />
+        <GTMNoScript />
       </div>
     </Router>
   );
