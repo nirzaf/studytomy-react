@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Shield, Users, UserCircle, Clock, GraduationCap, FileText } from 'lucide-react';
 import { useState } from 'react';
-import './WhyUs.css';
+import '../styles/WhyUs.css';
 
 interface CardProps {
   icon: React.ReactNode;

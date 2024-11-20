@@ -71,7 +71,7 @@ export default function Contact() {
     <div className="py-20 relative">
       {showPointer && (
         <div className="hidden md:block fixed bottom-28 right-14 animate-bounce-right">
-          <div className="relative">
+          <div className="relative" style={{ transform: 'translateY(-30px)' }}>
             <div className="absolute transform -rotate-90">
               👆
             </div>
@@ -86,7 +86,7 @@ export default function Contact() {
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Have questions? We're here to help. Use live chattig or Reach out to us through any of the following channels.
+            Have questions? We're here to help. Use live chatting or Reach out to us through any of the following channels.
           </p>
         </div>
 
