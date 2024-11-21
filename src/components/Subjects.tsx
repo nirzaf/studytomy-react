@@ -42,12 +42,6 @@ const subjects = [
     alt: "Depicting a stack of books is a common symbol associated with learning, knowledge, and education."
   },
   {
-    name: "Business",
-    image: "https://ik.imagekit.io/studytomy/Studytomy_Business.gif?updatedAt=1717446092410",
-    color: "color-1",
-    alt: "A stylized representation of business and technology."
-  },
-  {
     name: "Psychology",
     image: "https://ik.imagekit.io/studytomy/Studytomy_Psychology.gif?updatedAt=1717446158250",
     color: "color-2",
