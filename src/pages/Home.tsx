@@ -9,6 +9,7 @@ import GroupDiscount from '../components/GroupDiscount';
 import WhatsAppButton from '../components/WhatsAppButton';
 import ImageGallery from '../components/ImageGallery';
 import { trackVisitor } from '../lib/visitorTracking';
+import AchievementPopup from '../components/AchievementPopup';
 
 export default function Home() {
   useEffect(() => {
@@ -16,16 +17,19 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative">
-      <Hero />
-      <Subjects />
-      <WhyUs />
-      <ImageGallery />
-      <DoubtSection />
-      <ExamBoardsSection />
-      <Testimonials />
-      <GroupDiscount />
-      <WhatsAppButton />
-    </div>
+    <>
+      <AchievementPopup />
+      <div className="relative">
+        <Hero />
+        <Subjects />
+        <WhyUs />
+        <ImageGallery />
+        <DoubtSection />
+        <ExamBoardsSection />
+        <Testimonials />
+        <GroupDiscount />
+        <WhatsAppButton />
+      </div>
+    </>
   );
 }
