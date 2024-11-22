@@ -35,4 +35,24 @@
     margin: 1rem;
     max-width: calc(100% - 2rem);
   }
+}
+
+.achievement-card-section {
+  margin-bottom: 2rem; /* 32px */
+}
+
+.achievement-card-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Adjust spacing for mobile */
+@media (max-width: 640px) {
+  .achievement-card-section {
+    margin-bottom: 1.5rem; /* 24px */
+  }
+  
+  .achievement-popup {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+  }
 } 

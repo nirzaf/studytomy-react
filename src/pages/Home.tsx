@@ -9,7 +9,7 @@ import GroupDiscount from '../components/GroupDiscount';
 import WhatsAppButton from '../components/WhatsAppButton';
 import ImageGallery from '../components/ImageGallery';
 import { trackVisitor } from '../lib/visitorTracking';
-import AchievementPopup from '../components/AchievementPopup';
+import AchievementCardComponent from '../components/AchievementCard';
 
 export default function Home() {
   useEffect(() => {
@@ -18,9 +18,9 @@ export default function Home() {
 
   return (
     <>
-      <AchievementPopup />
       <div className="relative">
         <Hero />
+        <AchievementCardComponent />
         <Subjects />
         <WhyUs />
         <ImageGallery />
