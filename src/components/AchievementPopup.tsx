@@ -31,6 +31,8 @@ const AchievementPopup = () => {
         setIsVisible(true);
         // Open gift box after 1 second of popup appearing
         setTimeout(() => setIsGiftOpened(true), 1000);
+        // Hide popup after 2 seconds of being visible
+        setTimeout(() => setIsVisible(false), 4000);
         // Mark as shown in localStorage
         localStorage.setItem('hasSeenAchievementPopup', 'true');
       }, 2000);
@@ -38,10 +40,6 @@ const AchievementPopup = () => {
       return () => clearTimeout(timer);
     }
   }, []);
-
-  const handleClose = () => {
-    setIsVisible(false);
-  };
 
   return (
     <AnimatePresence>
@@ -62,7 +60,6 @@ const AchievementPopup = () => {
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black"
-            onClick={handleClose}
           />
 
           <motion.div
@@ -185,14 +182,6 @@ const AchievementPopup = () => {
                   {" Studytomy to unlock your full potential!"}
                 </motion.p>
               </div>
-
-              {/* Close button */}
-              <button
-                onClick={handleClose}
-                className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
             </div>
           </motion.div>
         </motion.div>
@@ -201,4 +190,4 @@ const AchievementPopup = () => {
   );
 };
 
-export default AchievementPopup; 
+export default AchievementPopup;
