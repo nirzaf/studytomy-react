@@ -164,7 +164,7 @@ const Navbar = () => {
             <Link to="/" className="flex-shrink-0">
               <img
                 className="h-12 w-auto"
-                src="https://ik.imagekit.io/quadrate/Studytomy/logo_studytomy_2x_1_?updatedAt=1696858649932"
+                src="https://ik.imagekit.io/studytomy/minimal%20primary%20logo%20mini.png?updatedAt=1732362156819"
                 alt="Studytomy"
               />
             </Link>
