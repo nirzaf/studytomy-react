@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, BookOpen, Sparkles, GraduationCap, Phone, Mail, Globe, MessageCircle } from 'lucide-react';
+import { 
+  Menu, X, BookOpen, Sparkles, GraduationCap, Phone, Mail, Globe, MessageCircle,
+  Building2, Users, MessageSquare, ExternalLink, School
+} from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const navItems = [
@@ -16,13 +19,13 @@ const navItems = [
     title: "Exam Boards", 
     path: "/exam-boards",
     dropdownItems: [
-      { title: "Edexcel", path: "/exam-boards#edexcel", icon: "fas fa-university" },
-      { title: "Cambridge", path: "/exam-boards#cambridge", icon: "fas fa-university" },
-      { title: "AQA", path: "/exam-boards#aqa", icon: "fas fa-university" },
-      { title: "OCR A & OCR B", path: "/exam-boards#ocr-a-ocr-b", icon: "fas fa-university" },
-      { title: "IB", path: "/exam-boards#ib", icon: "fas fa-university" },
-      { title: "OSSD", path: "/exam-boards#ossd", icon: "fas fa-university" },
-      { title: "VCE", path: "/exam-boards#vce", icon: "fas fa-university" },
+      { title: "Edexcel", path: "/exam-boards#edexcel", icon: <School className="w-5 h-5" /> },
+      { title: "Cambridge", path: "/exam-boards#cambridge", icon: <School className="w-5 h-5" /> },
+      { title: "AQA", path: "/exam-boards#aqa", icon: <School className="w-5 h-5" /> },
+      { title: "OCR A & OCR B", path: "/exam-boards#ocr-a-ocr-b", icon: <School className="w-5 h-5" /> },
+      { title: "IB", path: "/exam-boards#ib", icon: <School className="w-5 h-5" /> },
+      { title: "OSSD", path: "/exam-boards#ossd", icon: <School className="w-5 h-5" /> },
+      { title: "VCE", path: "/exam-boards#vce", icon: <School className="w-5 h-5" /> },
     ]
   },
   { 
@@ -33,18 +36,18 @@ const navItems = [
     title: "Career", 
     path: "/career",
     dropdownItems: [
-      { title: "Join with us", path: "/join-studytomy", icon: "fas fa-users", external: true }
+      { title: "Join with us", path: "/join-studytomy", icon: <Users className="w-5 h-5" />, external: true }
     ]
   },
   { 
     title: "Contact us", 
     path: "/contact",
     dropdownItems: [
-      { title: "WhatsApp", path: "https://wa.me/61461367702?text=Hi,%20I'm%20interested%20to%20learn%20more%20about%20your%20tutorial.", icon: "fab fa-whatsapp", external: true },
-      { title: "Chat", path: "#", icon: "fas fa-comments", onClick: "openHubSpotChat" },
-      { title: "Mobile", path: "tel:+61461367702", icon: "fas fa-phone" },
-      { title: "Email", path: "mailto:info@studytomy.com", icon: "far fa-envelope" },
-      { title: "Contact Form", path: "/contact", icon: "fas fa-globe" }
+      { title: "WhatsApp", path: "https://wa.me/61461367702?text=Hi,%20I'm%20interested%20to%20learn%20more%20about%20your%20tutorial.", icon: <MessageSquare className="w-5 h-5" />, external: true },
+      { title: "Chat", path: "#", icon: <MessageCircle className="w-5 h-5" />, onClick: "openHubSpotChat" },
+      { title: "Mobile", path: "tel:+61461367702", icon: <Phone className="w-5 h-5" /> },
+      { title: "Email", path: "mailto:info@studytomy.com", icon: <Mail className="w-5 h-5" /> },
+      { title: "Contact Form", path: "/contact", icon: <Globe className="w-5 h-5" /> }
     ]
   }
 ];
@@ -125,7 +128,7 @@ const NavItem = ({ item, isMobile = false }) => {
               onClick={(e) => handleClick(e, dropdownItem)}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition-colors duration-150"
             >
-              <i className={`${dropdownItem.icon} mr-2`}></i>
+              {dropdownItem.icon}
               {dropdownItem.title}
             </Link>
           ))}
