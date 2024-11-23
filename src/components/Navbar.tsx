@@ -44,7 +44,7 @@ const navItems = [
       { title: "Chat", path: "#", icon: "fas fa-comments", onClick: "openHubSpotChat" },
       { title: "Mobile", path: "tel:+61461367702", icon: "fas fa-phone" },
       { title: "Email", path: "mailto:info@studytomy.com", icon: "far fa-envelope" },
-      { title: "Web Form", path: "/submission-form", icon: "fas fa-globe" }
+      { title: "Contact Form", path: "/contact", icon: "fas fa-globe" }
     ]
   }
 ];
