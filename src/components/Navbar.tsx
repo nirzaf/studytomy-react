@@ -91,6 +91,7 @@ const NavItem = ({ item, isMobile = false }) => {
   const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
   const isActive = location.pathname === item.path;
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = (e: React.MouseEvent, dropdownItem: any) => {
     if (dropdownItem.onClick === 'openHubSpotChat') {
@@ -101,11 +102,17 @@ const NavItem = ({ item, isMobile = false }) => {
     }
   };
 
+  const handleMobileClick = () => {
+    if (isMobile) {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <div 
       className="relative"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => !isMobile && setIsHovered(true)}
+      onMouseLeave={() => !isMobile && setIsHovered(false)}
     >
       <Link
         to={item.path}
@@ -113,13 +120,14 @@ const NavItem = ({ item, isMobile = false }) => {
           isActive
             ? 'text-orange-500'
             : 'text-gray-600 hover:text-orange-500'
-        } transition py-2 inline-block ${isMobile ? 'block px-3 py-2 rounded-lg' : ''}`}
+        } transition py-2 inline-block ${isMobile ? 'block px-3 py-2 rounded-lg w-full' : ''}`}
+        onClick={handleMobileClick}
       >
         {item.title}
       </Link>
 
-      {item.dropdownItems && isHovered && (
-        <div className={`absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-1 z-50 ${isMobile ? 'static w-full' : ''}`}>
+      {item.dropdownItems && isHovered && !isMobile && (
+        <div className="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-1 z-50">
           {item.dropdownItems.map((dropdownItem, index) => (
             <Link
               key={index}
@@ -141,7 +149,11 @@ const NavItem = ({ item, isMobile = false }) => {
 };
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleMobileMenuClick = () => {
+    setIsOpen(false);
+  };
 
   return (
     <nav className="bg-white shadow-sm fixed w-full z-50">
@@ -149,55 +161,56 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center">
-              <img 
-                src="https://ik.imagekit.io/studytomy/minimal%20primary%20logo%20mini.png?updatedAt=1732362156819" 
-                alt="Studytomy Logo" 
-                className="h-8 w-auto"
-                loading="eager"
-                priority="true"
+            <Link to="/" className="flex-shrink-0">
+              <img
+                className="h-12 w-auto"
+                src="https://ik.imagekit.io/quadrate/Studytomy/logo_studytomy_2x_1_?updatedAt=1696858649932"
+                alt="Studytomy"
               />
-              <span className="ml-2 text-xl font-bold text-gray-800">Studytomy</span>
             </Link>
           </div>
-          
+
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-4">
             {navItems.map((item, index) => (
               <NavItem key={index} item={item} />
             ))}
-            
-            {/* Book Trial Button */}
             <BookTrialButton />
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button 
-              onClick={() => setIsOpen(!isOpen)} 
-              className="p-2 rounded-lg text-gray-600 hover:bg-gray-50"
-              aria-label="Toggle menu"
+          {/* Mobile menu button */}
+          <div className="flex items-center md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-orange-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="block h-6 w-6" />
+              ) : (
+                <Menu className="block h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+        <motion.div 
+          className="md:hidden bg-white border-t"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1" onClick={handleMobileMenuClick}>
             {navItems.map((item, index) => (
               <NavItem key={index} item={item} isMobile={true} />
             ))}
-            
-            {/* Mobile Book Trial Button */}
             <div className="px-3 py-2">
               <BookTrialButton />
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </nav>
   );
