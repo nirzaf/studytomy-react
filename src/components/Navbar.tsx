@@ -1,15 +1,52 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, BookOpen, Sparkles, GraduationCap } from 'lucide-react';
+import { Menu, X, BookOpen, Sparkles, GraduationCap, Phone, Mail, Globe, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const navItems = [
-  { title: "Home", path: "/" },
-  { title: "About us", path: "/about" },
-  { title: "Exam Boards", path: "/exam-boards" },
-  { title: "Home School", path: "/home-school" },
-  { title: "Career", path: "/career" },
-  { title: "Contact", path: "/contact" }
+  { 
+    title: "Home", 
+    path: "/" 
+  },
+  { 
+    title: "About us", 
+    path: "/about" 
+  },
+  { 
+    title: "Exam Boards", 
+    path: "/exam-boards",
+    dropdownItems: [
+      { title: "Edexcel", path: "/exam-boards#edexcel", icon: "fas fa-university" },
+      { title: "Cambridge", path: "/exam-boards#cambridge", icon: "fas fa-university" },
+      { title: "AQA", path: "/exam-boards#aqa", icon: "fas fa-university" },
+      { title: "OCR A & OCR B", path: "/exam-boards#ocr-a-ocr-b", icon: "fas fa-university" },
+      { title: "IB", path: "/exam-boards#ib", icon: "fas fa-university" },
+      { title: "OSSD", path: "/exam-boards#ossd", icon: "fas fa-university" },
+      { title: "VCE", path: "/exam-boards#vce", icon: "fas fa-university" },
+    ]
+  },
+  { 
+    title: "Home School", 
+    path: "/home-school" 
+  },
+  { 
+    title: "Career", 
+    path: "/career",
+    dropdownItems: [
+      { title: "Join with us", path: "/join-studytomy", icon: "fas fa-users", external: true }
+    ]
+  },
+  { 
+    title: "Contact us", 
+    path: "/contact",
+    dropdownItems: [
+      { title: "WhatsApp", path: "https://wa.me/61461367702?text=Hi,%20I'm%20interested%20to%20learn%20more%20about%20your%20tutorial.", icon: "fab fa-whatsapp", external: true },
+      { title: "Chat", path: "#", icon: "fas fa-comments", onClick: "openHubSpotChat" },
+      { title: "Mobile", path: "tel:+61461367702", icon: "fas fa-phone" },
+      { title: "Email", path: "mailto:info@studytomy.com", icon: "far fa-envelope" },
+      { title: "Web Form", path: "/submission-form", icon: "fas fa-globe" }
+    ]
+  }
 ];
 
 const BookTrialButton = () => (
@@ -47,9 +84,59 @@ const BookTrialButton = () => (
   </Link>
 );
 
+const NavItem = ({ item, isMobile = false }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const location = useLocation();
+  const isActive = location.pathname === item.path;
+
+  const handleClick = (e: React.MouseEvent, dropdownItem: any) => {
+    if (dropdownItem.onClick === 'openHubSpotChat') {
+      e.preventDefault();
+      if (window.HubSpotConversations) {
+        window.HubSpotConversations.widget.open();
+      }
+    }
+  };
+
+  return (
+    <div 
+      className="relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <Link
+        to={item.path}
+        className={`${
+          isActive
+            ? 'text-orange-500'
+            : 'text-gray-600 hover:text-orange-500'
+        } transition py-2 inline-block ${isMobile ? 'block px-3 py-2 rounded-lg' : ''}`}
+      >
+        {item.title}
+      </Link>
+
+      {item.dropdownItems && isHovered && (
+        <div className={`absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-1 z-50 ${isMobile ? 'static w-full' : ''}`}>
+          {item.dropdownItems.map((dropdownItem, index) => (
+            <Link
+              key={index}
+              to={dropdownItem.path}
+              target={dropdownItem.external ? "_blank" : undefined}
+              onClick={(e) => handleClick(e, dropdownItem)}
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition-colors duration-150"
+            >
+              <i className={`${dropdownItem.icon} mr-2`}></i>
+              {dropdownItem.title}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const location = useLocation();
 
   return (
     <nav className="bg-white shadow-sm fixed w-full z-50">
@@ -71,18 +158,8 @@ const Navbar = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.title}
-                to={item.path}
-                className={`${
-                  location.pathname === item.path
-                    ? 'text-orange-500'
-                    : 'text-gray-600 hover:text-orange-500'
-                } transition py-2 inline-block`}
-              >
-                {item.title}
-              </Link>
+            {navItems.map((item, index) => (
+              <NavItem key={index} item={item} />
             ))}
             
             {/* Book Trial Button */}
@@ -106,19 +183,8 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.title}
-                to={item.path}
-                className={`block px-3 py-2 rounded-lg ${
-                  location.pathname === item.path
-                    ? 'text-orange-500 bg-orange-50'
-                    : 'text-gray-600 hover:text-orange-500 hover:bg-orange-50'
-                } transition-colors duration-200`}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.title}
-              </Link>
+            {navItems.map((item, index) => (
+              <NavItem key={index} item={item} isMobile={true} />
             ))}
             
             {/* Mobile Book Trial Button */}
