@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ContactHeader = () => {
   return (
     <div className="text-center mb-16">

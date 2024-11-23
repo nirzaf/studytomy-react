@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import ContactHeader from '../components/contact/ContactHeader';
 import ContactInfo from '../components/contact/ContactInfo';

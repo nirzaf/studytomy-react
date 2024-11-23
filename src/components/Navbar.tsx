@@ -128,8 +128,10 @@ const NavItem = ({ item, isMobile = false }) => {
               onClick={(e) => handleClick(e, dropdownItem)}
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition-colors duration-150"
             >
-              {dropdownItem.icon}
-              {dropdownItem.title}
+              <span className="flex items-center gap-2">
+                {dropdownItem.icon}
+                {dropdownItem.title}
+              </span>
             </Link>
           ))}
         </div>

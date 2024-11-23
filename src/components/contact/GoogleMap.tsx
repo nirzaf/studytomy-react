@@ -1,5 +1,3 @@
-import React from 'react';
-
 const GoogleMap = () => {
   return (
     <div className="w-full h-[400px] mt-16 rounded-lg overflow-hidden shadow-lg">
