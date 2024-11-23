@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 
 interface ExamBoardCardProps {
   board: {
@@ -8,13 +9,25 @@ interface ExamBoardCardProps {
     description: string;
     subjects: string[];
     color: string;
+    id: string;
   };
   index: number;
+  isScrollTarget?: boolean;
 }
 
-const ExamBoardCard = ({ board, index }: ExamBoardCardProps) => {
+const ExamBoardCard = ({ board, index, isScrollTarget }: ExamBoardCardProps) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isScrollTarget && cardRef.current) {
+      cardRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [isScrollTarget]);
+
   return (
     <motion.div
+      ref={cardRef}
+      id={board.id}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
