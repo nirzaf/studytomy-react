@@ -29,10 +29,19 @@
 
 @keyframes shine {
   0% {
+    transform: translateX(-100%) rotate(12deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(12deg);
+  }
+}
+
+@keyframes shine-slow {
+  0% {
     transform: translateX(-100%) rotate(45deg);
   }
   100% {
-    transform: translateX(200%) rotate(45deg);
+    transform: translateX(100%) rotate(45deg);
   }
 }
 
@@ -42,7 +51,20 @@
 }
 
 .animate-shine {
-  animation: shine 2s infinite linear;
+  animation: shine 8s infinite linear;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  position: absolute;
+  inset: -50%;
+  transform: translateX(-100%) rotate(45deg);
+}
+
+.animate-shine-slow {
+  animation: shine-slow 4s infinite linear;
   background: linear-gradient(
     90deg,
     transparent,

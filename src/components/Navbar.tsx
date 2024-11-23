@@ -91,14 +91,34 @@ const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) 
       <Link
         to={item.path}
         onClick={handleMobileClick}
-        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300
+        className={`group relative px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300
           ${isActive 
-            ? 'bg-orange-500/10 text-orange-600' 
-            : 'hover:bg-white/40 hover:text-orange-500 text-gray-700'
+            ? 'text-orange-600' 
+            : 'text-gray-700 hover:text-orange-600'
           } ${isMobile ? 'block w-full text-left' : 'inline-flex items-center'}
-          backdrop-blur-sm backdrop-saturate-150 hover:shadow-sm`}
+          before:absolute before:inset-0 before:rounded-xl before:bg-gradient-to-b 
+          before:from-white/80 before:to-white/40 before:backdrop-blur-lg
+          before:border before:border-white/20 
+          before:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] hover:before:shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]
+          overflow-hidden`}
       >
-        {item.title}
+        <span className="relative z-10">{item.title}</span>
+        
+        {/* Top reflection */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,255,255,0.7),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {/* Bottom reflection */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_50%_100%,rgba(255,255,255,0.3),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {/* Shine effect */}
+        <div className="absolute inset-0 -z-10 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute w-[200%] h-[200%] -top-[50%] -left-[50%] bg-gradient-to-r from-transparent via-white/30 to-transparent rotate-45 animate-shine-slow"></div>
+        </div>
+
+        {/* Active state glow */}
+        {isActive && (
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-orange-100/50 via-orange-50/30 to-orange-100/50"></div>
+        )}
       </Link>
 
       {/* Dropdown */}
@@ -108,19 +128,35 @@ const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) 
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
           transition={{ duration: 0.2 }}
-          className="absolute left-0 mt-2 w-56 rounded-xl bg-white/80 backdrop-blur-lg backdrop-saturate-150 
-                     shadow-lg ring-1 ring-black/5 overflow-hidden z-50"
+          className="absolute left-0 mt-2 w-56 rounded-xl overflow-hidden z-50"
         >
-          <div className="py-2">
+          {/* Dropdown glass background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80 backdrop-blur-xl border border-white/20"></div>
+          
+          {/* Dropdown top reflection */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-20%,rgba(255,255,255,0.7),transparent_70%)]"></div>
+          
+          {/* Dropdown content */}
+          <div className="relative z-10 py-1">
             {item.dropdownItems.map((dropdownItem, index) => (
               <Link
                 key={index}
                 to={dropdownItem.path}
-                className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-500/10 
-                          hover:text-orange-600 transition-all duration-300"
+                className="group relative flex items-center px-4 py-3 text-sm text-gray-700
+                          transition-all duration-300"
               >
-                {dropdownItem.icon}
-                <span className="ml-3">{dropdownItem.title}</span>
+                <span className="relative z-10 flex items-center">
+                  {dropdownItem.icon}
+                  <span className="ml-3">{dropdownItem.title}</span>
+                </span>
+                
+                {/* Dropdown item hover effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Dropdown item shine */}
+                <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute w-[200%] h-[200%] -top-[50%] -left-[50%] bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-45 animate-shine-slow"></div>
+                </div>
               </Link>
             ))}
           </div>
@@ -138,17 +174,36 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed w-full z-50 bg-white/70 backdrop-blur-md shadow-lg border-b border-white/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <nav className="fixed w-full z-50">
+      {/* Main glass panel background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80 backdrop-blur-xl border-b border-white/20"></div>
+      
+      {/* Top reflection */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-20%,rgba(255,255,255,0.7),transparent_50%)]"></div>
+      
+      {/* Left to right shine effect */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute w-1/2 h-[120%] -top-[10%] -left-[25%] bg-gradient-to-r from-transparent via-white/40 to-transparent rotate-12 animate-shine"></div>
+      </div>
+      
+      {/* Bottom edge highlight */}
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
               <img
-                className="h-12 w-auto"
+                className="h-8 w-auto"
                 src="https://ik.imagekit.io/studytomy/minimal%20primary%20logo%20mini.png?updatedAt=1732362156819"
                 alt="Studytomy"
               />
+            </Link>
+            <Link to="/" className="ml-3">
+              <span className="relative z-20 text-xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
+                Studytomy
+              </span>
             </Link>
           </div>
 
