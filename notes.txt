@@ -159,8 +159,7 @@ VALUES
 
 ('ST005', 'Ashaz', 'male', 'UAE', 'IGCSE Cambridge', 'Biology, Physics and Chemistry', 
  'I have been studying under Studytomy's tutelage for the past 3 years, and it has proved to be one of the most professional modes in which online education has been conducted. With extremely knowledgeable teachers and a vast resource of study material provided at your fingertips, Studytomy proves to be one of the best tutoring platforms present. Highly recommended!', 
- 'https://res.cloudinary.com/durxawmiv/image/upload/c_scale,h_90,w_90/v1698599430/boy-avatar_noau3k.jpg', true)
-ON CONFLICT (student_id) DO NOTHING;
+ 'https://res.cloudinary.com/durxawmiv/image/upload/c_scale,h_90,w_90/v1698599430/boy-avatar_noau3k.jpg', true);
 
 
 

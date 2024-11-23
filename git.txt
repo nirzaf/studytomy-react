@@ -1,0 +1,1 @@
+ always generate the consized commit message after the code change
