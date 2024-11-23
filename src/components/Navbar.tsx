@@ -191,19 +191,31 @@ const Navbar = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          {/* Logo */}
+          {/* Logo and Text */}
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
               <img
-                className="h-8 w-auto"
+                className="h-10 w-auto sm:h-12"
                 src="https://ik.imagekit.io/studytomy/minimal%20primary%20logo%20mini.png?updatedAt=1732362156819"
                 alt="Studytomy"
               />
             </Link>
-            <Link to="/" className="ml-3">
-              <span className="relative z-20 text-xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">
-                Studytomy
+            {/* Desktop Text */}
+            <Link to="/" className="ml-3 hidden sm:block">
+              <span className="relative z-20 text-xl font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent whitespace-nowrap">
+                Epitome of E-Tutoring
               </span>
+            </Link>
+            {/* Mobile Text - Two Lines */}
+            <Link to="/" className="ml-2 sm:hidden">
+              <div className="flex flex-col">
+                <span className="relative z-20 text-base font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent leading-tight">
+                  Epitome of
+                </span>
+                <span className="relative z-20 text-base font-bold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent leading-tight">
+                  E-Tutoring
+                </span>
+              </div>
             </Link>
           </div>
 

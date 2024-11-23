@@ -27,7 +27,9 @@ export default {
         gradient: 'gradient 8s linear infinite',
         float1: 'float1 4s ease-in-out infinite',
         float2: 'float2 6s ease-in-out infinite',
-        float3: 'float3 5s ease-in-out infinite'
+        float3: 'float3 5s ease-in-out infinite',
+        'fade-in-up': 'fade-in-up 0.8s ease-out',
+        'float': 'float 3s ease-in-out infinite',
       },
       keyframes: {
         'bounce-right': {
@@ -58,7 +60,31 @@ export default {
         float3: {
           '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
           '50%': { transform: 'translate(10px, 10px) scale(1.5)' }
+        },
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        },
+        'float': {
+          '0%, 100%': {
+            transform: 'translateY(0)'
+          },
+          '50%': {
+            transform: 'translateY(-10px)'
+          },
         }
+      },
+      perspective: {
+        '1000': '1000px',
+      },
+      screens: {
+        'xs': '475px',
       },
       zIndex: {
         '50': '50',
