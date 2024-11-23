@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { initGTM } from './lib/gtm';
 import GTMNoScript from './components/GTMNoScript';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -22,8 +22,8 @@ const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow">
+        <Navbar />
+        <main className="flex-grow mt-16">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

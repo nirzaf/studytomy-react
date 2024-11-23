@@ -53,3 +53,43 @@
   inset: -50%;
   transform: translateX(-100%) rotate(45deg);
 }
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(3px, -3px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-3px, 3px); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(3px, 3px); }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-float1 {
+  animation: float1 3s ease-in-out infinite;
+}
+
+.animate-float2 {
+  animation: float2 3s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.animate-float3 {
+  animation: float3 3s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
