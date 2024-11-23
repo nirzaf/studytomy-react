@@ -52,97 +52,79 @@ const navItems = [
   }
 ];
 
-const BookTrialButton = () => (
-  <Link 
-    to="/book-trial"
-    className="group relative inline-flex items-center justify-center px-6 py-3 font-bold text-white rounded-xl shadow-2xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
-  >
-    {/* Animated background gradient */}
-    <div className="absolute inset-0 w-full h-full transition-all duration-500">
-      <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 animate-gradient"></div>
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.2),transparent_50%)]"></div>
-    </div>
+const BookTrialButton = () => {
+  return (
+    <Link to="/book-trial">
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium
+                   bg-gradient-to-r from-orange-500 to-orange-600
+                   text-white shadow-md hover:shadow-lg
+                   transition-all duration-300
+                   backdrop-blur-sm backdrop-saturate-150
+                   border border-orange-400/20"
+      >
+        <Sparkles className="w-4 h-4 mr-2" />
+        Book Trial
+      </motion.button>
+    </Link>
+  );
+};
 
-    {/* Floating particles */}
-    <div className="absolute inset-0 w-full h-full">
-      <span className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-float1"></span>
-      <span className="absolute top-3/4 right-1/4 w-1 h-1 bg-white rounded-full animate-float2"></span>
-      <span className="absolute bottom-1/4 left-1/2 w-1 h-1 bg-white rounded-full animate-float3"></span>
-    </div>
-
-    {/* Button content */}
-    <div className="relative flex items-center gap-2 px-2">
-      <BookOpen className="w-5 h-5 transition-all duration-300 group-hover:rotate-12" />
-      <span className="relative">
-        Book Free Trial
-        <GraduationCap className="absolute -top-3 -right-2 w-3 h-3 text-yellow-300 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
-        <Sparkles className="absolute -bottom-3 -right-1 w-3 h-3 text-yellow-300 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-x-1" />
-      </span>
-    </div>
-
-    {/* Shine effect */}
-    <div className="absolute inset-0 transition-all duration-1000 group-hover:translate-x-full">
-      <div className="absolute skew-x-12 w-20 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-    </div>
-  </Link>
-);
-
-const NavItem = ({ item, isMobile = false }) => {
+const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
-  const isActive = location.pathname === item.path;
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClick = (e: React.MouseEvent, dropdownItem: any) => {
-    if (dropdownItem.onClick === 'openHubSpotChat') {
-      e.preventDefault();
-      if (window.HubSpotConversations) {
-        window.HubSpotConversations.widget.open();
-      }
-    }
-  };
+  const isActive = location.pathname === item.path || 
+                  (item.dropdownItems && item.dropdownItems.some(dropdownItem => location.pathname + location.hash === dropdownItem.path));
 
   const handleMobileClick = () => {
-    if (isMobile) {
-      setIsOpen(false);
-    }
+    setIsHovered(false);
   };
 
   return (
     <div 
       className="relative"
       onMouseEnter={() => !isMobile && setIsHovered(true)}
-      onMouseLeave={() => !isMobile && setIsHovered(false)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <Link
         to={item.path}
-        className={`${
-          isActive
-            ? 'text-orange-500'
-            : 'text-gray-600 hover:text-orange-500'
-        } transition py-2 inline-block ${isMobile ? 'block px-3 py-2 rounded-lg w-full' : ''}`}
         onClick={handleMobileClick}
+        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300
+          ${isActive 
+            ? 'bg-orange-500/10 text-orange-600' 
+            : 'hover:bg-white/40 hover:text-orange-500 text-gray-700'
+          } ${isMobile ? 'block w-full text-left' : 'inline-flex items-center'}
+          backdrop-blur-sm backdrop-saturate-150 hover:shadow-sm`}
       >
         {item.title}
       </Link>
 
+      {/* Dropdown */}
       {item.dropdownItems && isHovered && !isMobile && (
-        <div className="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-          {item.dropdownItems.map((dropdownItem, index) => (
-            <Link
-              key={index}
-              to={dropdownItem.path}
-              target={dropdownItem.external ? "_blank" : undefined}
-              onClick={(e) => handleClick(e, dropdownItem)}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500 transition-colors duration-150"
-            >
-              <span className="flex items-center gap-2">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.2 }}
+          className="absolute left-0 mt-2 w-56 rounded-xl bg-white/80 backdrop-blur-lg backdrop-saturate-150 
+                     shadow-lg ring-1 ring-black/5 overflow-hidden z-50"
+        >
+          <div className="py-2">
+            {item.dropdownItems.map((dropdownItem, index) => (
+              <Link
+                key={index}
+                to={dropdownItem.path}
+                className="flex items-center px-4 py-3 text-sm text-gray-700 hover:bg-orange-500/10 
+                          hover:text-orange-600 transition-all duration-300"
+              >
                 {dropdownItem.icon}
-                {dropdownItem.title}
-              </span>
-            </Link>
-          ))}
-        </div>
+                <span className="ml-3">{dropdownItem.title}</span>
+              </Link>
+            ))}
+          </div>
+        </motion.div>
       )}
     </div>
   );
@@ -156,8 +138,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-sm fixed w-full z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed w-full z-50 bg-white/70 backdrop-blur-md shadow-lg border-b border-white/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
