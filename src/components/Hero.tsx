@@ -93,9 +93,16 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
         className="text-center perspective-[1000px] transform-gpu"
       >
         {/* Main Title */}
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-8 relative">
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-8 relative" style={{ zIndex: 9999 }}>
           <div className="overflow-hidden">
-            <motion.div className="flex flex-wrap justify-center gap-x-3">
+            <motion.div 
+              className="flex flex-wrap justify-center gap-x-3"
+              style={{ 
+                textShadow: '0 0 10px rgba(255,255,255,0.8)',
+                position: 'relative',
+                zIndex: 9999
+              }}
+            >
               {texts[currentIndex].title.split(' ').map((word, i) => (
                 <motion.div
                   key={i}
@@ -401,18 +408,18 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-30 pt-16 pb-20">
+      <div className="relative pt-16 pb-20">
         {/* Hero Content Section */}
         <div className="container mx-auto px-4 text-center">
-          {/* Animated Text Section - Highest z-index */}
-          <div className="relative z-50">  
+          {/* Animated Text Section - Absolute Highest z-index */}
+          <div className="relative" style={{ zIndex: 9999 }}>
             <div className="h-[180px] md:h-[160px] flex flex-col items-center justify-center overflow-hidden">
               <AnimatedText texts={heroTexts} />
             </div>
           </div>
 
-          {/* Logo Section - Behind text */}
-          <div className="relative z-20 -mt-8">  
+          {/* Logo Section */}
+          <div className="relative z-20 -mt-8">
             <LogoAnimation />
           </div>
           
