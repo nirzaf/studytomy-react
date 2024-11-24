@@ -414,45 +414,6 @@ export default function Hero() {
             </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="relative z-40 max-w-2xl mx-auto mt-8"  
-          >
-            {/* Mobile Scrolling Text */}
-            <div className="block md:hidden h-[30px] overflow-hidden">
-              <motion.p 
-                className="text-lg text-[#003049] leading-relaxed font-semibold
-                         bg-white/80 backdrop-blur-md
-                         rounded-xl px-4 py-2 shadow-xl
-                         border border-white/50
-                         [text-shadow:_1px_1px_0_#fff]
-                         whitespace-nowrap"
-                animate={{ 
-                  y: [30, -30],
-                  transition: {
-                    repeat: Infinity,
-                    duration: 8,
-                    ease: "linear"
-                  }
-                }}
-              >
-                Join thousands of students achieving academic excellence through personalized online tutoring
-              </motion.p>
-            </div>
-
-            {/* Desktop Static Text */}
-            <p className="hidden md:block text-xl text-[#003049] leading-relaxed font-semibold
-                       bg-white/80 backdrop-blur-md
-                       rounded-xl px-8 py-6 shadow-xl
-                       border border-white/50
-                       [text-shadow:_1px_1px_0_#fff]">
-              Join thousands of students achieving academic excellence through 
-              {' '}<span className="text-[#F77F00] font-bold">personalized</span>{' '}
-              online tutoring
-            </p>
-          </motion.div>
           <HeroButton />
         </div>
 
