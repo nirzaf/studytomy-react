@@ -3,6 +3,196 @@ import { motion, useAnimation } from 'framer-motion';
 import HeroButton from './HeroButton';
 import { useEffect, useState } from 'react';
 
+// Animation text content
+const heroTexts = [
+  {
+    title: "Transform Your Learning Journey",
+    subtitle: "With Expert Tutors Worldwide"
+  },
+  {
+    title: "Personalized 1-on-1 Learning",
+    subtitle: "Tailored to Your Academic Goals"
+  },
+  {
+    title: "Expert IGCSE & IB Tutoring",
+    subtitle: "From Experienced Educators"
+  },
+  {
+    title: "Flexible Online Sessions",
+    subtitle: "Learn at Your Own Pace"
+  }
+];
+
+const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % texts.length);
+        setIsAnimating(false);
+      }, 500);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [texts.length]);
+
+  const containerVariants = {
+    hidden: { 
+      opacity: 0,
+      rotateX: -20,
+      scale: 0.95
+    },
+    visible: { 
+      opacity: 1,
+      rotateX: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.43, 0.13, 0.23, 0.96],
+        staggerChildren: 0.08
+      }
+    },
+    exit: {
+      opacity: 0,
+      rotateX: 20,
+      scale: 0.95,
+      transition: { duration: 0.3 }
+    }
+  };
+
+  const wordVariants = {
+    hidden: { 
+      opacity: 0,
+      y: 20,
+      rotateY: -20,
+      scale: 0.9
+    },
+    visible: { 
+      opacity: 1,
+      y: 0,
+      rotateY: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
+
+  const gradientOverlayVariants = {
+    initial: { scaleX: 0, opacity: 0 },
+    animate: { 
+      scaleX: [0, 1, 0],
+      opacity: [0, 0.2, 0],
+      transition: {
+        duration: 1.5,
+        repeat: Infinity,
+        ease: "linear"
+      }
+    }
+  };
+
+  return (
+    <div className="h-[180px] md:h-[160px] flex flex-col items-center justify-center overflow-hidden">
+      <motion.div
+        key={currentIndex}
+        variants={containerVariants}
+        initial="hidden"
+        animate={isAnimating ? "exit" : "visible"}
+        className="text-center perspective-[1000px] transform-gpu"
+      >
+        {/* Main Title */}
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-8 relative">
+          <div className="overflow-hidden">
+            <motion.div className="flex flex-wrap justify-center gap-x-3">
+              {texts[currentIndex].title.split(' ').map((word, i) => (
+                <motion.div
+                  key={i}
+                  className="relative inline-block perspective-[1000px] transform-gpu"
+                  variants={wordVariants}
+                >
+                  <motion.span
+                    className="inline-block relative text-[#003049] drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]
+                             [text-shadow:_2px_2px_0_#fff,_4px_4px_0_rgba(0,48,73,0.1)]
+                             hover:text-[#F77F00] transition-colors duration-300"
+                    whileHover={{ 
+                      scale: 1.05,
+                      y: -5,
+                      transition: {
+                        type: "spring",
+                        stiffness: 300
+                      }
+                    }}
+                  >
+                    {word}
+                  </motion.span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+          
+          {/* Background glow effect */}
+          <motion.div
+            className="absolute -inset-4 rounded-2xl opacity-75 -z-10"
+            style={{
+              background: 'radial-gradient(circle at center, rgba(252,191,73,0.2) 0%, rgba(247,127,0,0.1) 50%, transparent 100%)',
+              filter: 'blur(20px)'
+            }}
+          />
+        </h1>
+
+        {/* Subtitle */}
+        <motion.h2 
+          variants={wordVariants}
+          className="text-2xl md:text-3xl font-bold mb-8 relative"
+        >
+          <span className="relative inline-block 
+                         text-[#003049]
+                         drop-shadow-[0_2px_2px_rgba(0,0,0,0.05)]">
+            {texts[currentIndex].subtitle}
+            
+            {/* Animated underline */}
+            <motion.div
+              className="absolute -bottom-2 left-0 w-full h-1 rounded-full bg-[#F77F00]"
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ 
+                scaleX: 1, 
+                opacity: 1,
+                transition: {
+                  duration: 0.6,
+                  delay: 0.2,
+                  ease: "easeOut"
+                }
+              }}
+            />
+
+            {/* Subtle glow effect */}
+            <motion.div
+              className="absolute -inset-2 rounded-lg opacity-25"
+              style={{
+                background: 'radial-gradient(circle at center, rgba(247,127,0,0.2) 0%, transparent 70%)',
+                filter: 'blur(8px)'
+              }}
+              animate={{
+                opacity: [0.25, 0.4, 0.25],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </span>
+        </motion.h2>
+      </motion.div>
+    </div>
+  );
+};
+
 const Particle = ({ index }: { index: number }) => {
   const radius = Math.random() * 100 + 50;
   const angle = (index * 2 * Math.PI) / 12;
@@ -228,12 +418,24 @@ export default function Hero() {
         {/* Logo Section */}
         <div className="container mx-auto px-4 text-center mb-12">
           <LogoAnimation />
-          <h1 className="text-4xl md:text-5xl font-bold text-[#003049] mb-6">
-            Transform Your Learning Journey
-          </h1>
-          <h2 className="text-2xl md:text-3xl text-gray-700 mb-8">
-            With Expert Tutors Worldwide
-          </h2>
+          <AnimatedText texts={heroTexts} />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="max-w-2xl mx-auto mb-8"
+          >
+            <p className="text-xl text-[#003049] leading-relaxed font-semibold
+                       bg-white/80 backdrop-blur-md
+                       rounded-xl px-8 py-6 shadow-xl
+                       border border-white/50
+                       [text-shadow:_1px_1px_0_#fff]">
+              Join thousands of students achieving academic excellence through 
+              personalized online tutoring in{' '}
+              <span className="text-[#F77F00] font-bold">IGCSE</span>,{' '}
+              <span className="text-[#F77F00] font-bold">IB</span>, and beyond.
+            </p>
+          </motion.div>
           <HeroButton />
         </div>
 
@@ -310,6 +512,16 @@ export default function Hero() {
             </motion.div>
           </div>
         </div>
+      </div>
+
+      {/* Add floating particles for visual enhancement */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(12)].map((_, i) => (
+          <Particle key={i} index={i} />
+        ))}
+        {[...Array(20)].map((_, i) => (
+          <FloatingBubble key={i} index={i} />
+        ))}
       </div>
     </section>
   );
