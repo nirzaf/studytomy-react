@@ -401,16 +401,20 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 pt-16 pb-20">
+      <div className="relative z-30 pt-16 pb-20">
         {/* Logo Section */}
         <div className="container mx-auto px-4 text-center mb-12">
-          <LogoAnimation />
-          <AnimatedText texts={heroTexts} />
+          <div className="relative z-20">
+            <LogoAnimation />
+          </div>
+          <div className="relative z-30">
+            <AnimatedText texts={heroTexts} />
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="max-w-2xl mx-auto mb-8"
+            className="relative z-30 max-w-2xl mx-auto mb-8"
           >
             <p className="text-xl text-[#003049] leading-relaxed font-semibold
                        bg-white/80 backdrop-blur-md
@@ -501,7 +505,7 @@ export default function Hero() {
       </div>
 
       {/* Add floating particles for visual enhancement */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none z-10">
         {[...Array(12)].map((_, i) => (
           <Particle key={i} index={i} />
         ))}
