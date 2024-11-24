@@ -11,19 +11,22 @@ const subjectsOnDemand = [
     name: "Geography",
     image: "https://ik.imagekit.io/studytomy/Subjects_On_Demand/globe-earth.gif?updatedAt=1732474210127",
     color: "from-blue-500 to-cyan-500",
-    alt: "Geographic concepts and global studies visualization"
+    alt: "Geographic concepts and global studies visualization",
+    bookTrailLink: "/book-trial"
   },
   {
     name: "Environmental Management",
     image: "https://ik.imagekit.io/studytomy/Subjects_On_Demand/eco.gif?updatedAt=1732474210051",
     color: "from-green-500 to-emerald-500",
-    alt: "Environmental management and sustainability concepts"
+    alt: "Environmental management and sustainability concepts",
+    bookTrailLink: "/book-trial"
   },
   {
     name: "History",
     image: "https://ik.imagekit.io/studytomy/Subjects_On_Demand/history.gif?updatedAt=1732474210023",
     color: "from-amber-500 to-yellow-500",
-    alt: "Historical concepts and timeline visualization"
+    alt: "Historical concepts and timeline visualization",
+    bookTrailLink: "/book-trial"
   }
 ];
 
@@ -55,24 +58,43 @@ const SubjectsOnDemand = () => {
       }
       .animated-border {
         position: relative;
+        display: block;
+        width: 100%;
+        padding: 3px;
+        isolation: isolate;
       }
       .animated-border::before {
         content: '';
         position: absolute;
-        inset: -3px;
-        background: linear-gradient(45deg, #FF8C00, #FFD700, #FFA500, #FFD700);
+        inset: 0;
+        background: linear-gradient(45deg, 
+          #FFD700, #FFA500, 
+          #FFD700, #FFA500, 
+          #FFD700, #FF8C00
+        );
         background-size: 200% 200%;
         animation: borderAnimation 4s ease infinite;
         border-radius: 16px;
-        z-index: -2;
+        z-index: 1;
+        filter: blur(3px);
       }
       .animated-border::after {
         content: '';
         position: absolute;
-        inset: -2px;
+        inset: 1px;
         background: #963A0B;
         border-radius: 15px;
-        z-index: -1;
+        z-index: 1;
+      }
+      .card-content {
+        position: relative;
+        z-index: 2;
+        background: white;
+        border-radius: 14px;
+        height: 100%;
+      }
+      .swiper-slide {
+        height: auto !important;
       }
     `;
     document.head.appendChild(style);
@@ -112,12 +134,10 @@ const SubjectsOnDemand = () => {
         }}/>
       </div>
 
-      <div className={`
-        relative rounded-xl p-6
-        shadow-lg group-hover:shadow-2xl
+      <div className="card-content p-6
         transition-all duration-500
-        bg-white
-      `}>
+        shadow-lg group-hover:shadow-2xl
+      ">
         <div className="relative">
           <div className="relative z-10">
             <motion.div 
@@ -141,7 +161,8 @@ const SubjectsOnDemand = () => {
             </h3>
 
             <div className="mt-4 text-center">
-              <motion.span 
+              <motion.a 
+                href={subject.bookTrailLink}
                 className="inline-block px-6 py-2.5 rounded-full text-sm font-medium
                          bg-gradient-to-r from-orange-500 to-pink-500
                          text-white shadow-lg shadow-orange-500/30
@@ -151,7 +172,7 @@ const SubjectsOnDemand = () => {
                 whileTap={{ scale: 0.98 }}
               >
                 Available on request
-              </motion.span>
+              </motion.a>
             </div>
           </div>
         </div>
@@ -191,7 +212,7 @@ const SubjectsOnDemand = () => {
             className="subjects-carousel !overflow-hidden pb-8"
           >
             {subjectsOnDemand.map((subject, index) => (
-              <SwiperSlide key={index} className="!h-auto">
+              <SwiperSlide key={index} className="!h-auto flex">
                 <SubjectCard subject={subject} index={index} />
               </SwiperSlide>
             ))}
