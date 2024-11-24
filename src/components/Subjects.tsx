@@ -3,6 +3,7 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+import SubjectsOnDemand from './SubjectsOnDemand';
 
 const subjects = [
   {
@@ -105,53 +106,56 @@ const subjects = [
 
 const Subjects = () => {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4 max-w-[98%]">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Subjects we offer</h2>
-          <p className="text-gray-600">Explore our wide range of subjects taught by expert tutors</p>
-        </div>
-        
-        <div className="relative">
-          <Swiper
-            modules={[Navigation, Autoplay]}
-            navigation
-            loop={true}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true
-            }}
-            spaceBetween={20}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              768: { slidesPerView: 4 },
-              1024: { slidesPerView: 6 },
-              1280: { slidesPerView: 7 }
-            }}
-            className="subjects-carousel !overflow-hidden"
-          >
-            {subjects.map((subject, index) => (
-              <SwiperSlide key={index} className="!h-auto pb-8">
-                <div className={`subject-card ${subject.color} bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 h-full`}>
-                  <div className="p-4">
-                    <div className="subject-icon mb-4 h-24 flex items-center justify-center">
-                      <img 
-                        src={subject.image} 
-                        alt={subject.alt}
-                        className="w-20 h-20 object-contain"
-                      />
+    <>
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-[98%]">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Subjects we offer</h2>
+            <p className="text-gray-600">Explore our wide range of subjects taught by expert tutors</p>
+          </div>
+          
+          <div className="relative">
+            <Swiper
+              modules={[Navigation, Autoplay]}
+              navigation
+              loop={true}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+              }}
+              spaceBetween={20}
+              slidesPerView={1}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                768: { slidesPerView: 4 },
+                1024: { slidesPerView: 6 },
+                1280: { slidesPerView: 7 }
+              }}
+              className="subjects-carousel !overflow-hidden"
+            >
+              {subjects.map((subject, index) => (
+                <SwiperSlide key={index} className="!h-auto pb-8">
+                  <div className={`subject-card ${subject.color} bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 h-full`}>
+                    <div className="p-4">
+                      <div className="subject-icon mb-4 h-24 flex items-center justify-center">
+                        <img 
+                          src={subject.image} 
+                          alt={subject.alt}
+                          className="w-20 h-20 object-contain"
+                        />
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-800 text-center">{subject.name}</h3>
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-800 text-center">{subject.name}</h3>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <SubjectsOnDemand />
+    </>
   );
 };
 
