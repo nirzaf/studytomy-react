@@ -93,16 +93,9 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
         className="text-center perspective-[1000px] transform-gpu"
       >
         {/* Main Title */}
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-8 relative" style={{ zIndex: 9999 }}>
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-8 relative">
           <div className="overflow-hidden">
-            <motion.div 
-              className="flex flex-wrap justify-center gap-x-3"
-              style={{ 
-                textShadow: '0 0 10px rgba(255,255,255,0.8)',
-                position: 'relative',
-                zIndex: 9999
-              }}
-            >
+            <motion.div className="flex flex-wrap justify-center gap-x-3">
               {texts[currentIndex].title.split(' ').map((word, i) => (
                 <motion.div
                   key={i}
@@ -412,7 +405,7 @@ export default function Hero() {
         {/* Hero Content Section */}
         <div className="container mx-auto px-4 text-center">
           {/* Animated Text Section - Absolute Highest z-index */}
-          <div className="relative" style={{ zIndex: 9999 }}>
+          <div className="relative mt-12" style={{ zIndex: 9999 }}>
             <div className="h-[180px] md:h-[160px] flex flex-col items-center justify-center overflow-hidden">
               <AnimatedText texts={heroTexts} />
             </div>
