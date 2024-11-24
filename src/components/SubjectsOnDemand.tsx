@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import { useEffect, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -87,8 +87,7 @@ const SubjectsOnDemand = () => {
         
         {isMobile ? (
           <Swiper
-            modules={[Navigation, Autoplay]}
-            navigation
+            modules={[Autoplay]}
             loop={true}
             autoplay={{
               delay: 3000,
