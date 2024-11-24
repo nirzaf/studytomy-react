@@ -396,7 +396,7 @@ export default function Hero() {
           alt="Studytomy Hero Background"
           className="w-full h-full object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent opacity-50" />
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent opacity-50" /> */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/20" />
       </div>
 
