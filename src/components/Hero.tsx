@@ -83,19 +83,6 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
     }
   };
 
-  const gradientOverlayVariants = {
-    initial: { scaleX: 0, opacity: 0 },
-    animate: { 
-      scaleX: [0, 1, 0],
-      opacity: [0, 0.2, 0],
-      transition: {
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "linear"
-      }
-    }
-  };
-
   return (
     <div className="h-[180px] md:h-[160px] flex flex-col items-center justify-center overflow-hidden">
       <motion.div
@@ -431,9 +418,8 @@ export default function Hero() {
                        border border-white/50
                        [text-shadow:_1px_1px_0_#fff]">
               Join thousands of students achieving academic excellence through 
-              personalized online tutoring in{' '}
-              <span className="text-[#F77F00] font-bold">IGCSE</span>,{' '}
-              <span className="text-[#F77F00] font-bold">IB</span>, and beyond.
+                {' '}<span className="text-[#F77F00] font-bold">personalized</span>{' '}
+              online tutoring
             </p>
           </motion.div>
           <HeroButton />
