@@ -31,6 +31,57 @@ const SubjectsOnDemand = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @property --angle {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+      }
+      @keyframes gradient-rotate {
+        0% { --angle: 0deg; }
+        100% { --angle: 360deg; }
+      }
+      .animate-border-rotate {
+        animation: gradient-rotate 3s linear infinite;
+      }
+      @keyframes borderAnimation {
+        0%, 100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+      .animated-border {
+        position: relative;
+      }
+      .animated-border::before {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        background: linear-gradient(45deg, #FF8C00, #FFD700, #FFA500, #FFD700);
+        background-size: 200% 200%;
+        animation: borderAnimation 4s ease infinite;
+        border-radius: 16px;
+        z-index: -2;
+      }
+      .animated-border::after {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        background: #963A0B;
+        border-radius: 15px;
+        z-index: -1;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -49,20 +100,20 @@ const SubjectsOnDemand = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative"
+      className="group relative animated-border"
     >
-      <div className="absolute -inset-0.5 bg-gradient-to-r rounded-2xl opacity-75 group-hover:opacity-100 blur-sm group-hover:blur transition-all duration-500" style={{
+      <div className="absolute -inset-0.5 bg-gradient-to-r rounded-2xl opacity-75 group-hover:opacity-100 blur transition duration-500" style={{
         background: `linear-gradient(var(--angle, 0deg), ${subject.color.split(' ')[0].replace('from-', '')}66, ${subject.color.split(' ')[1].replace('to-', '')}66)`
       }}/>
       
       <div className="absolute -inset-0.5 rounded-2xl overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r animate-border-shine" style={{
-          background: `linear-gradient(var(--angle, 0deg), transparent 20%, ${subject.color.split(' ')[0].replace('from-', '')}20, ${subject.color.split(' ')[1].replace('to-', '')}20, transparent 80%)`
+        <div className="absolute inset-0 animate-border-rotate" style={{
+          background: `linear-gradient(var(--angle, 0deg), transparent, ${subject.color.split(' ')[0].replace('from-', '')}40, ${subject.color.split(' ')[1].replace('to-', '')}40, transparent)`
         }}/>
       </div>
 
       <div className={`
-        relative rounded-2xl p-6
+        relative rounded-xl p-6
         shadow-lg group-hover:shadow-2xl
         transition-all duration-500
         bg-white
