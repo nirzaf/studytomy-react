@@ -402,19 +402,23 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-30 pt-16 pb-20">
-        {/* Logo Section */}
+        {/* Hero Content Section */}
         <div className="container mx-auto px-4 text-center">
-          <div className="relative z-20 mb-8">
+          {/* Logo Section */}
+          <div className="relative z-20">
             <LogoAnimation />
           </div>
-          <div className="relative z-30 mt-8">
-            <AnimatedText texts={heroTexts} />
+          <div className="relative z-30 -mt-4 md:mt-0">  
+            <div className="h-[180px] md:h-[160px] flex flex-col items-center justify-center overflow-hidden pt-12 md:pt-0">  
+              <AnimatedText texts={heroTexts} />
+            </div>
           </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="relative z-30 max-w-2xl mx-auto mb-8"
+            className="relative z-30 max-w-2xl mx-auto mt-8"
           >
             <p className="text-xl text-[#003049] leading-relaxed font-semibold
                        bg-white/80 backdrop-blur-md
