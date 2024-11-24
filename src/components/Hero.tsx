@@ -368,7 +368,7 @@ const LogoAnimation = () => {
           <motion.img
             src="https://ik.imagekit.io/quadrate/Studytomy/Studytomy_Logobook-02.png?updatedAt=1731862139834"
             alt="Studytomy Logo"
-            className="relative mx-auto w-[200px] mb-8 drop-shadow-2xl"
+            className="relative mx-auto w-[200px] mb-16 drop-shadow-2xl"
             style={{
               filter: "drop-shadow(0 0 10px rgba(255,255,255,0.2))",
             }}
@@ -403,11 +403,11 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-30 pt-16 pb-20">
         {/* Logo Section */}
-        <div className="container mx-auto px-4 text-center mb-12">
-          <div className="relative z-20">
+        <div className="container mx-auto px-4 text-center">
+          <div className="relative z-20 mb-8">
             <LogoAnimation />
           </div>
-          <div className="relative z-30">
+          <div className="relative z-30 mt-8">
             <AnimatedText texts={heroTexts} />
           </div>
           <motion.div
