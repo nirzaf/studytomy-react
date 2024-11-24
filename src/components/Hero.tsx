@@ -405,16 +405,20 @@ export default function Hero() {
         {/* Hero Content Section */}
         <div className="container mx-auto px-4 text-center">
           {/* Logo Section */}
-          <div className="relative z-20 mb-16 md:mb-8">  
+          <div className="relative z-20 mb-4">  
             <LogoAnimation />
           </div>
+          
+          {/* Hero Button - Moved between logo and text */}
+          <div className="relative z-30 mb-8">
+            <HeroButton />
+          </div>
+
           <div className="relative z-40">  
             <div className="h-[180px] md:h-[160px] flex flex-col items-center justify-center overflow-hidden pt-16 md:pt-0">  
               <AnimatedText texts={heroTexts} />
             </div>
           </div>
-
-          <HeroButton />
         </div>
 
         {/* Features Grid */}
