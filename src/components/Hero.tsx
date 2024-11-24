@@ -7,19 +7,23 @@ import { useEffect, useState } from 'react';
 const heroTexts = [
   {
     title: "Transform Your Learning Journey",
-    subtitle: "With Expert Tutors Worldwide"
+    subtitle: "With Expert Tutors Worldwide",
+    emptyLine: "‎"
   },
   {
     title: "Personalized 1-on-1 Learning",
-    subtitle: "Tailored to Your Academic Goals"
+    subtitle: "Tailored to Your Academic Goals",
+    emptyLine: "‎"
   },
   {
     title: "Expert IGCSE & IB Tutoring",
-    subtitle: "From Experienced Educators"
+    subtitle: "From Experienced Educators",
+    emptyLine: "‎"
   },
   {
     title: "Flexible Online Sessions",
-    subtitle: "Learn at Your Own Pace"
+    subtitle: "Learn at Your Own Pace",
+    emptyLine: "‎"
   }
 ];
 
@@ -92,6 +96,14 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
         animate={isAnimating ? "exit" : "visible"}
         className="text-center perspective-[1000px] transform-gpu"
       >
+        {/* Empty Line */}
+        <motion.div
+          className="h-6 md:h-8"
+          variants={wordVariants}
+        >
+          {texts[currentIndex].emptyLine}
+        </motion.div>
+
         {/* Main Title */}
         <h1 className="text-4xl md:text-6xl font-extrabold mb-8 relative">
           <div className="overflow-hidden">
@@ -411,23 +423,6 @@ export default function Hero() {
           {/* Hero Text Section with higher z-index */}
           <div className="relative z-20">
             <AnimatedText texts={heroTexts} />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="max-w-2xl mx-auto mb-8"
-            >
-              <p className="text-xl text-[#003049] font-semibold whitespace-nowrap
-                           bg-white/80 backdrop-blur-md
-                           rounded-xl px-8 py-4 shadow-xl
-                           border border-white/50
-                           [text-shadow:_1px_1px_0_#fff]">
-                Empowering students in{' '}
-                <span className="text-[#F77F00] font-bold">IGCSE</span>{' & '}
-                <span className="text-[#F77F00] font-bold">IB</span>{' '}
-                through expert tutoring
-              </p>
-            </motion.div>
             <HeroButton />
           </div>
         </div>
