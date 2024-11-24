@@ -396,117 +396,126 @@ export default function Hero() {
           alt="Studytomy Hero Background"
           className="w-full h-full object-cover opacity-20"
         />
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent opacity-50" /> */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent opacity-50" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/20" />
       </div>
 
       {/* Content */}
-      <div className="relative pt-16 pb-20">
-        {/* Hero Content Section */}
-        <div className="container mx-auto px-4 text-center">
-          {/* Animated Text Section - Absolute Highest z-index */}
-          <div className="relative mt-12" style={{ zIndex: 9999 }}>
-            <div className="h-[180px] md:h-[160px] flex flex-col items-center justify-center overflow-hidden">
-              <AnimatedText texts={heroTexts} />
-            </div>
-          </div>
-
-          {/* Logo Section */}
-          <div className="relative z-20 -mt-8">
+      <div className="relative z-10 pt-16 pb-20">
+        <div className="container mx-auto px-4 text-center mb-12">
+          {/* Logo Section with negative margin */}
+          <div className="relative -mb-16">
             <LogoAnimation />
           </div>
-          
-          {/* Hero Button */}
-          <div className="relative z-30 -mt-4">
-            <HeroButton />
-          </div>
 
-          {/* Features Grid */}
-          <div className="container mx-auto px-4 mt-16">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <motion.div 
-                className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ 
-                  opacity: 1,
-                  scale: 1,
-                  transition: {
-                    delay: 0.2,
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 10
-                  }
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="flex justify-center">
-                  <GraduationCap className="h-12 w-12 text-[#F77F00]" />
-                </div>
-                <h3 className="mt-4 text-lg font-medium text-[#003049]">Expert Tutors</h3>
-                <p className="mt-2 text-base text-gray-600">Qualified teachers from top institutions</p>
-              </motion.div>
-              
-              <motion.div 
-                className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ 
-                  opacity: 1,
-                  scale: 1,
-                  transition: {
-                    delay: 0.4,
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 10
-                  }
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="flex justify-center">
-                  <Users className="h-12 w-12 text-[#F77F00]" />
-                </div>
-                <h3 className="mt-4 text-lg font-medium text-[#003049]">1-on-1 Sessions</h3>
-                <p className="mt-2 text-base text-gray-600">Personalized attention and feedback</p>
-              </motion.div>
-              
-              <motion.div 
-                className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ 
-                  opacity: 1,
-                  scale: 1,
-                  transition: {
-                    delay: 0.6,
-                    type: "spring",
-                    stiffness: 100,
-                    damping: 10
-                  }
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <div className="flex justify-center">
-                  <Globe2 className="h-12 w-12 text-[#F77F00]" />
-                </div>
-                <h3 className="mt-4 text-lg font-medium text-[#003049]">Global Reach</h3>
-                <p className="mt-2 text-base text-gray-600">Connect with tutors worldwide</p>
-              </motion.div>
-            </div>
+          {/* Hero Text Section with higher z-index */}
+          <div className="relative z-20">
+            <AnimatedText texts={heroTexts} />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="max-w-2xl mx-auto mb-8"
+            >
+              <p className="text-xl text-[#003049] font-semibold whitespace-nowrap
+                           bg-white/80 backdrop-blur-md
+                           rounded-xl px-8 py-4 shadow-xl
+                           border border-white/50
+                           [text-shadow:_1px_1px_0_#fff]">
+                Empowering students in{' '}
+                <span className="text-[#F77F00] font-bold">IGCSE</span>{' & '}
+                <span className="text-[#F77F00] font-bold">IB</span>{' '}
+                through expert tutoring
+              </p>
+            </motion.div>
+            <HeroButton />
           </div>
         </div>
 
-        {/* Add floating particles for visual enhancement */}
-        <div className="absolute inset-0 pointer-events-none z-10">
-          {[...Array(12)].map((_, i) => (
-            <Particle key={i} index={i} />
-          ))}
-          {[...Array(20)].map((_, i) => (
-            <FloatingBubble key={i} index={i} />
-          ))}
+        {/* Features Grid */}
+        <div className="container mx-auto px-4 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div 
+              className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ 
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  delay: 0.2,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 10
+                }
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="flex justify-center">
+                <GraduationCap className="h-12 w-12 text-[#F77F00]" />
+              </div>
+              <h3 className="mt-4 text-lg font-medium text-[#003049]">Expert Tutors</h3>
+              <p className="mt-2 text-base text-gray-600">Qualified teachers from top institutions</p>
+            </motion.div>
+            
+            <motion.div 
+              className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ 
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  delay: 0.4,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 10
+                }
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="flex justify-center">
+                <Users className="h-12 w-12 text-[#F77F00]" />
+              </div>
+              <h3 className="mt-4 text-lg font-medium text-[#003049]">1-on-1 Sessions</h3>
+              <p className="mt-2 text-base text-gray-600">Personalized attention and feedback</p>
+            </motion.div>
+            
+            <motion.div 
+              className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ 
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  delay: 0.6,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 10
+                }
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <div className="flex justify-center">
+                <Globe2 className="h-12 w-12 text-[#F77F00]" />
+              </div>
+              <h3 className="mt-4 text-lg font-medium text-[#003049]">Global Reach</h3>
+              <p className="mt-2 text-base text-gray-600">Connect with tutors worldwide</p>
+            </motion.div>
+          </div>
         </div>
       </div>
 
+      {/* Particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(12)].map((_, i) => (
+          <Particle key={i} index={i} />
+        ))}
+        {[...Array(20)].map((_, i) => (
+          <FloatingBubble key={i} index={i} />
+        ))}
+      </div>
     </section>
   );
 }
