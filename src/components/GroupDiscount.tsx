@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Users, Gift, Percent, Info } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 interface FeatureCardProps {
@@ -56,10 +55,10 @@ export default function GroupDiscount() {
       title: "Group Learning",
       description: "Learn together with friends and save up to 30% on group bookings of 3 or more students."
     },
-    {
-      icon: <Gift className="w-8 h-8" />,
-      title: "Refer & Earn",
-      description: "Get $20 off your next session when you refer a friend. Your friend gets 20% off their first booking!"
+    { 
+      icon: <Users className="w-8 h-8" />,
+      title: "Join Studymunity",
+      description: "Join our community and get exclusive access to premium study materials and personalized tutoring sessions!"
     },
     {
       icon: <Percent className="w-8 h-8" />,
@@ -81,7 +80,7 @@ export default function GroupDiscount() {
             Better Together, Better Savings!
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Join with friends or refer others to unlock exclusive discounts and make your learning journey more affordable.
+            Join with friends to unlock exclusive discounts and make your learning journey more affordable.
           </p>
         </motion.div>
 
@@ -90,27 +89,6 @@ export default function GroupDiscount() {
             <FeatureCard key={index} {...feature} />
           ))}
         </div>
-
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-r from-orange-500 to-orange-600 p-8 rounded-2xl shadow-xl text-center"
-        >
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Ready to Start Saving?
-          </h3>
-          <p className="text-white/90 mb-6 text-lg">
-            Contact us now to learn more about our group discounts and referral benefits!
-          </p>
-          <Link to="/book-trial">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-orange-500 px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-shadow"
-            >
-              Get Started
-            </motion.button>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );
