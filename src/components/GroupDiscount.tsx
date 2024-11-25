@@ -55,9 +55,9 @@ export default function GroupDiscount() {
       title: "Group Learning",
       description: "Learn together with friends and save up to 30% on group bookings of 3 or more students."
     },
-    {
-      icon: <Gift className="w-8 h-8" />,
-      title: "Refer & Earn",
+    { 
+      icon: <Users className="w-8 h-8" />,
+      title: "Join Studymunity",
       description: "Join our community and get exclusive access to premium study materials and personalized tutoring sessions!"
     },
     {
