@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { Users, Gift, Percent, Info } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 interface FeatureCardProps {
@@ -90,27 +89,6 @@ export default function GroupDiscount() {
             <FeatureCard key={index} {...feature} />
           ))}
         </div>
-
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="bg-gradient-to-r from-orange-500 to-orange-600 p-8 rounded-2xl shadow-xl text-center"
-        >
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Ready to Start Saving?
-          </h3>
-          <p className="text-white/90 mb-6 text-lg">
-            Contact us now to learn more about our group discounts and referral benefits!
-          </p>
-          <Link to="/book-trial">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-orange-500 px-8 py-3 rounded-lg font-semibold shadow-md hover:shadow-lg transition-shadow"
-            >
-              Get Started
-            </motion.button>
-          </Link>
-        </motion.div>
       </div>
     </section>
   );
