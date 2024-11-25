@@ -80,7 +80,7 @@ export default function GroupDiscount() {
             Better Together, Better Savings!
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Join with friends or refer others to unlock exclusive discounts and make your learning journey more affordable.
+            Join with friends to unlock exclusive discounts and make your learning journey more affordable.
           </p>
         </motion.div>
 
