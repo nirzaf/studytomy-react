@@ -58,7 +58,7 @@ export default function GroupDiscount() {
     {
       icon: <Gift className="w-8 h-8" />,
       title: "Refer & Earn",
-      description: "Get $20 off your next session when you refer a friend. Your friend gets 20% off their first booking!"
+      description: "Join our community and get exclusive access to premium study materials and personalized tutoring sessions!"
     },
     {
       icon: <Percent className="w-8 h-8" />,
