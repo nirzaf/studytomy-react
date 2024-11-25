@@ -25,6 +25,7 @@ export default function Home() {
         <ImageGallery />
         <DoubtSection />
         <ExamBoardsSection />
+        <GroupDiscount />
         <Testimonials />
         <WhatsAppButton />
       </div>
