@@ -23,7 +23,7 @@ export default function HeroButton() {
         <div className="flex items-center gap-2">
           <Rocket className="h-5 w-5 transition-transform duration-500 ease-out group-hover:-translate-y-1 group-hover:rotate-12" />
           <span className="bg-gradient-to-r from-orange-600 to-orange-400 bg-clip-text text-transparent">
-            Start Free Trial
+            Start a Free Trial
           </span>
           <Sparkles className="h-5 w-5 animate-pulse text-orange-400" />
         </div>
