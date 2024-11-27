@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../../lib/supabaseClient';
+import { trackFormSubmission, trackButtonClick } from '../../lib/trackingEvents';
 
 interface FormData {
   name: string;
@@ -18,6 +19,8 @@ const ContactForm = () => {
   });
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showFailureModal, setShowFailureModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -29,8 +32,13 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    setLoading(true);
+    setMessage('');
+
     try {
+      // Track the submission attempt
+      trackButtonClick('contact_form_submit');
+
       const { error } = await supabase
         .from('contacts')
         .insert([
@@ -42,6 +50,9 @@ const ContactForm = () => {
 
       if (error) throw error;
 
+      // Track successful submission
+      trackFormSubmission('contact', true);
+      
       setFormData({
         name: '',
         email: '',
@@ -52,8 +63,13 @@ const ContactForm = () => {
       setShowSuccessModal(true);
       setTimeout(() => setShowSuccessModal(false), 3000);
     } catch (error) {
+      console.error('Error:', error);
+      // Track failed submission
+      trackFormSubmission('contact', false);
       setShowFailureModal(true);
       setTimeout(() => setShowFailureModal(false), 3000);
+    } finally {
+      setLoading(false);
     }
   };
 
