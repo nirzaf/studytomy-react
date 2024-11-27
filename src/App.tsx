@@ -1,19 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { initGTM } from './lib/gtm';
 import GTMNoScript from './components/GTMNoScript';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import About from './pages/About';
-import ExamBoards from './pages/ExamBoards';
-import HomeSchool from './pages/HomeSchool';
-import Career from './pages/Career';
-import Contact from './pages/Contact';
-import BookTrial from './pages/BookTrial';
-import ConsentForm from './components/ConsentForm';
-import Terms from './pages/Terms';
 import { trackPageView } from './lib/trackingEvents';
+
+// Lazy load page components
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const ExamBoards = lazy(() => import('./pages/ExamBoards'));
+const HomeSchool = lazy(() => import('./pages/HomeSchool'));
+const Career = lazy(() => import('./pages/Career'));
+const Contact = lazy(() => import('./pages/Contact'));
+const BookTrial = lazy(() => import('./pages/BookTrial'));
+const ConsentForm = lazy(() => import('./components/ConsentForm'));
+const Terms = lazy(() => import('./pages/Terms'));
+
+// Loading component
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-[60vh]">
+    <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-orange-500"></div>
+  </div>
+);
 
 // Create a wrapper component to handle page view tracking
 const PageTracker = () => {
@@ -38,17 +47,19 @@ const App = () => {
         <PageTracker /> 
         <Navbar />
         <main className="flex-grow mt-16">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/exam-boards" element={<ExamBoards />} />
-            <Route path="/home-school" element={<HomeSchool />} />
-            <Route path="/career" element={<Career />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/book-trial" element={<BookTrial />} />
-            <Route path="/consent-preferences" element={<ConsentForm />} />
-            <Route path="/terms" element={<Terms />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/exam-boards" element={<ExamBoards />} />
+              <Route path="/home-school" element={<HomeSchool />} />
+              <Route path="/career" element={<Career />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/book-trial" element={<BookTrial />} />
+              <Route path="/consent-preferences" element={<ConsentForm />} />
+              <Route path="/terms" element={<Terms />} />
+            </Routes>
+          </Suspense>
         </main>
         <Footer />
         <GTMNoScript />

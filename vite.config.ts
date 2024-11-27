@@ -7,6 +7,25 @@ export default defineConfig({
   base: '/',
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui': [
+            'framer-motion',
+            'lucide-react',
+            'react-slick',
+            'swiper',
+            'typewriter-effect'
+          ],
+          'analytics': [
+            '@microsoft/clarity',
+            '@supabase/supabase-js'
+          ]
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000,
     emptyOutDir: true
   },
   resolve: {
@@ -14,4 +33,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    port: 3000,
+    open: true
+  }
 })
