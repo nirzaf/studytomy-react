@@ -1,4 +1,4 @@
-import { useEffect, lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense, Navigate } from 'react';
 import { initGTM } from './lib/gtm';
 import GTMNoScript from './components/GTMNoScript';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
@@ -58,6 +58,9 @@ const App = () => {
               <Route path="/book-trial" element={<BookTrial />} />
               <Route path="/consent-preferences" element={<ConsentForm />} />
               <Route path="/terms" element={<Terms />} />
+              
+              {/* Catch all undefined routes and redirect to book-trial */}
+              <Route path="*" element={<Navigate to="/book-trial" replace />} />
             </Routes>
           </Suspense>
         </main>
