@@ -66,7 +66,7 @@ const BookTrialButton = () => {
                    border border-orange-400/20"
       >
         <Sparkles className="w-4 h-4 mr-2" />
-        Book Trial
+        Book a Free Session
       </motion.button>
     </Link>
   );
