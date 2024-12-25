@@ -1,7 +1,7 @@
-import { useEffect, lazy, Suspense, Navigate } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { initGTM } from './lib/gtm';
 import GTMNoScript from './components/GTMNoScript';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { trackPageView } from './lib/trackingEvents';
@@ -16,6 +16,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const BookTrial = lazy(() => import('./pages/BookTrial'));
 const ConsentForm = lazy(() => import('./components/ConsentForm'));
 const Terms = lazy(() => import('./pages/Terms'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Loading component
 const PageLoader = () => (
@@ -59,8 +60,8 @@ const App = () => {
               <Route path="/consent-preferences" element={<ConsentForm />} />
               <Route path="/terms" element={<Terms />} />
               
-              {/* Catch all undefined routes and redirect to book-trial */}
-              <Route path="*" element={<Navigate to="/book-trial" replace />} />
+              {/* Catch all undefined routes and show 404 page */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </main>
