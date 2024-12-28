@@ -26,40 +26,40 @@ const AchievementCard = () => {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{
-              duration: 0.5,
+              duration: 0.6,
               type: "spring",
-              stiffness: 200,
-              damping: 20
+              stiffness: 180,
+              damping: 18
             }}
             whileHover={{
-              scale: 1.02,
+              scale: 1.03,
               transition: { duration: 0.2 }
             }}
-            className="relative w-full max-w-xl overflow-hidden"
+            className="relative w-full max-w-xl overflow-hidden rounded-xl shadow-xl"
         >
           {/* Background with gradient border and image */}
-          <div className="relative bg-gradient-to-br from-yellow-400 via-purple-600 to-pink-500 p-1.5 rounded-2xl shadow-lg">
+          <div className="relative bg-gradient-to-br from-[#003049] to-[#2b2e44] p-0.5 rounded-xl">
             {/* Background image with overlay */}
-            <div className="absolute inset-0 rounded-2xl overflow-hidden">
-              <img 
+            <div className="absolute inset-0 rounded-xl overflow-hidden">
+              <img
                 src="https://ik.imagekit.io/mhvgbp9xk/f8881f47-749d-42f8-862b-27a599e17b99.png?updatedAt=1728447548634"
                 alt="Achievement background"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover opacity-80"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-purple-800/85 to-pink-800/90 backdrop-blur-[2px]" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#003049]/95 via-[#2b2e44]/90 to-[#2b2e44]/95 backdrop-blur-sm" />
             </div>
 
-            <div className="relative rounded-2xl p-8 sm:p-10">
+            <div className="relative rounded-xl p-8 sm:p-10">
               <div className="flex flex-col items-center text-center">
                 {/* Top Achievement section */}
-                <div className="relative mb-8">
+                <div className="relative mb-6">
                   <motion.div
                       className="relative"
                       animate={{
-                        y: [0, -8, 0],
+                        y: [0, -6, 0],
                       }}
                       transition={{
-                        duration: 4,
+                        duration: 3,
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}
@@ -67,37 +67,34 @@ const AchievementCard = () => {
                     {/* Achievement badge */}
                     <div className="relative">
                       <motion.div
-                          className="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-500/30 via-yellow-400/30 to-orange-500/30 opacity-75 blur-xl"
+                          className="absolute inset-0 rounded-md bg-[#F77F00]/40 blur-md"
                           animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: [0.3, 0.5, 0.3],
+                            scale: [1, 1.1, 1],
+                            opacity: [0.4, 0.6, 0.4],
                           }}
                           transition={{
-                            duration: 3,
+                            duration: 2.5,
                             repeat: Infinity,
                             ease: "easeInOut",
                           }}
                       />
-
-                      <div className="relative bg-gradient-to-r from-yellow-500/90 to-orange-500/90 rounded-xl p-[2px] overflow-hidden">
-                        <div className="relative bg-gradient-to-br from-yellow-500/90 to-orange-500/90 rounded-xl px-10 py-3">
-                          <span className="text-lg uppercase font-black tracking-[0.2em] text-white font-serif drop-shadow-lg">
-                            Top Achievement
-                          </span>
-                        </div>
+                      <div className="relative bg-[#F77F00] rounded-md px-8 py-2 shadow-md">
+                        <span className="text-lg uppercase font-bold tracking-wide text-[#003049] font-sans drop-shadow">
+                          Top Achievement
+                        </span>
                       </div>
                     </div>
                   </motion.div>
                 </div>
 
                 {/* Congratulations Text */}
-                <div ref={congratsRef} className="mb-8">
+                <div ref={congratsRef} className="mb-6">
                   <motion.div
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 15 }}
                       animate={isInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.8, delay: 0.2 }}
-                      className="text-4xl font-script text-white drop-shadow-lg"
-                      style={{ fontFamily: 'Pacifico, cursive' }}
+                      transition={{ duration: 0.7, delay: 0.1 }}
+                      className="text-3xl md:text-4xl font-script text-[#FCBF49] drop-shadow-md"
+                      style={{ fontFamily: 'Brush Script MT, cursive' }}
                   >
                     Congratulations!
                   </motion.div>
@@ -105,26 +102,36 @@ const AchievementCard = () => {
 
                 {/* Student Name */}
                 <motion.h3
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="text-5xl font-bold font-serif mb-8 text-white drop-shadow-lg"
+                    transition={{ delay: 0.2 }}
+                    className="text-4xl md:text-5xl font-bold font-serif mb-4 text-[#EAE2B7] drop-shadow-md"
                 >
                   {achievement.studentName}
                 </motion.h3>
 
+                {/* Studytomy Student */}
+                <motion.p
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="text-md font-medium text-[#FCBF49] mb-6 drop-shadow"
+                >
+                  A proud student of <span className="font-bold">Studytomy</span>
+                </motion.p>
+
                 {/* Achievement Details */}
                 <motion.div
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="space-y-4 mb-10"
+                    className="space-y-3 mb-8"
                 >
                   <div className="relative">
-                    <p className="text-2xl font-semibold text-yellow-300 drop-shadow-lg">
+                    <p className="text-xl md:text-2xl font-semibold text-[#FCBF49] drop-shadow-md">
                       {achievement.achievement} in {achievement.subject}
                     </p>
-                    <p className="text-xl font-medium text-yellow-100/90 mt-2 drop-shadow">
+                    <p className="text-lg font-medium text-[#EAE2B7]/90 mt-1 drop-shadow">
                       {achievement.exam}
                     </p>
                   </div>
@@ -132,7 +139,7 @@ const AchievementCard = () => {
 
                 {/* Join Button */}
                 <motion.div
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                     whileHover={{ scale: 1.05 }}
@@ -140,10 +147,10 @@ const AchievementCard = () => {
                 >
                   <Link
                       to="/join"
-                      className="inline-flex items-center px-10 py-4 text-lg font-semibold text-white bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                      className="inline-flex items-center px-8 py-3 text-lg font-semibold text-[#EAE2B7] bg-[#D62828] rounded-md hover:bg-[#953137] transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     Join Studytomy Today
-                    <svg className="w-6 h-6 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
                   </Link>
@@ -155,20 +162,37 @@ const AchievementCard = () => {
           {/* Decorative light effects */}
           <motion.div
               animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.3, 0.1]
+                scale: [1, 1.1, 1],
+                opacity: [0.2, 0.4, 0.2],
+                rotate: [0, 10, 0]
               }}
               transition={{
-                duration: 4,
+                duration: 3,
                 repeat: Infinity,
-                repeatType: "reverse"
+                repeatType: "reverse",
+                ease: "easeInOut"
               }}
-              className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-300 rounded-full blur-3xl"
+              className="absolute top-10 left-10 w-20 h-20 bg-[#FCBF49] rounded-full blur-xl opacity-30"
           />
           <motion.div
               animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.3, 0.1]
+                scale: [1, 1.15, 1],
+                opacity: [0.2, 0.4, 0.2],
+                rotate: [0, -10, 0]
+              }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+                delay: 0.5
+              }}
+              className="absolute bottom-10 right-10 w-20 h-20 bg-[#F77F00] rounded-full blur-xl opacity-30"
+          />
+           <motion.div
+              animate={{
+                scale: [1, 1.05, 1],
+                opacity: [0.1, 0.2, 0.1],
               }}
               transition={{
                 duration: 4,
@@ -176,7 +200,7 @@ const AchievementCard = () => {
                 repeatType: "reverse",
                 delay: 1
               }}
-              className="absolute -bottom-10 -left-10 w-32 h-32 bg-orange-400 rounded-full blur-3xl"
+              className="absolute top-2/4 -translate-y-1/2 right-0 w-16 h-16 bg-[#FC8862] rounded-full blur-2xl opacity-20"
           />
         </motion.div>
       </div>
