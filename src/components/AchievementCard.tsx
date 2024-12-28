@@ -131,7 +131,7 @@ const AchievementCard = () => {
                     <p className="text-xl md:text-2xl font-semibold text-white drop-shadow-md">
                       {achievement.achievement} in {achievement.subject}
                     </p>
-                    <p className="text-lg font-medium text-[#EAE2B7]/90 mt-1 drop-shadow">
+                    <p className="text-lg font-medium text-[#FCBF49]/90 mt-1 drop-shadow">
                       {achievement.exam}
                     </p>
                   </div>
