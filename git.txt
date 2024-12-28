@@ -1,1 +1,1 @@
- always generate the consized commit message after the code change
+Ensure a concise commit message is generated after the code change.
