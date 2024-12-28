@@ -115,7 +115,7 @@ const AchievementCard = () => {
                     initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="text-md font-medium text-[#FCBF49] mb-6 drop-shadow"
+                    className="text-md font-medium text-white mb-6 drop-shadow"
                 >
                   A proud student of <span className="font-bold">Studytomy</span>
                 </motion.p>
@@ -128,7 +128,7 @@ const AchievementCard = () => {
                     className="space-y-3 mb-8"
                 >
                   <div className="relative">
-                    <p className="text-xl md:text-2xl font-semibold text-[#FCBF49] drop-shadow-md">
+                    <p className="text-xl md:text-2xl font-semibold text-white drop-shadow-md">
                       {achievement.achievement} in {achievement.subject}
                     </p>
                     <p className="text-lg font-medium text-[#EAE2B7]/90 mt-1 drop-shadow">
@@ -146,7 +146,7 @@ const AchievementCard = () => {
                     whileTap={{ scale: 0.95 }}
                 >
                   <Link
-                      to="/join"
+                      to="/book-trial"
                       className="inline-flex items-center px-8 py-3 text-lg font-semibold text-[#EAE2B7] bg-[#D62828] rounded-md hover:bg-[#953137] transition-all duration-300 shadow-md hover:shadow-lg"
                   >
                     Join Studytomy Today

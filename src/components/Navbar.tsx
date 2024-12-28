@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  Menu, X, BookOpen, Sparkles, GraduationCap, Phone, Mail, Globe, MessageCircle,
-  Building2, Users, MessageSquare, ExternalLink, School
+  Menu, X, Sparkles, Phone, Mail, Globe, MessageCircle,
+  Users, MessageSquare, School
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -75,8 +75,17 @@ const BookTrialButton = () => {
 const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
-  const isActive = location.pathname === item.path || 
-                  (item.dropdownItems && item.dropdownItems.some(dropdownItem => location.pathname + location.hash === dropdownItem.path));
+
+  interface DropdownItemProps {
+    title: string;
+    path: string;
+    icon: JSX.Element;
+    external?: boolean;
+    onClick?: string;
+  }
+
+  const isActive: boolean = location.pathname === item.path || 
+                    (item.dropdownItems && item.dropdownItems.some((dropdownItem: DropdownItemProps) => location.pathname + location.hash === dropdownItem.path));
 
   const handleMobileClick = () => {
     setIsHovered(false);
@@ -138,25 +147,25 @@ const NavItem = ({ item, isMobile = false }: { item: any; isMobile?: boolean }) 
           
           {/* Dropdown content */}
           <div className="relative z-10 py-1">
-            {item.dropdownItems.map((dropdownItem, index) => (
+            {item.dropdownItems.map((dropdownItem: DropdownItemProps, index: number) => (
               <Link
-                key={index}
-                to={dropdownItem.path}
-                className="group relative flex items-center px-4 py-3 text-sm text-gray-700
-                          transition-all duration-300"
+              key={index}
+              to={dropdownItem.path}
+              className="group relative flex items-center px-4 py-3 text-sm text-gray-700
+                    transition-all duration-300"
               >
-                <span className="relative z-10 flex items-center">
-                  {dropdownItem.icon}
-                  <span className="ml-3">{dropdownItem.title}</span>
-                </span>
-                
-                {/* Dropdown item hover effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
-                {/* Dropdown item shine */}
-                <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute w-[200%] h-[200%] -top-[50%] -left-[50%] bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-45 animate-shine-slow"></div>
-                </div>
+              <span className="relative z-10 flex items-center">
+                {dropdownItem.icon}
+                <span className="ml-3">{dropdownItem.title}</span>
+              </span>
+              
+              {/* Dropdown item hover effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              {/* Dropdown item shine */}
+              <div className="absolute inset-0 overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute w-[200%] h-[200%] -top-[50%] -left-[50%] bg-gradient-to-r from-transparent via-white/20 to-transparent rotate-45 animate-shine-slow"></div>
+              </div>
               </Link>
             ))}
           </div>
