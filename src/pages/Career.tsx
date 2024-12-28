@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import WhatsAppButton from '../components/WhatsAppButton';
 
 const Career = () => {
   useEffect(() => {
@@ -19,7 +18,6 @@ const Career = () => {
           </div>
         </div>
       </section>
-      <WhatsAppButton />
     </div>
   );
 };

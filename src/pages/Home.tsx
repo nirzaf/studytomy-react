@@ -28,7 +28,6 @@ export default function Home() {
         <ExamBoardsSection />
         <GroupDiscount />
         <Testimonials />
-        <WhatsAppButton />
       </div>
     </>
   );

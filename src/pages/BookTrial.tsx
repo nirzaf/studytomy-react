@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import WhatsAppButton from '../components/WhatsAppButton';
 import HubSpotForm from './BookTrial/components/HubSpotForm';
 import PageTitle from './BookTrial/components/PageTitle';
 
@@ -14,7 +13,6 @@ const BookTrial = () => {
         <PageTitle />
         <HubSpotForm />
       </div>
-      <WhatsAppButton />
     </section>
   );
 };

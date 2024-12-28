@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import WhatsAppButton from './WhatsAppButton';
 
 const Footer = () => {
   return (
@@ -28,6 +29,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
+      <WhatsAppButton />
     </footer>
   );
 };

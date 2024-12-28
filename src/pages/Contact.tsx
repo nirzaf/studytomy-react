@@ -3,7 +3,6 @@ import ContactHeader from '../components/contact/ContactHeader';
 import ContactInfo from '../components/contact/ContactInfo';
 import ContactForm from '../components/contact/ContactForm';
 import GoogleMap from '../components/contact/GoogleMap';
-import WhatsAppButton from '../components/WhatsAppButton';
 
 const Contact = () => {
   return (
@@ -17,7 +16,6 @@ const Contact = () => {
       <ContactInfo />
       <ContactForm />
       <GoogleMap />
-      <WhatsAppButton />
     </motion.div>
   );
 };

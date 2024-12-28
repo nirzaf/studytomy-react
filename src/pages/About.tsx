@@ -1,4 +1,3 @@
-import WhatsAppButton from '../components/WhatsAppButton';
 import HeroSection from './About/components/HeroSection';
 import MissionVision from './About/components/MissionVision';
 import KeyFeatures from './About/components/KeyFeatures';
@@ -13,7 +12,6 @@ export default function About() {
         <KeyFeatures />
         <Statistics />
       </div>
-      <WhatsAppButton />
     </div>
   );
 }
