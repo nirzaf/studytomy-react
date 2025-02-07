@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ParentsCorner = () => {
@@ -49,6 +49,18 @@ const ParentsCorner = () => {
   return (
     <section className="py-16 bg-white" id="parents-corner">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-12 inline-flex items-center px-4 py-2 bg-gray-50 rounded-lg shadow-sm"
+        >
+          <BookOpen className="w-5 h-5 text-blue-600 mr-2" />
+          <span className="text-gray-900">Parent's Corner</span>
+        </motion.div>
+
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
