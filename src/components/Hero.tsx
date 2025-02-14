@@ -1,7 +1,10 @@
 import { GraduationCap, Users, Globe2 } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import HeroButton from './HeroButton';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Grid } from '@react-three/drei';
+import * as THREE from 'three';
 
 // Animation text content
 const heroTexts = [
@@ -44,12 +47,12 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
   }, [texts.length]);
 
   const containerVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       rotateX: -20,
       scale: 0.95
     },
-    visible: { 
+    visible: {
       opacity: 1,
       rotateX: 0,
       scale: 1,
@@ -68,13 +71,13 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
   };
 
   const wordVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       y: 20,
       rotateY: -20,
       scale: 0.9
     },
-    visible: { 
+    visible: {
       opacity: 1,
       y: 0,
       rotateY: 0,
@@ -118,7 +121,7 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
                     className="inline-block relative text-[#003049] drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]
                              [text-shadow:_2px_2px_0_#fff,_4px_4px_0_rgba(0,48,73,0.1)]
                              hover:text-[#F77F00] transition-colors duration-300"
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.05,
                       y: -5,
                       transition: {
@@ -133,7 +136,7 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
               ))}
             </motion.div>
           </div>
-          
+
           {/* Background glow effect */}
           <motion.div
             className="absolute -inset-4 rounded-2xl opacity-75 -z-10"
@@ -145,21 +148,21 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
         </h1>
 
         {/* Subtitle */}
-        <motion.h2 
+        <motion.h2
           variants={wordVariants}
           className="text-2xl md:text-3xl font-bold mb-8 relative"
         >
-          <span className="relative inline-block 
+          <span className="relative inline-block
                          text-[#003049]
                          drop-shadow-[0_2px_2px_rgba(0,0,0,0.05)]">
             {texts[currentIndex].subtitle}
-            
+
             {/* Animated underline */}
             <motion.div
               className="absolute -bottom-2 left-0 w-full h-1 rounded-full bg-[#F77F00]"
               initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ 
-                scaleX: 1, 
+              animate={{
+                scaleX: 1,
                 opacity: 1,
                 transition: {
                   duration: 0.6,
@@ -196,7 +199,7 @@ const Particle = ({ index }: { index: number }) => {
   const radius = Math.random() * 100 + 50;
   const angle = (index * 2 * Math.PI) / 12;
   const size = Math.random() * 8 + 4; // Random size between 4-12px
-  
+
   return (
     <motion.div
       className="absolute rounded-full"
@@ -240,7 +243,7 @@ const Particle = ({ index }: { index: number }) => {
       }}
     >
       {/* Bubble shine effect */}
-      <div 
+      <div
         className="absolute w-[30%] h-[30%] rounded-full"
         style={{
           background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%)',
@@ -288,7 +291,7 @@ const FloatingBubble = ({ index }: { index: number }) => {
         ease: "easeInOut",
       }}
     >
-      <div 
+      <div
         className="absolute w-[30%] h-[30%] rounded-full"
         style={{
           background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%)',
@@ -320,9 +323,9 @@ const LogoAnimation = () => {
       rotateX: -mouseY * 20,
       scale: 1,
       opacity: 1,
-      transition: { 
-        type: "spring", 
-        stiffness: 400, 
+      transition: {
+        type: "spring",
+        stiffness: 400,
         damping: 30,
         opacity: { duration: 1, ease: "easeOut" },
         scale: { duration: 1, ease: "easeOut" }
@@ -331,7 +334,7 @@ const LogoAnimation = () => {
   }, [mouseX, mouseY, controls]);
 
   return (
-    <div 
+    <div
       className="relative inline-block perspective-1000"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => {
@@ -398,18 +401,92 @@ const LogoAnimation = () => {
   );
 };
 
+
+function AnimatedBox({ initialPosition }: { initialPosition: [number, number, number] }) {
+  const meshRef = useRef<THREE.Mesh>(null);
+  const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(...initialPosition));
+  const currentPosition = useRef(new THREE.Vector3(...initialPosition));
+
+  const getAdjacentIntersection = (current: THREE.Vector3) => {
+    const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+    const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+    return new THREE.Vector3(
+      current.x + randomDirection[0] * 3,
+      0.5,
+      current.z + randomDirection[1] * 3
+    );
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newPosition = getAdjacentIntersection(currentPosition.current);
+      newPosition.x = Math.max(-15, Math.min(15, newPosition.x));
+      newPosition.z = Math.max(-15, Math.min(15, newPosition.z));
+      setTargetPosition(newPosition);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useFrame((state, delta) => {
+    if (meshRef.current) {
+      currentPosition.current.lerp(targetPosition, 0.1);
+      meshRef.current.position.copy(currentPosition.current);
+    }
+  });
+
+  return (
+    <mesh ref={meshRef} position={initialPosition}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color="#F77F00" opacity={0.6} transparent />
+      <lineSegments>
+        <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(1, 1, 1)]} />
+        <lineBasicMaterial attach="material" color="#FCBF49" linewidth={2} />
+      </lineSegments>
+    </mesh>
+  );
+}
+
+function Scene() {
+  const initialPositions: [number, number, number][] = [
+    [-9, 0.5, -9], [-3, 0.5, -3], [0, 0.5, 0],
+    [3, 0.5, 3], [9, 0.5, 9], [-6, 0.5, 6],
+    [6, 0.5, -6], [-12, 0.5, 0], [12, 0.5, 0],
+    [0, 0.5, 12]
+  ];
+
+  return (
+    <>
+      <OrbitControls enableZoom={false} enablePan={false} />
+      <ambientLight intensity={0.5} />
+      <pointLight position={[10, 10, 10]} />
+      <Grid
+        renderOrder={-1}
+        position={[0, 0, 0]}
+        infiniteGrid
+        cellSize={1}
+        cellThickness={0.5}
+        sectionSize={3}
+        sectionThickness={1}
+        sectionColor={[0.97, 0.5, 0]}
+        fadeDistance={50}
+      />
+      {initialPositions.map((position, index) => (
+        <AnimatedBox key={index} initialPosition={position} />
+      ))}
+    </>
+  );
+}
+
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen">
-      {/* Hero Background Image */}
-      <div className="absolute inset-0 -z-20">
-        <img 
-          src="https://ik.imagekit.io/quadrate/Studytomy/studytomy-hero-image-compressed.jpg?updatedAt=1732129621752"
-          alt="Studytomy Hero Background"
-          className="w-full h-full object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent opacity-50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/20" />
+      {/* Animated Background */}
+      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#E3F2FD] to-[#BBDEFB]">
+        <Canvas shadows camera={{ position: [30, 30, 30], fov: 50 }}>
+          <Scene />
+        </Canvas>
       </div>
 
       {/* Content */}
@@ -430,10 +507,10 @@ export default function Hero() {
         {/* Features Grid */}
         <div className="container mx-auto px-4 mt-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
+            <motion.div
               className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ 
+              animate={{
                 opacity: 1,
                 scale: 1,
                 transition: {
@@ -452,11 +529,11 @@ export default function Hero() {
               <h3 className="mt-4 text-lg font-medium text-[#003049]">Expert Tutors</h3>
               <p className="mt-2 text-base text-gray-600">Qualified teachers from top institutions</p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ 
+              animate={{
                 opacity: 1,
                 scale: 1,
                 transition: {
@@ -475,11 +552,11 @@ export default function Hero() {
               <h3 className="mt-4 text-lg font-medium text-[#003049]">1-on-1 Sessions</h3>
               <p className="mt-2 text-base text-gray-600">Personalized attention and feedback</p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ 
+              animate={{
                 opacity: 1,
                 scale: 1,
                 transition: {

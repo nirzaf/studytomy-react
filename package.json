@@ -15,8 +15,11 @@
   "dependencies": {
     "@microsoft/clarity": "^1.0.0",
     "@radix-ui/react-tooltip": "^1.1.4",
+    "@react-three/drei": "^9.121.5",
+    "@react-three/fiber": "^8.17.14",
     "@supabase/supabase-js": "^2.46.1",
     "@types/react-slick": "^0.23.13",
+    "@types/three": "^0.173.0",
     "framer-motion": "^11.11.17",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
@@ -26,6 +29,7 @@
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.14",
+    "three": "^0.173.0",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
