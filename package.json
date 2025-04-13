@@ -30,6 +30,7 @@
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.14",
     "three": "^0.173.0",
+    "three-mesh-bvh": "^0.8.0",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
