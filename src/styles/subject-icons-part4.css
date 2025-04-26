@@ -1,0 +1,313 @@
+/* --- Geography - Premium 3D Globe --- */
+.icon-wrapper .icon-geography {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.icon-wrapper .icon-geography .globe-container {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+/* --- 3D Globe Sphere --- */
+.icon-wrapper .icon-geography .globe-sphere {
+  width: 65px;
+  height: 65px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #b6faff 0%,
+    #4defff 30%,
+    #0284c7 60%,
+    #0c4a6e 90%
+  );
+  border-radius: 50%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateGlobe3D 12s infinite linear;
+  box-shadow: 
+    inset -15px -12px 30px rgba(0, 0, 0, 0.4),
+    inset 10px 10px 25px rgba(255, 255, 255, 0.2),
+    0 0 40px rgba(76, 222, 255, 0.4),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: visible;
+}
+
+/* --- Continent Shapes with 3D Relief --- */
+.icon-wrapper .icon-geography .continent {
+  position: absolute;
+  border-radius: 50% 50% 45% 45% / 60% 65% 40% 45%;
+  transform-style: preserve-3d;
+  box-shadow: 
+    1px 1px 8px rgba(0, 0, 0, 0.3),
+    inset 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: continentPulse 8s infinite alternate ease-in-out;
+}
+
+.icon-wrapper .icon-geography .c1 {
+  top: 15%;
+  left: 10%;
+  width: 38%;
+  height: 40%;
+  background: linear-gradient(145deg, #34D399, #10B981 60%, #059669);
+  transform: rotate(-20deg) translateZ(2px);
+  animation-delay: -0.5s;
+}
+
+.icon-wrapper .icon-geography .c2 {
+  top: 25%;
+  right: 15%;
+  width: 30%;
+  height: 35%;
+  background: linear-gradient(135deg, #6EE7B7, #34D399 60%, #10B981);
+  transform: rotate(15deg) translateZ(3px);
+  animation-delay: -1.5s;
+}
+
+.icon-wrapper .icon-geography .c3 {
+  bottom: 15%;
+  left: 30%;
+  width: 35%;
+  height: 25%;
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: rotate(5deg) translateZ(2.5px);
+  animation-delay: -2.5s;
+}
+
+/* --- 3D Grid System --- */
+.icon-wrapper .icon-geography .grid-line {
+  position: absolute;
+  background: linear-gradient(90deg, 
+    rgba(76, 222, 255, 0.3) 0%, 
+    rgba(255, 255, 255, 0.5) 50%, 
+    rgba(76, 222, 255, 0.3) 100%);
+  z-index: 2;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(0.5px);
+  animation: gridPulse 5s infinite alternate ease-in-out;
+  transform-style: preserve-3d;
+}
+
+/* Latitude Lines */
+.icon-wrapper .icon-geography .grid-line-lat1 {
+  top: 20%;
+  width: 100%;
+  height: 1.5px;
+  transform: rotateX(75deg) scaleY(0.8) translateZ(5px);
+}
+
+.icon-wrapper .icon-geography .grid-line-lat2 {
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  transform: rotateX(0deg) scaleY(1) translateZ(10px);
+}
+
+.icon-wrapper .icon-geography .grid-line-lat3 {
+  top: 80%;
+  width: 100%;
+  height: 1.5px;
+  transform: rotateX(-75deg) scaleY(0.8) translateZ(5px);
+}
+
+/* Longitude Lines */
+.icon-wrapper .icon-geography .grid-line-lon1 {
+  left: 25%;
+  height: 100%;
+  width: 1.5px;
+  transform: rotateY(70deg) scaleX(0.6) translateZ(8px);
+}
+
+.icon-wrapper .icon-geography .grid-line-lon2 {
+  left: 50%;
+  height: 100%;
+  width: 2px;
+  transform: rotateY(0deg) scaleX(1) translateZ(10px);
+}
+
+.icon-wrapper .icon-geography .grid-line-lon3 {
+  left: 75%;
+  height: 100%;
+  width: 1.5px;
+  transform: rotateY(-70deg) scaleX(0.6) translateZ(8px);
+}
+
+/* --- Orbiting Satellites --- */
+.icon-wrapper .icon-geography .orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px dashed rgba(76, 222, 255, 0.5);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+  animation: orbitSpin 15s infinite linear;
+}
+
+.icon-wrapper .icon-geography .orbit1 {
+  width: 90px;
+  height: 90px;
+  transform: translate(-50%, -50%) rotateX(65deg);
+  animation-duration: 20s;
+}
+
+.icon-wrapper .icon-geography .orbit2 {
+  width: 75px;
+  height: 75px;
+  transform: translate(-50%, -50%) rotateX(25deg) rotateY(30deg);
+  animation-duration: 15s;
+  animation-direction: reverse;
+}
+
+.icon-wrapper .icon-geography .satellite {
+  position: absolute;
+  width: 6px;
+  height: 3px;
+  background: linear-gradient(90deg, #d1d5db, #9ca3af);
+  border-radius: 2px;
+  top: 50%;
+  left: 0;
+  margin-top: -1.5px;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  animation: 
+    satelliteOrbit 15s infinite linear,
+    satellitePulse 3s infinite ease-in-out;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.icon-wrapper .icon-geography .orbit1 .satellite {
+  animation-duration: 20s;
+  transform: rotate(45deg);
+}
+
+.icon-wrapper .icon-geography .orbit2 .satellite {
+  animation-duration: 15s;
+  animation-direction: reverse;
+  transform: rotate(-30deg);
+}
+
+/* --- Atmospheric Glow --- */
+.icon-wrapper .icon-geography .atmosphere {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(76, 222, 255, 0.1) 0%,
+    rgba(76, 222, 255, 0.05) 50%,
+    transparent 70%
+  );
+  animation: atmospherePulse 8s infinite alternate ease-in-out;
+}
+
+/* --- Cloud Effects --- */
+.icon-wrapper .icon-geography .cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.7;
+  animation: cloudMove 30s infinite linear;
+  transform-style: preserve-3d;
+}
+
+.icon-wrapper .icon-geography .cloud1 {
+  width: 15px;
+  height: 8px;
+  top: 20%;
+  left: 30%;
+  animation-duration: 25s;
+}
+
+.icon-wrapper .icon-geography .cloud2 {
+  width: 20px;
+  height: 10px;
+  top: 40%;
+  left: 60%;
+  animation-duration: 30s;
+}
+
+.icon-wrapper .icon-geography .cloud3 {
+  width: 12px;
+  height: 6px;
+  top: 60%;
+  left: 20%;
+  animation-duration: 35s;
+}
+
+/* --- Stand with Metallic Finish --- */
+.icon-wrapper .icon-geography .globe-stand {
+  width: 28px;
+  height: 20px;
+  background: linear-gradient(
+    135deg,
+    #e5e7eb,
+    #d1d5db 30%,
+    #9ca3af 70%,
+    #6b7280
+  );
+  border-radius: 5px 5px 3px 3px;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(-10px);
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.3),
+    inset 0 3px 3px rgba(255, 255, 255, 0.4);
+  z-index: -1;
+}
+
+/* --- Geography Animations --- */
+@keyframes rotateGlobe3D {
+  0% { transform: rotateX(15deg) rotateY(0deg) rotateZ(-3deg); }
+  25% { transform: rotateX(19deg) rotateY(90deg) rotateZ(1deg); }
+  50% { transform: rotateX(14deg) rotateY(180deg) rotateZ(3deg); }
+  75% { transform: rotateX(17deg) rotateY(270deg) rotateZ(-1deg); }
+  100% { transform: rotateX(15deg) rotateY(360deg) rotateZ(-3deg); }
+}
+
+@keyframes continentPulse {
+  0% { transform: translateZ(1px) scale(1); filter: brightness(0.95) blur(0.5px); }
+  100% { transform: translateZ(3px) scale(1.05); filter: brightness(1.1) blur(0.5px); }
+}
+
+@keyframes gridPulse {
+  0% { opacity: 0.2; box-shadow: 0 0 2px rgba(255, 255, 255, 0.2); }
+  100% { opacity: 0.4; box-shadow: 0 0 8px rgba(255, 255, 255, 0.4); }
+}
+
+@keyframes orbitSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes satelliteOrbit {
+  from { transform: rotate(0deg) translateX(45px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(45px) rotate(360deg); }
+}
+
+@keyframes satellitePulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes atmospherePulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes cloudMove {
+  0% { transform: translateX(0) translateY(0) translateZ(5px); }
+  25% { transform: translateX(-10px) translateY(5px) translateZ(5px); }
+  50% { transform: translateX(0) translateY(10px) translateZ(5px); }
+  75% { transform: translateX(10px) translateY(5px) translateZ(5px); }
+  100% { transform: translateX(0) translateY(0) translateZ(5px); }
+}

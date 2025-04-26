@@ -1,0 +1,208 @@
+/* --- Sociology - Interactive Figures --- */
+.icon-sociology .figure-group {
+  width: 65px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+.icon-sociology .figure {
+  width: 13px;
+  height: 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: interactFigureDynamic var(--slow-duration) infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+.icon-sociology .figure-head {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: inherit;
+  margin-bottom: -2px;
+  z-index: 1;
+  box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.icon-sociology .figure-body {
+  width: 100%;
+  height: 22px;
+  border-radius: 5px 5px 2px 2px;
+  background-color: inherit;
+  box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.1);
+}
+
+.icon-sociology .figure1 {
+  animation-delay: 0s;
+}
+
+.icon-sociology .figure1 .figure-head,
+.icon-sociology .figure1 .figure-body {
+  background: linear-gradient(var(--math-sci-blue), #3B82F6);
+}
+
+.icon-sociology .figure2 {
+  animation-delay: -1s;
+  height: 38px;
+}
+
+.icon-sociology .figure2 .figure-head,
+.icon-sociology .figure2 .figure-body {
+  background: linear-gradient(var(--bio-chem-green), #10B981);
+}
+
+.icon-sociology .figure3 {
+  animation-delay: -2s;
+}
+
+.icon-sociology .figure3 .figure-head,
+.icon-sociology .figure3 .figure-body {
+  background: linear-gradient(var(--business-econ-orange), #FBBF24);
+}
+
+.icon-sociology .figure4 {
+  animation-delay: -3s;
+  height: 30px;
+}
+
+.icon-sociology .figure4 .figure-head,
+.icon-sociology .figure4 .figure-body {
+  background: linear-gradient(var(--humanities-purple), #A78BFA);
+}
+
+@keyframes interactFigureDynamic {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(5deg);
+  }
+}
+
+/* --- Statistics - Bell Curve with Data Points --- */
+.icon-stats .stats-container {
+  width: 65px;
+  height: 55px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-stats .axis-x {
+  position: absolute;
+  width: 90%;
+  height: 2px;
+  background-color: var(--grey-dark);
+  bottom: 10px;
+  left: 5%;
+}
+
+.icon-stats .axis-y {
+  position: absolute;
+  width: 2px;
+  height: 80%;
+  background-color: var(--grey-dark);
+  bottom: 10px;
+  left: 10%;
+}
+
+.icon-stats .bell-curve {
+  position: absolute;
+  width: 80%;
+  height: 70%;
+  bottom: 11px;
+  left: 10%;
+}
+
+.icon-stats .bell-curve svg {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-stats .bell-curve path {
+  fill: none;
+  stroke: var(--humanities-purple);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: drawBellCurve var(--medium-duration) infinite ease-in-out;
+}
+
+@keyframes drawBellCurve {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0.2;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  90%, 100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.icon-stats .data-point {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-pink);
+  border-radius: 50%;
+  bottom: 12px;
+  left: calc(10% + (var(--x-pos, 0.5) * 80%));
+  transform: translateX(-3px);
+  box-shadow: 0 0 5px var(--accent-pink);
+  opacity: 0;
+  animation: plotDataPoint var(--medium-duration) infinite ease-out;
+}
+
+@keyframes plotDataPoint {
+  0% {
+    bottom: 12px;
+    opacity: 0;
+    transform: translateX(-3px) scale(0.5);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-3px) scale(1);
+  }
+  30% {
+    bottom: calc(12px + (0.7 - (((var(--x-pos, 0.5) - 0.5) * (var(--x-pos, 0.5) - 0.5)) * 8)) * 35px);
+    opacity: 1;
+    transform: translateX(-3px) scale(1);
+  }
+  40% {
+    opacity: 0.7;
+    transform: translateX(-3px) scale(0.8);
+  }
+  50% {
+    opacity: 0;
+    transform: translateX(-3px) scale(0.5);
+  }
+  100% {
+    bottom: 12px;
+    opacity: 0;
+  }
+}
+
+/* Import all parts in main file */
+@import 'subject-icons-part2.css';
+@import 'subject-icons-part3.css';
+@import 'subject-icons-part4.css';
+@import 'subject-icons-part5.css';
+@import 'subject-icons-part6.css';
+@import 'subject-icons-part7.css';

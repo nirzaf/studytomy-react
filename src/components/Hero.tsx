@@ -402,10 +402,32 @@ const LogoAnimation = () => {
 };
 
 
-function AnimatedBox({ initialPosition }: { initialPosition: [number, number, number] }) {
+function AnimatedBox({ initialPosition, index }: { initialPosition: [number, number, number]; index: number }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(...initialPosition));
   const currentPosition = useRef(new THREE.Vector3(...initialPosition));
+
+  // Primary colors from the color palette
+  const primaryColors = [
+    "#003049", // Prussian Blue
+    "#D62828", // Cinnabar
+    "#F77F00", // Orange Peel
+    "#FCBF49", // Maize
+    "#EAE2B7"  // Bone
+  ];
+
+  // Edge colors (using a complementary color from the palette)
+  const edgeColors = [
+    "#FCBF49", // Maize
+    "#EAE2B7", // Bone
+    "#003049", // Prussian Blue
+    "#D62828", // Cinnabar
+    "#F77F00"  // Orange Peel
+  ];
+
+  // Select color based on index
+  const cubeColor = primaryColors[index % primaryColors.length];
+  const edgeColor = edgeColors[index % edgeColors.length];
 
   const getAdjacentIntersection = (current: THREE.Vector3) => {
     const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
@@ -438,10 +460,10 @@ function AnimatedBox({ initialPosition }: { initialPosition: [number, number, nu
   return (
     <mesh ref={meshRef} position={initialPosition}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="#F77F00" opacity={0.6} transparent />
+      <meshStandardMaterial color={cubeColor} opacity={0.6} transparent />
       <lineSegments>
         <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(1, 1, 1)]} />
-        <lineBasicMaterial attach="material" color="#FCBF49" linewidth={2} />
+        <lineBasicMaterial attach="material" color={edgeColor} linewidth={2} />
       </lineSegments>
     </mesh>
   );
@@ -468,11 +490,11 @@ function Scene() {
         cellThickness={0.5}
         sectionSize={3}
         sectionThickness={1}
-        sectionColor={[0.97, 0.5, 0]}
+        sectionColor={[0, 0.19, 0.29]} // Prussian Blue (#003049) in RGB format
         fadeDistance={50}
       />
       {initialPositions.map((position, index) => (
-        <AnimatedBox key={index} initialPosition={position} />
+        <AnimatedBox key={index} initialPosition={position} index={index} />
       ))}
     </>
   );

@@ -1,0 +1,249 @@
+/* --- Physics - Dynamic Atom --- */
+.icon-physics .atom-core {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateX(60deg) rotateZ(-15deg) scale(1.1);
+  perspective: 700px;
+  transform-style: preserve-3d;
+}
+
+.icon-physics .nucleus {
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #FDE68A, var(--business-econ-orange));
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(0);
+  box-shadow: 0 0 8px var(--business-econ-orange), 0 0 12px #FBBF24;
+  z-index: 5;
+  animation: pulseNucleusPhysics var(--fast-duration) infinite ease-in-out;
+}
+
+.icon-physics .orbit {
+  position: absolute;
+  border: 1.5px solid var(--grey-medium);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  opacity: 0.7;
+}
+
+.icon-physics .orbit1 {
+  transform: translate(-50%, -50%) rotateZ(0deg);
+}
+
+.icon-physics .orbit2 {
+  transform: translate(-50%, -50%) rotateY(65deg) rotateX(5deg);
+}
+
+.icon-physics .orbit3 {
+  transform: translate(-50%, -50%) rotateY(-65deg) rotateX(-5deg);
+}
+
+.icon-physics .electron {
+  width: 6px;
+  height: 6px;
+  background-color: var(--math-sci-blue);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 27.5px);
+  margin: -3px 0 0 -3px;
+  box-shadow: 0 0 5px var(--math-sci-blue), 0 0 8px var(--math-sci-blue-light);
+  transform-style: preserve-3d;
+  transform-origin: -27.5px center;
+}
+
+.icon-physics .electron1 {
+  animation: electronOrbitPhysics1 var(--fast-duration) infinite linear;
+}
+
+.icon-physics .electron2 {
+  animation: electronOrbitPhysics2 var(--medium-duration) infinite linear;
+  animation-delay: -1s;
+}
+
+.icon-physics .electron3 {
+  animation: electronOrbitPhysics3 var(--slow-duration) infinite linear;
+  animation-delay: -2s;
+}
+
+@keyframes electronOrbitPhysics1 {
+  from { transform: rotateZ(0deg); }
+  to { transform: rotateZ(360deg); }
+}
+
+@keyframes electronOrbitPhysics2 {
+  from { transform: rotateY(65deg) rotateX(5deg) rotateZ(0deg); }
+  to { transform: rotateY(65deg) rotateX(5deg) rotateZ(360deg); }
+}
+
+@keyframes electronOrbitPhysics3 {
+  from { transform: rotateY(-65deg) rotateX(-5deg) rotateZ(0deg); }
+  to { transform: rotateY(-65deg) rotateX(-5deg) rotateZ(360deg); }
+}
+
+@keyframes pulseNucleusPhysics {
+  0%, 100% { transform: translate(-50%, -50%) translateZ(0) scale(1); }
+  50% { transform: translate(-50%, -50%) translateZ(0) scale(1.1); }
+}
+
+/* --- Psychology - Dynamic Brain --- */
+.icon-psychology .brain-container {
+  width: 55px;
+  height: 50px;
+  position: relative;
+  perspective: 600px;
+}
+
+.icon-psychology .brain-half {
+  width: 28px;
+  height: 45px;
+  position: absolute;
+  top: 2px;
+  border: 2px solid var(--humanities-purple);
+  border-radius: 50% 50% 45% 45% / 65% 65% 40% 40%;
+  background: linear-gradient(135deg, var(--humanities-purple-light), #E9D5FF);
+  animation: pulseBrainPsyDynamic var(--medium-duration) infinite alternate ease-in-out;
+  overflow: hidden;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+  transform-style: preserve-3d;
+}
+
+.icon-psychology .left {
+  left: 2px;
+  transform: rotate(-10deg);
+  animation-delay: 0.3s;
+  z-index: 1;
+}
+
+.icon-psychology .right {
+  right: 2px;
+  transform: rotate(10deg);
+  z-index: 2;
+}
+
+.icon-psychology .brain-half::before {
+  content: '';
+  position: absolute;
+  width: 160%;
+  height: 160%;
+  top: -30%;
+  left: -30%;
+  background:
+    repeating-linear-gradient(-45deg,
+      rgba(124, 58, 237, 0.15),
+      rgba(124, 58, 237, 0.15) 2px,
+      transparent 2px,
+      transparent 7px
+    ),
+    repeating-linear-gradient(45deg,
+      rgba(124, 58, 237, 0.05),
+      rgba(124, 58, 237, 0.05) 1px,
+      transparent 1px,
+      transparent 5px);
+  animation: moveFoldsSwirl var(--very-slow-duration) infinite linear;
+  opacity: 0.8;
+}
+
+@keyframes moveFoldsSwirl {
+  from { transform: rotate(0deg) scale(1) translateX(0px) translateY(0px); }
+  to { transform: rotate(360deg) scale(1.05) translateX(5px) translateY(-5px); }
+}
+
+.icon-psychology .synapse {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: var(--accent-pink);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--accent-pink), 0 0 10px var(--accent-pink), 0 0 15px #F472B6;
+  opacity: 0;
+  animation: fireSynapseImpact var(--fast-duration) infinite ease-out;
+  filter: blur(0.5px);
+  z-index: 3;
+}
+
+.icon-psychology .synapse::before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 1px;
+  background-color: var(--accent-pink);
+  top: 50%;
+  left: 50%;
+  transform-origin: left center;
+  opacity: 0;
+  animation: pulseConnection var(--fast-duration) infinite ease-out;
+  animation-delay: inherit;
+  box-shadow: 0 0 3px var(--accent-pink);
+}
+
+.icon-psychology .synapse1 {
+  top: 20%;
+  left: 50%;
+  animation-delay: 0.2s;
+}
+
+.icon-psychology .synapse1::before {
+  transform: translateX(-50%) rotate(30deg);
+}
+
+.icon-psychology .synapse2 {
+  top: 60%;
+  left: 50%;
+  animation-delay: 0.8s;
+}
+
+.icon-psychology .synapse2::before {
+  transform: translateX(-50%) rotate(-20deg);
+}
+
+.icon-psychology .synapse3 {
+  top: 40%;
+  left: 50%;
+  animation-delay: 1.4s;
+}
+
+.icon-psychology .synapse3::before {
+  transform: translateX(-50%) rotate(10deg);
+}
+
+.icon-psychology .synapse4 {
+  top: 80%;
+  left: 50%;
+  animation-delay: 2.0s;
+}
+
+.icon-psychology .synapse4::before {
+  transform: translateX(-50%) rotate(-40deg);
+}
+
+@keyframes pulseBrainPsyDynamic {
+  from { transform: scale(1); box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.08), 0 0 10px rgba(124, 58, 237, 0.3); }
+  to { transform: rotate(-7deg) scale(1.05); box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.08), 0 0 15px rgba(124, 58, 237, 0.5); }
+}
+
+@keyframes pulseConnection {
+  0% { opacity: 0; transform-origin: left center; transform: scaleX(0); }
+  50% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(0.8); }
+}
+
+@keyframes fireSynapseImpact {
+  0% { opacity: 0; transform: scale(0.3); }
+  10% { opacity: 1; transform: scale(1.2); }
+  25% { opacity: 0.5; transform: scale(0.8); }
+  40% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 0; }
+}
