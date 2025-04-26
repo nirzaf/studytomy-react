@@ -16,7 +16,6 @@ const Contact = lazy(() => import('./pages/Contact'));
 const BookTrial = lazy(() => import('./pages/BookTrial'));
 const ConsentForm = lazy(() => import('./components/ConsentForm'));
 const Terms = lazy(() => import('./pages/Terms'));
-const ParentsCorner = lazy(() => import('./pages/ParentsCorner'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Loading component

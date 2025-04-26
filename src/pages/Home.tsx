@@ -6,7 +6,6 @@ import DoubtSection from '../components/DoubtSection';
 import ExamBoardsSection from '../components/ExamBoardsSection';
 import GroupDiscount from '../components/GroupDiscount';
 import Testimonials from '../components/Testimonials';
-import WhatsAppButton from '../components/WhatsAppButton';
 import ImageGallery from '../components/ImageGallery';
 import { trackVisitor } from '../lib/visitorTracking';
 import AchievementCardComponent from '../components/AchievementCard';
@@ -20,8 +19,8 @@ export default function Home() {
     <>
       <div className="relative">
         <Hero />
-        <AchievementCardComponent />
         <Subjects />
+        <AchievementCardComponent />
         <WhyUs />
         <ImageGallery />
         <DoubtSection />
