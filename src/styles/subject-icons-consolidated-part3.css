@@ -11,7 +11,7 @@
 .icon-language .speech-bubble {
   position: absolute;
   background-color: var(--white);
-  border: 2px solid var(--humanities-purple);
+  border: 2px solid var(--deep-red);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -63,7 +63,7 @@
 .icon-language .speech-text {
   font-size: 10px;
   font-weight: bold;
-  color: var(--humanities-purple);
+  color: var(--deep-red);
   opacity: 0;
   animation: fadeTextCommunicative var(--medium-duration) infinite;
 }
@@ -134,7 +134,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--humanities-purple), #5B21B6);
+  background: linear-gradient(135deg, var(--deep-red), var(--cinnabar));
   border-radius: 2px 6px 6px 2px;
   box-shadow: 
     -2px 0 5px rgba(0, 0, 0, 0.1),
@@ -151,7 +151,7 @@
   height: 10%;
   top: 20%;
   left: 10%;
-  background-color: var(--humanities-purple-light);
+  background-color: var(--taupe-gray);
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -163,7 +163,7 @@
   height: 6%;
   top: 40%;
   left: 20%;
-  background-color: var(--humanities-purple-light);
+  background-color: var(--taupe-gray);
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -263,10 +263,10 @@
 .icon-mathematics .pi-symbol {
   font-size: 40px;
   font-weight: bold;
-  color: var(--math-sci-blue);
+  color: var(--prussian-blue);
   position: relative;
   z-index: 1;
-  text-shadow: 0 2px 5px rgba(37, 99, 235, 0.4);
+  text-shadow: 0 2px 5px rgba(0, 48, 73, 0.4);
   animation: pulsePiOrbiting var(--medium-duration) infinite alternate;
 }
 
@@ -278,7 +278,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 1px dashed var(--math-sci-blue-light);
+  border: 1px dashed var(--gray-blue);
   border-radius: 50%;
   animation: rotateOrbitOrbiting var(--slow-duration) infinite linear;
 }
@@ -307,14 +307,14 @@
   width: 16px;
   height: 16px;
   background-color: var(--white);
-  border: 1.5px solid var(--math-sci-blue);
+  border: 1.5px solid var(--prussian-blue);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 10px;
   font-weight: bold;
-  color: var(--math-sci-blue);
+  color: var(--prussian-blue);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
@@ -346,7 +346,7 @@
 @keyframes pulsePiOrbiting {
   0% {
     transform: scale(1);
-    text-shadow: 0 2px 5px rgba(37, 99, 235, 0.4);
+    text-shadow: 0 2px 5px rgba(0, 48, 73, 0.4);
   }
   100% {
     transform: scale(1.1);
@@ -406,7 +406,7 @@
   left: 50%;
   margin-top: -8px;
   margin-left: -8px;
-  background: radial-gradient(circle at 30% 30%, #93C5FD 0%, var(--math-sci-blue) 70%, #1D4ED8 100%);
+  background: radial-gradient(circle at 30% 30%, var(--gray-blue) 0%, var(--prussian-blue) 70%, var(--dark-slate) 100%);
   border-radius: 50%;
   box-shadow: 0 0 15px rgba(37, 99, 235, 0.6);
   z-index: 3;

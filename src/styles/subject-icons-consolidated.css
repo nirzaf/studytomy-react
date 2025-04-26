@@ -1,30 +1,41 @@
 /* --- Base Variables and Styles --- */
 :root {
-  --night: #151616ff;
-  --white: #FEFEFEff;
-  --celeste: #A0EBEBff;
-  --night-2: #0F0F0Fff;
-  --white-2: #FFFFFFff;
+  /* Primary Colors from color-codes.md */
+  --prussian-blue: #003049;
+  --cinnabar: #D62828;
+  --orange-peel: #F77F00;
+  --maize: #FCBF49;
+  --bone: #EAE2B7;
+  
+  /* Secondary Colors from color-codes.md */
+  --burnt-sienna: #e56b49;
+  --dark-slate: #2b2e44;
+  --deep-red: #953137;
+  --gray-blue: #a1a4b0;
+  --taupe-gray: #a0949c;
+  
+  /* Original white/black values for contrast */
   --white: #FFFFFF;
-
-  /* Subject Group Palettes - Adjusted for Professional Look */
-  --math-sci-blue: #2563EB;
-  --math-sci-blue-light: #BFDBFE;
-  --bio-chem-green: #059669;
-  --bio-chem-green-light: #A7F3D0;
-  --business-econ-orange: #F59E0B;
-  --business-econ-orange-light: #FEF3C7;
-  --humanities-purple: #7C3AED;
-  --humanities-purple-light: #DDD6FE;
-  --accent-pink: #EC4899;
-  --accent-red: #EF4444;
-
+  --night: #151616;
+  
+  /* Subject Group Palettes - Using new color scheme */
+  --math-sci-blue: var(--prussian-blue);
+  --math-sci-blue-light: var(--gray-blue);
+  --bio-chem-green: var(--dark-slate);
+  --bio-chem-green-light: var(--bone);
+  --business-econ-orange: var(--orange-peel);
+  --business-econ-orange-light: var(--maize);
+  --humanities-purple: var(--deep-red);
+  --humanities-purple-light: var(--taupe-gray);
+  --accent-pink: var(--burnt-sienna);
+  --accent-red: var(--cinnabar);
+  
   /* Professional Greys */
   --grey-light: #F3F4F6;
-  --grey-medium: #9CA3AF;
-  --grey-dark: #4B5563;
-  --border-light: #E5E7EB;
-  --text-dark: #374151;
+  --grey-medium: var(--gray-blue);
+  --grey-dark: var(--dark-slate);
+  --border-light: var(--bone);
+  --text-dark: var(--prussian-blue);
 
   /* Animation Durations */
   --fast-duration: 2.5s;

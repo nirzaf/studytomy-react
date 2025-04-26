@@ -14,10 +14,10 @@
   left: 50%;
   margin-left: -20px;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #60A5FA 0%, #2563EB 70%, #1D4ED8 100%);
+  background: radial-gradient(circle at 30% 30%, var(--gray-blue) 0%, var(--prussian-blue) 70%, var(--dark-slate) 100%);
   box-shadow: 
     inset 0 0 15px rgba(0, 0, 0, 0.2),
-    0 0 10px rgba(37, 99, 235, 0.4);
+    0 0 10px rgba(0, 48, 73, 0.4);
   transform-style: preserve-3d;
   animation: rotateGlobeInteractive var(--slow-duration) infinite linear;
   z-index: 2;
@@ -28,7 +28,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23A7F3D0' d='M30,30 Q40,20 50,30 T70,40 Q75,50 65,60 T40,70 Q30,65 25,50 T30,30'/%3E%3Cpath fill='%23A7F3D0' d='M75,25 Q80,35 70,40 T65,30'/%3E%3Cpath fill='%23A7F3D0' d='M40,20 Q45,15 50,20 T45,25'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23EAE2B7' d='M30,30 Q40,20 50,30 T70,40 Q75,50 65,60 T40,70 Q30,65 25,50 T30,30'/%3E%3Cpath fill='%23EAE2B7' d='M75,25 Q80,35 70,40 T65,30'/%3E%3Cpath fill='%23EAE2B7' d='M40,20 Q45,15 50,20 T45,25'/%3E%3C/svg%3E");
   background-size: cover;
   opacity: 0.8;
   animation: rotateContinentsInteractive var(--slow-duration) infinite linear;
@@ -209,9 +209,9 @@
   position: absolute;
   left: 50%;
   margin-left: -15px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--deep-red);
   border: 2px solid var(--humanities-purple);
-  box-shadow: inset 0 0 10px rgba(124, 58, 237, 0.3);
+  box-shadow: inset 0 0 10px rgba(149, 49, 55, 0.3);
   overflow: hidden;
 }
 
@@ -243,7 +243,7 @@
 .icon-history .sand-top {
   width: 100%;
   height: 100%;
-  background-color: var(--humanities-purple-light);
+  background-color: var(--taupe-gray);
   position: absolute;
   top: 0;
   left: 0;
@@ -255,7 +255,7 @@
 .icon-history .sand-bottom {
   width: 100%;
   height: 0%;
-  background-color: var(--humanities-purple-light);
+  background-color: var(--taupe-gray);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -268,7 +268,7 @@
   position: absolute;
   width: 3px;
   height: 3px;
-  background-color: var(--humanities-purple-light);
+  background-color: var(--taupe-gray);
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -357,7 +357,7 @@
   height: 35px;
   position: relative;
   transform: rotate(45deg);
-  background-color: var(--accent-red);
+  background-color: var(--cinnabar);
   animation: heartbeatBeating var(--medium-duration) infinite cubic-bezier(0.66, 0, 0.33, 1);
   box-shadow: 
     0 0 40px rgba(239, 68, 68, 0.4),
@@ -372,7 +372,7 @@
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background-color: var(--accent-red);
+  background-color: var(--cinnabar);
 }
 
 .icon-human-bio .heart::before {
