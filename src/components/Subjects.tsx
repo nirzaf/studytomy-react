@@ -126,7 +126,7 @@ const Subjects = () => {
                         </div>
                       )}
 
-                      {/* --- Biology --- */}
+                      {/* --- Biology - Enhanced DNA Helix --- */}
                       {subject.iconClass === 'icon-biology' && (
                         <div className="dna-container">
                           <div className="strand-group">
@@ -135,6 +135,8 @@ const Subjects = () => {
                             {/* Render 5 base pairs */}
                             {Array.from({ length: 5 }).map((_, i) => <div key={i} className="pair"></div>)}
                           </div>
+                          {/* Add glow effect */}
+                          <div className="glow"></div>
                         </div>
                       )}
 
@@ -204,22 +206,29 @@ const Subjects = () => {
                         </div>
                       )}
 
-                      {/* --- History - Flowing Hourglass --- */}
+                      {/* --- History - Interactive Timeline --- */}
                       {subject.iconClass === 'icon-history' && (
-                        <div className="hourglass-container">
-                          <div className="hourglass">
-                            <div className="top-chamber">
-                              <div className="sand-top"></div>
-                            </div>
-                            <div className="bottom-chamber">
-                              <div className="sand-bottom"></div>
-                            </div>
-                            <div className="middle-connector"></div>
-                            <div className="sand-particle"></div>
-                            <div className="sand-particle"></div>
-                            <div className="sand-particle"></div>
-                            <div className="sand-particle"></div>
-                            <div className="sand-particle"></div>
+                        <div className="timeline-container">
+                          <div className="timeline-scroll">
+                            <div className="timeline-line"></div>
+                            
+                            {/* Historical events */}
+                            <div className="event event-1"></div>
+                            <div className="event event-2"></div>
+                            <div className="event event-3"></div>
+                            <div className="event event-4"></div>
+                            
+                            {/* Event labels */}
+                            <div className="event-label event-label-1"></div>
+                            <div className="event-label event-label-2"></div>
+                            <div className="event-label event-label-3"></div>
+                            <div className="event-label event-label-4"></div>
+                            
+                            {/* Dates */}
+                            <div className="date date-1"></div>
+                            <div className="date date-2"></div>
+                            <div className="date date-3"></div>
+                            <div className="date date-4"></div>
                           </div>
                         </div>
                       )}
@@ -255,9 +264,17 @@ const Subjects = () => {
                         </div>
                       )}
 
-                      {/* --- Language - Communicative Speech Bubbles --- */}
+                      {/* --- Language - Enhanced Interactive Speech Bubbles --- */}
                       {subject.iconClass === 'icon-language' && (
                         <div className="speech-container">
+                          {/* Add person dots */}
+                          <div className="person person-1"></div>
+                          <div className="person person-2"></div>
+                          
+                          {/* Add connecting line */}
+                          <div className="connection"></div>
+                          
+                          {/* Speech bubbles */}
                           <div className="speech-bubble speech-bubble-1">
                             <div className="speech-text"></div>
                           </div>
@@ -312,17 +329,32 @@ const Subjects = () => {
                         </div>
                       )}
 
-                      {/* --- Psychology - Neural Network --- */}
+                      {/* --- Psychology - Advanced Mind Visualization --- */}
                       {subject.iconClass === 'icon-psychology' && (
-                        <div className="brain-container">
+                        <div className="mind-container">
+                          {/* Brain structure */}
                           <div className="brain">
+                            <div className="cortex"></div>
                             <div className="brain-divider"></div>
                           </div>
+                          
+                          {/* Brain hemispheres */}
+                          <div className="hemisphere hemisphere-left"></div>
+                          <div className="hemisphere hemisphere-right"></div>
+                          
+                          {/* Thought bubble */}
+                          <div className="thought">
+                            <div className="thought-content"></div>
+                          </div>
+                          
+                          {/* Neurons */}
                           <div className="neuron neuron-1"></div>
                           <div className="neuron neuron-2"></div>
                           <div className="neuron neuron-3"></div>
                           <div className="neuron neuron-4"></div>
                           <div className="neuron neuron-5"></div>
+                          
+                          {/* Synapses */}
                           <div className="synapse synapse-1"></div>
                           <div className="synapse synapse-2"></div>
                           <div className="synapse synapse-3"></div>

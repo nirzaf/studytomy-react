@@ -1,51 +1,65 @@
-/* --- Psychology - Neural Network --- */
-.icon-psychology .brain-container {
+/* --- Psychology - Advanced Mind Visualization --- */
+.icon-psychology .mind-container {
   width: 60px;
   height: 60px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  perspective: 500px;
 }
 
 .icon-psychology .brain {
-  width: 40px;
-  height: 35px;
-  background-color: var(--taupe-gray);
-  border-radius: 20px 20px 15px 15px;
+  width: 42px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--prussian-blue) 0%, var(--gray-blue) 100%);
+  border-radius: 22px 22px 16px 16px;
   position: relative;
   box-shadow: 
-    inset 0 -5px 10px rgba(149, 49, 55, 0.2),
-    0 3px 6px rgba(0, 0, 0, 0.1);
+    inset 0 -5px 10px rgba(0, 48, 73, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   z-index: 1;
+  transform-style: preserve-3d;
+  animation: pulseThinking 5s infinite alternate ease-in-out;
 }
 
-.icon-psychology .brain::before,
-.icon-psychology .brain::after {
-  content: '';
+/* Brain hemispheres */
+.icon-psychology .hemisphere {
   position: absolute;
-  background-color: var(--humanities-purple-light);
+  top: -5px;
+  width: 24px;
+  height: 32px;
   border-radius: 50%;
   z-index: 2;
+  background: linear-gradient(135deg, var(--gray-blue) 0%, var(--prussian-blue) 100%);
 }
 
-.icon-psychology .brain::before {
-  width: 22px;
-  height: 30px;
-  top: -5px;
-  left: -5px;
-  box-shadow: inset -3px -3px 6px rgba(124, 58, 237, 0.2);
+.icon-psychology .hemisphere-left {
+  left: -4px;
+  box-shadow: inset -3px -3px 6px rgba(0, 48, 73, 0.3);
+  animation: pulsateLeft 4s infinite alternate;
 }
 
-.icon-psychology .brain::after {
-  width: 22px;
-  height: 30px;
-  top: -5px;
-  right: -5px;
-  box-shadow: inset 3px -3px 6px rgba(124, 58, 237, 0.2);
+.icon-psychology .hemisphere-right {
+  right: -4px;
+  box-shadow: inset 3px -3px 6px rgba(0, 48, 73, 0.3);
+  animation: pulsateRight 4s infinite alternate-reverse;
 }
 
+/* Brain texture */
+.icon-psychology .cortex {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 20%),
+    radial-gradient(circle at 70% 60%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 20%);
+  z-index: 3;
+  opacity: 0.7;
+}
+
+/* Brain divider */
 .icon-psychology .brain-divider {
   position: absolute;
   width: 2px;
@@ -53,56 +67,102 @@
   top: 10%;
   left: 50%;
   margin-left: -1px;
-  background: linear-gradient(135deg, var(--maize), var(--orange-peel) 40%, var(--burnt-sienna));
+  background: linear-gradient(to bottom, var(--orange-peel), var(--maize));
   z-index: 3;
+  box-shadow: 0 0 5px rgba(247, 127, 0, 0.5);
 }
 
+/* Thought bubble */
+.icon-psychology .thought {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  top: 5px;
+  right: 2px;
+  z-index: 5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: floatThought 6s infinite ease-in-out;
+  opacity: 0.9;
+}
+
+.icon-psychology .thought::before,
+.icon-psychology .thought::after {
+  content: '';
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+}
+
+.icon-psychology .thought::before {
+  width: 8px;
+  height: 8px;
+  bottom: -4px;
+  right: 2px;
+}
+
+.icon-psychology .thought::after {
+  width: 4px;
+  height: 4px;
+  bottom: -8px;
+  right: 0px;
+}
+
+/* Neurons and connections */
 .icon-psychology .neuron {
   position: absolute;
   width: 6px;
   height: 6px;
-  background-color: var(--deep-red);
+  background-color: var(--cinnabar);
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(149, 49, 55, 0.6);
+  box-shadow: 0 0 8px rgba(214, 40, 40, 0.6);
   z-index: 4;
+  animation: pulseNeuron 3s infinite;
 }
 
 .icon-psychology .neuron-1 {
   top: 20%;
   left: 25%;
+  animation-delay: 0.2s;
 }
 
 .icon-psychology .neuron-2 {
   top: 60%;
   left: 20%;
+  animation-delay: 1.2s;
 }
 
 .icon-psychology .neuron-3 {
   top: 40%;
   left: 70%;
+  animation-delay: 0.8s;
 }
 
 .icon-psychology .neuron-4 {
   top: 70%;
   left: 75%;
+  animation-delay: 1.6s;
 }
 
 .icon-psychology .neuron-5 {
   top: 30%;
   left: 40%;
+  animation-delay: 0.4s;
 }
 
 .icon-psychology .synapse {
   position: absolute;
-  background-color: var(--deep-red);
+  height: 2px;
+  background: linear-gradient(90deg, var(--cinnabar), var(--orange-peel));
   z-index: 3;
+  transform-origin: left center;
   opacity: 0;
-  animation: fireSignalNeural var(--fast-duration) infinite;
+  animation: fireSignalNeural 3s infinite;
 }
 
 .icon-psychology .synapse-1 {
   width: 20px;
-  height: 2px;
   top: 22%;
   left: 28%;
   transform: rotate(30deg);
@@ -111,7 +171,6 @@
 
 .icon-psychology .synapse-2 {
   width: 25px;
-  height: 2px;
   top: 40%;
   left: 43%;
   transform: rotate(-15deg);
@@ -120,7 +179,6 @@
 
 .icon-psychology .synapse-3 {
   width: 15px;
-  height: 2px;
   top: 62%;
   left: 23%;
   transform: rotate(-45deg);
@@ -129,7 +187,6 @@
 
 .icon-psychology .synapse-4 {
   width: 20px;
-  height: 2px;
   top: 65%;
   left: 55%;
   transform: rotate(15deg);
@@ -138,23 +195,77 @@
 
 .icon-psychology .synapse-5 {
   width: 15px;
-  height: 2px;
   top: 35%;
   left: 25%;
   transform: rotate(75deg);
   animation-delay: 1.8s;
 }
 
+/* Animated thought content */
+.icon-psychology .thought-content {
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background-color: var(--prussian-blue);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
+  animation: animateThought 4s infinite;
+}
+
+.icon-psychology .thought-content::before,
+.icon-psychology .thought-content::after {
+  content: '';
+  position: absolute;
+  background-color: var(--prussian-blue);
+  height: 2px;
+  width: 6px;
+  top: -4px;
+  left: 2px;
+}
+
+.icon-psychology .thought-content::after {
+  top: 4px;
+}
+
+@keyframes pulseThinking {
+  0%, 100% { transform: scale(0.95) rotateX(0deg); }
+  50% { transform: scale(1) rotateX(5deg); }
+}
+
+@keyframes pulsateLeft {
+  0% { transform: scale(0.95); }
+  100% { transform: scale(1.05); }
+}
+
+@keyframes pulsateRight {
+  0% { transform: scale(0.95); }
+  100% { transform: scale(1.05); }
+}
+
+@keyframes floatThought {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.1); }
+}
+
+@keyframes pulseNeuron {
+  0%, 100% { transform: scale(0.8); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px rgba(214, 40, 40, 0.8); }
+}
+
 @keyframes fireSignalNeural {
-  0%, 100% {
-    opacity: 0;
-  }
-  10%, 90% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
+  0%, 100% { opacity: 0; transform-origin: left center; transform: scaleX(0.1); }
+  10% { opacity: 0.3; transform: scaleX(0.2); }
+  50% { opacity: 1; transform: scaleX(1); }
+  90% { opacity: 0.3; transform: scaleX(0.2); }
+}
+
+@keyframes animateThought {
+  0%, 100% { width: 10px; }
+  25% { width: 6px; }
+  50% { width: 12px; }
+  75% { width: 8px; }
 }
 
 /* --- Sociology - Connected People --- */
