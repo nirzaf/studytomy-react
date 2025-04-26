@@ -264,23 +264,39 @@ const Subjects = () => {
                         </div>
                       )}
 
-                      {/* --- Language - Enhanced Interactive Speech Bubbles --- */}
+                      {/* --- Language - Interactive Linguistic Sphere --- */}
                       {subject.iconClass === 'icon-language' && (
-                        <div className="speech-container">
-                          {/* Add person dots */}
-                          <div className="person person-1"></div>
-                          <div className="person person-2"></div>
+                        <div className="language-container">
+                          {/* Glowing background effect */}
+                          <div className="glow"></div>
                           
-                          {/* Add connecting line */}
-                          <div className="connection"></div>
+                          {/* 3D rotating sphere */}
+                          <div className="sphere">
+                            <div className="sphere-core"></div>
+                            
+                            {/* Orbits */}
+                            <div className="orbit orbit-1"></div>
+                            <div className="orbit orbit-2"></div>
+                            <div className="orbit orbit-3"></div>
+                            
+                            {/* Floating characters from different languages */}
+                            <div className="character char-a">A</div>
+                            <div className="character char-b">Б</div>
+                            <div className="character char-c">ش</div>
+                            <div className="character char-d">漢</div>
+                            <div className="character char-e">ñ</div>
+                            <div className="character char-f">ß</div>
+                          </div>
                           
-                          {/* Speech bubbles */}
-                          <div className="speech-bubble speech-bubble-1">
-                            <div className="speech-text"></div>
-                          </div>
-                          <div className="speech-bubble speech-bubble-2">
-                            <div className="speech-text"></div>
-                          </div>
+                          {/* Connection lines */}
+                          <div className="connection connection-1"></div>
+                          <div className="connection connection-2"></div>
+                          <div className="connection connection-3"></div>
+                          
+                          {/* Floating symbols */}
+                          <div className="symbol symbol-1">?</div>
+                          <div className="symbol symbol-2">!</div>
+                          <div className="symbol symbol-3">&</div>
                         </div>
                       )}
 
