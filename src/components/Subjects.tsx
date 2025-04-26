@@ -300,11 +300,24 @@ const Subjects = () => {
                         </div>
                       )}
 
-                      {/* --- Literature - Dynamic Book --- */}
+                      {/* --- Literature - Magical Book Experience --- */}
                       {subject.iconClass === 'icon-literature' && (
                         <div className="book-container">
+                          {/* Background glow effect */}
+                          <div className="glow"></div>
+                          
                           <div className="book">
-                            <div className="book-cover"></div>
+                            {/* Book spine */}
+                            <div className="book-spine"></div>
+                            
+                            {/* Book cover with title and decoration */}
+                            <div className="book-cover">
+                              <div className="book-title"></div>
+                              <div className="book-author"></div>
+                              <div className="book-decoration"></div>
+                            </div>
+                            
+                            {/* Book pages with text */}
                             <div className="book-page book-page-1">
                               <div className="book-text">
                                 <div className="text-line"></div>
@@ -315,6 +328,13 @@ const Subjects = () => {
                             </div>
                             <div className="book-page book-page-2"></div>
                             <div className="book-page book-page-3"></div>
+                            
+                            {/* Magical particles */}
+                            <div className="particle particle-1"></div>
+                            <div className="particle particle-2"></div>
+                            <div className="particle particle-3"></div>
+                            <div className="particle particle-4"></div>
+                            <div className="particle particle-5"></div>
                           </div>
                         </div>
                       )}
