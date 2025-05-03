@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { Users, Gift, Percent, Info } from 'lucide-react';
+import { Users, Percent, Info } from 'lucide-react';
 import * as Tooltip from '@radix-ui/react-tooltip';
+import CanvasPlexus from './animations/CanvasPlexus';
 
 interface FeatureCardProps {
   icon: React.ReactNode;
@@ -68,8 +69,16 @@ export default function GroupDiscount() {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="py-16 relative overflow-hidden min-h-[600px]">
+      {/* Canvas-based Plexus Network Animated Background */}
+      <div className="absolute inset-0">
+        <CanvasPlexus />
+      </div>
+      
+      {/* Semi-transparent gradient overlay - more transparent to see the animation */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50/70 to-white/80"></div>
+      
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
