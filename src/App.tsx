@@ -1,10 +1,11 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { initGTM } from './lib/gtm';
 import GTMNoScript from './components/GTMNoScript';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { trackPageView } from './lib/trackingEvents';
+import { HelmetProvider } from 'react-helmet-async';
 
 // Lazy load page components
 const Home = lazy(() => import('./pages/Home'));
@@ -43,32 +44,34 @@ const App = () => {
   }, []);
 
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <PageTracker /> 
-        <Navbar />
-        <main className="flex-grow mt-16">
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/exam-boards" element={<ExamBoards />} />
-              <Route path="/home-school" element={<HomeSchool />} />
-              <Route path="/career" element={<Career />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/book-trial" element={<BookTrial />} />
-              <Route path="/consent-preferences" element={<ConsentForm />} />
-              <Route path="/terms" element={<Terms />} />
-              
-              {/* Catch all undefined routes and show 404 page */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </main>
-        <Footer />
-        <GTMNoScript />
-      </div>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <div className="flex flex-col min-h-screen">
+          <PageTracker /> 
+          <Navbar />
+          <main className="flex-grow mt-16">
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/exam-boards" element={<ExamBoards />} />
+                <Route path="/home-school" element={<HomeSchool />} />
+                <Route path="/career" element={<Career />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/book-trial" element={<BookTrial />} />
+                <Route path="/consent-preferences" element={<ConsentForm />} />
+                <Route path="/terms" element={<Terms />} />
+                
+                {/* Catch all undefined routes and show 404 page */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </main>
+          <Footer />
+          <GTMNoScript />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 };
 

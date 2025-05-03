@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Allow all CSS and JS files
+Allow: /*.css$
+Allow: /*.js$
+
+# Disallow admin areas if they exist
+Disallow: /admin/
+Disallow: /wp-admin/
+
+# Sitemap location
+Sitemap: https://studytomy.com/sitemap.xml
