@@ -1,0 +1,209 @@
+/* Radiating Glow Animation */
+@keyframes radiateGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(252, 191, 73, 0);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px rgba(252, 191, 73, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(252, 191, 73, 0);
+  }
+}
+
+.radiate-glow {
+  animation: radiateGlow 4s ease-in-out infinite;
+}
+
+/* Inner Glow Animation */
+@keyframes innerGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.inner-glow {
+  background: linear-gradient(
+    90deg,
+    rgba(252, 191, 73, 0.1) 0%,
+    rgba(247, 127, 0, 0.2) 50%,
+    rgba(252, 191, 73, 0.1) 100%
+  );
+  background-size: 200% 200%;
+  animation: innerGlow 8s ease infinite;
+}
+
+/* Pulsing Border Animation */
+@keyframes pulseBorder {
+  0% {
+    border-color: rgba(252, 191, 73, 0.3);
+  }
+  50% {
+    border-color: rgba(247, 127, 0, 0.7);
+  }
+  100% {
+    border-color: rgba(252, 191, 73, 0.3);
+  }
+}
+
+.pulse-border {
+  border: 2px solid rgba(252, 191, 73, 0.3);
+  animation: pulseBorder 4s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes float-up {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes float-left {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes float-right {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+.float-up {
+  animation: float-up 6s ease-in-out infinite;
+}
+
+.float-down {
+  animation: float-down 7s ease-in-out infinite;
+}
+
+.float-left {
+  animation: float-left 8s ease-in-out infinite;
+}
+
+.float-right {
+  animation: float-right 9s ease-in-out infinite;
+}
+
+/* Confetti Animation */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.confetti-1 {
+  background-color: #FCBF49;
+  top: 10%;
+  left: 10%;
+  animation: float-up 5s ease-in-out infinite;
+}
+
+.confetti-2 {
+  background-color: #F77F00;
+  top: 20%;
+  right: 20%;
+  animation: float-down 7s ease-in-out infinite;
+}
+
+.confetti-3 {
+  background-color: #D62828;
+  bottom: 30%;
+  left: 30%;
+  animation: float-right 6s ease-in-out infinite;
+}
+
+.confetti-4 {
+  background-color: #EAE2B7;
+  bottom: 10%;
+  right: 10%;
+  animation: float-left 8s ease-in-out infinite;
+}
+
+/* Star shape */
+.star {
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-bottom: 7px solid #FCBF49;
+  border-left: 10px solid transparent;
+  transform: rotate(35deg);
+  opacity: 0.8;
+}
+
+.star:before {
+  content: '';
+  position: absolute;
+  height: 0;
+  width: 0;
+  top: -4.5px;
+  left: -6.5px;
+  border-bottom: 8px solid #FCBF49;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  transform: rotate(-35deg);
+}
+
+.star:after {
+  content: '';
+  position: absolute;
+  top: 0.3px;
+  left: -10.5px;
+  border-right: 10px solid transparent;
+  border-bottom: 7px solid #FCBF49;
+  border-left: 10px solid transparent;
+  transform: rotate(-70deg);
+}
+
+.star-1 {
+  top: 15%;
+  left: 15%;
+  animation: float-down 9s ease-in-out infinite;
+}
+
+.star-2 {
+  top: 25%;
+  right: 25%;
+  animation: float-up 8s ease-in-out infinite;
+}
+
+.star-3 {
+  bottom: 15%;
+  left: 35%;
+  animation: float-right 7s ease-in-out infinite;
+}
+
+.star-4 {
+  bottom: 25%;
+  right: 15%;
+  animation: float-left 10s ease-in-out infinite;
+}

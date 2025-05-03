@@ -8,7 +8,7 @@ import GroupDiscount from '../components/GroupDiscount';
 import Testimonials from '../components/Testimonials';
 import ImageGallery from '../components/ImageGallery';
 import { trackVisitor } from '../lib/visitorTracking';
-import AchievementCardComponent from '../components/AchievementCard';
+import AchievementCardSection from '../components/AchievementCardSection';
 
 export default function Home() {
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function Home() {
       <div className="relative">
         <Hero />
         <Subjects />
-        <AchievementCardComponent />
+        <AchievementCardSection />
         <WhyUs />
         <ImageGallery />
         <DoubtSection />

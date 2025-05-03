@@ -54,9 +54,12 @@ const AchievementCard = () => {
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="relative w-full max-w-xl overflow-hidden rounded-xl shadow-xl"
+        className="relative w-full max-w-xl overflow-hidden rounded-xl shadow-xl radiate-glow"
       >
-        <div className="relative bg-gradient-to-br from-[#003049] to-[#2b2e44] p-0.5 rounded-xl">
+        {/* Radiating glow overlay */}
+        <div className="absolute inset-0 rounded-xl inner-glow"></div>
+        
+        <div className="relative bg-gradient-to-br from-[#003049] to-[#2b2e44] p-0.5 rounded-xl pulse-border">
           <div className="relative rounded-xl p-8 sm:p-10">
             <div className="flex flex-col items-center text-center">
               {/* Congratulations Text */}
