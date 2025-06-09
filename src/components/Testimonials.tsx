@@ -111,7 +111,7 @@ export default function Testimonials() {
       <div className="absolute inset-0 bg-black/80" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <h5 className="text-orange-400 font-medium mb-2">Testimonial</h5>
+          <p className="text-orange-400 font-medium mb-2">Testimonial</p>
           <h2 className="text-3xl font-bold text-white">What they say</h2>
         </div>
         

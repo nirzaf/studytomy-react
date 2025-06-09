@@ -146,10 +146,14 @@ const SubjectsOnDemand = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="relative group-hover:animate-float p-4">
-                <img 
-                  src={subject.image} 
+                <img
+                  src={subject.image}
                   alt={subject.alt}
                   className="w-24 h-24 object-contain relative z-10"
+                  width={96}
+                  height={96}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </motion.div>

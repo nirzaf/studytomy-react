@@ -3,26 +3,26 @@ import WhatsAppButton from './WhatsAppButton';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 py-4">
-      <div className="container mx-auto">
-        <div className="text-center">
-          <p>
-            <Link to="/consent-preferences" className="hover:text-primary">
+    <footer className="bg-gray-100 py-4 min-h-[120px] relative">
+      <div className="container mx-auto px-4">
+        <div className="text-center space-y-2">
+          <p className="min-h-[24px]">
+            <Link to="/consent-preferences" className="hover:text-primary transition-colors duration-200">
               Manage Cookie Preferences
             </Link>
           </p>
-          <p>
-            <Link to="/terms" className="hover:text-primary">
+          <p className="min-h-[24px]">
+            <Link to="/terms" className="hover:text-primary transition-colors duration-200">
               Terms of Service
             </Link>
           </p>
-          <p>
+          <p className="min-h-[24px]">
             Powered by{' '}
-            <a 
-              href="https://quadrate.lk" 
-              target="_blank" 
+            <a
+              href="https://quadrate.lk"
+              target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary"
+              className="hover:text-primary transition-colors duration-200"
             >
               Quadrate TechSolutions
             </a>
