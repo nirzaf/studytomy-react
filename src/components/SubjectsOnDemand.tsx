@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import { useEffect, useState } from 'react';
-import OptimizedVideo from './common/OptimizedVideo';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
@@ -147,12 +146,14 @@ const SubjectsOnDemand = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="relative group-hover:animate-float p-4">
-                <OptimizedVideo
+                <img
                   src={subject.image}
                   alt={subject.alt}
                   className="w-24 h-24 object-contain relative z-10"
                   width={96}
                   height={96}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </motion.div>
