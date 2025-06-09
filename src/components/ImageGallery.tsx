@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { generateSrcSet, generateLQIP } from '../utils/imageOptimization';
 
 const originalImages = [
   "https://ik.imagekit.io/quadrate/Studytomy/Creative%20september%204%20.png?updatedAt=1732009510839",
@@ -197,13 +198,28 @@ export default function ImageGallery() {
                       
                       {/* Image Container with Inner Shadow */}
                       <div className="absolute inset-[2px] rounded-lg overflow-hidden bg-white">
-                        <img
-                          src={image}
-                          alt={`Gallery image ${((currentIndex + idx - 2) % originalImages.length) + 1}`}
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                          loading="lazy"
-                        />
-                        
+                        <picture>
+                          <source
+                            srcSet={generateSrcSet(image)}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            type="image/webp"
+                          />
+                          <img
+                            src={image}
+                            alt={`Gallery image ${((currentIndex + idx - 2) % originalImages.length) + 1}`}
+                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                            decoding="async"
+                            width="400"
+                            height="300"
+                            style={{
+                              backgroundImage: `url(${generateLQIP(image)})`,
+                              backgroundSize: 'cover',
+                              backgroundPosition: 'center',
+                            }}
+                          />
+                        </picture>
+
                         {/* Overlay on Hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#003049]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
@@ -220,13 +236,19 @@ export default function ImageGallery() {
               <button
                 key={index}
                 onClick={() => handleDotClick(index)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
+                className={`min-w-[44px] min-h-[44px] p-2 rounded-full transition-all duration-300 flex items-center justify-center ${
                   (currentIndex - 2) % originalImages.length === index
-                    ? 'bg-[#F77F00] w-8'
-                    : 'bg-[#FCBF49]/30 w-2.5 hover:bg-[#FCBF49]'
+                    ? 'bg-[#F77F00]/20'
+                    : 'bg-transparent hover:bg-[#FCBF49]/20'
                 }`}
                 aria-label={`Go to image ${index + 1}`}
-              />
+              >
+                <div className={`h-2.5 rounded-full transition-all duration-300 ${
+                  (currentIndex - 2) % originalImages.length === index
+                    ? 'bg-[#F77F00] w-8'
+                    : 'bg-[#FCBF49]/30 w-2.5'
+                }`} />
+              </button>
             ))}
           </div>
         </div>

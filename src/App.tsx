@@ -4,6 +4,7 @@ import GTMNoScript from './components/GTMNoScript';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CookieConsent from './components/common/CookieConsent';
 import { trackPageView } from './lib/trackingEvents';
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -68,6 +69,7 @@ const App = () => {
             </Suspense>
           </main>
           <Footer />
+          <CookieConsent />
           <GTMNoScript />
         </div>
       </Router>

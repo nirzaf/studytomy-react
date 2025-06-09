@@ -101,6 +101,7 @@ const Subjects = () => {
                     {/* Icon Wrapper - applies the specific icon class */}
                     <div
                       className={`icon-wrapper ${subject.iconClass} w-16 h-16 relative z-10 group-hover:scale-110 transition-transform duration-300`}
+                      role="img"
                       aria-label={subject.alt}
                     >
                       {/* Conditional Rendering based on iconClass - MUST MATCH CSS STRUCTURE */}

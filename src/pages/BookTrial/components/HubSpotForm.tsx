@@ -29,7 +29,11 @@ const HubSpotForm = () => {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <div id="hubspotForm" className="bg-white rounded-lg shadow-sm p-6">
+      <div id="hubspotForm" className="bg-white rounded-lg shadow-sm p-6 min-h-[600px] relative">
+        {/* Loading placeholder */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-8 h-8 border-2 border-gray-300 border-t-orange-500 rounded-full animate-spin" />
+        </div>
         {/* HubSpot form will be rendered here */}
       </div>
     </div>
