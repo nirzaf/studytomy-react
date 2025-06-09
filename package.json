@@ -17,7 +17,7 @@
     "@radix-ui/react-tooltip": "^1.1.4",
     "@react-three/drei": "^9.121.5",
     "@react-three/fiber": "^8.17.14",
-    "@supabase/supabase-js": "^2.46.1",
+    "@supabase/supabase-js": "^2.50.0",
     "@types/react-helmet": "^6.1.11",
     "@types/react-slick": "^0.23.13",
     "@types/three": "^0.173.0",
