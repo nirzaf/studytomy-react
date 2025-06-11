@@ -75,7 +75,13 @@ const PageTracker = () => {
   // Also preload on user interaction (hover over navigation links)
   useEffect(() => {
     const handleMouseEnter = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
+      const target = event.target;
+      
+      // Check if target is an Element that supports closest method
+      if (!target || !(target instanceof Element)) {
+        return;
+      }
+      
       const link = target.closest('a[href]') as HTMLAnchorElement;
       
       if (link && link.hostname === window.location.hostname) {
