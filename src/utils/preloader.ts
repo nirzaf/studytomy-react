@@ -208,12 +208,5 @@ export const clearCache = (): void => {
 };
 
 /**
- * Gets cache statistics
+ * Preloader utility functions
  */
-export const getCacheStats = () => {
-  return {
-    cachedModules: moduleCache.size,
-    activePreloads: preloadPromises.size,
-    isPreloading
-  };
-};

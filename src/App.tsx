@@ -64,11 +64,6 @@ const PageTracker = () => {
     if (location.pathname === '/') {
       // Preload critical resources immediately
       preloadCriticalResources();
-      
-      // Use setTimeout to avoid blocking the main thread for component preloading
-      setTimeout(() => {
-        initializePreloading();
-      }, 1500); // Delay by 1.5 seconds to let home page load completely
     }
   }, [location]);
 
