@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabaseClient';
 
 interface ConsentPreferences {
   marketing_consent: boolean;
@@ -15,65 +14,21 @@ const ConsentForm = () => {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
-  const [clientIP, setClientIP] = useState<string>('');
 
   useEffect(() => {
-    // Get client IP and load preferences on component mount
+    // Load preferences on component mount
     const initializeConsent = async () => {
-      const ip = await getClientIP();
-      setClientIP(ip);
-      await loadExistingPreferences(ip);
+      await loadExistingPreferences();
     };
 
     initializeConsent();
   }, []);
 
-  const getClientIP = async (): Promise<string> => {
-    try {
-      const response = await fetch('https://api.ipify.org?format=json');
-      const data = await response.json();
-      return data.ip;
-    } catch (error) {
-      console.error('Error fetching IP:', error);
-      return '';
-    }
-  };
-
-  const loadExistingPreferences = async (ip: string) => {
-    if (!ip) return;
-
-    try {
-      const { data, error } = await supabase
-        .from('consent_preferences')
-        .select('*')
-        .eq('ip_address', ip)
-        .single();
-
-      if (error && error.code !== 'PGRST116') { // PGRST116 is "not found" error
-        throw error;
-      }
-
-      if (data) {
-        setPreferences({
-          marketing_consent: data.marketing_consent,
-          analytics_consent: data.analytics_consent,
-          functional_consent: data.functional_consent,
-        });
-        // Also update localStorage
-        localStorage.setItem('consentPreferences', JSON.stringify({
-          marketing_consent: data.marketing_consent,
-          analytics_consent: data.analytics_consent,
-          functional_consent: data.functional_consent,
-        }));
-      } else {
-        // Load from localStorage if no database record exists
-        const localPreferences = localStorage.getItem('consentPreferences');
-        if (localPreferences) {
-          setPreferences(JSON.parse(localPreferences));
-        }
-      }
-    } catch (error) {
-      console.error('Error loading preferences:', error);
+  const loadExistingPreferences = async () => {
+    // Load from localStorage
+    const localPreferences = localStorage.getItem('consentPreferences');
+    if (localPreferences) {
+      setPreferences(JSON.parse(localPreferences));
     }
   };
 
@@ -83,24 +38,10 @@ const ConsentForm = () => {
     setMessage('');
 
     try {
-      if (!clientIP) {
-        throw new Error('Unable to determine client IP');
-      }
-
-      const { error } = await supabase
-        .from('consent_preferences')
-        .upsert({
-          ip_address: clientIP,
-          ...preferences,
-          last_updated: new Date().toISOString(),
-        });
-
-      if (error) throw error;
-
-      // Store in localStorage for immediate access
+      // Store in localStorage
       localStorage.setItem('consentPreferences', JSON.stringify(preferences));
       
-      setMessage('Your consent preferences have been saved successfully.');
+      setMessage('Your consent preferences have been saved locally.');
       
     } catch (error) {
       console.error('Error saving preferences:', error);
