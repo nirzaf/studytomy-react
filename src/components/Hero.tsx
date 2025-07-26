@@ -196,11 +196,11 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
 };
 
 const KnowledgeParticle = ({ index }: { index: number }) => {
-  const formulas = ['π', '∑', '∫', '∆'];
+  const formulas = ['π', '∑', '∫', '∆', '∞', '√', 'α', 'β'];
   const content = formulas[index % formulas.length];
 
-  const radius = Math.random() * 200 + 150;
-  const angle = (index * 2 * Math.PI) / 6;
+  const radius = Math.random() * 180 + 140;
+  const angle = (index * 2 * Math.PI) / 8;
   const color = '#F77F00';
 
   return (
@@ -252,13 +252,15 @@ const FloatingEducationElement = ({ index }: { index: number }) => {
     { icon: BookOpen, color: '#F77F00' },
     { icon: GraduationCap, color: '#003049' },
     { icon: Brain, color: '#D62828' },
-    { icon: Lightbulb, color: '#FCBF49' }
+    { icon: Lightbulb, color: '#FCBF49' },
+    { icon: Globe2, color: '#003049' },
+    { icon: Users, color: '#D62828' }
   ];
 
   const element = elements[index % elements.length];
   const Icon = element.icon;
-  const angle = (index / 4) * Math.PI * 2;
-  const radius = 250 + Math.random() * 80;
+  const angle = (index / 6) * Math.PI * 2;
+  const radius = 220 + Math.random() * 100;
   const size = 32;
 
   return (
@@ -304,6 +306,112 @@ const FloatingEducationElement = ({ index }: { index: number }) => {
         color={element.color}
         style={{ opacity: 0.6 }}
       />
+    </motion.div>
+  );
+};
+
+// Floating subject badges
+const FloatingSubjectBadge = ({ index }: { index: number }) => {
+  const subjects = [
+    { name: 'Math', color: '#F77F00' },
+    { name: 'Science', color: '#003049' },
+    { name: 'English', color: '#D62828' },
+    { name: 'History', color: '#FCBF49' },
+    { name: 'Art', color: '#F77F00' },
+    { name: 'Music', color: '#003049' }
+  ];
+
+  const subject = subjects[index % subjects.length];
+  const angle = (index / 6) * Math.PI * 2;
+  const radius = 300 + Math.random() * 60;
+
+  return (
+    <motion.div
+      className="absolute flex items-center justify-center px-3 py-1 rounded-full text-xs font-medium select-none"
+      style={{
+        background: `linear-gradient(135deg, ${subject.color}08, ${subject.color}04)`,
+        border: `1px solid ${subject.color}20`,
+        color: subject.color,
+        backdropFilter: 'blur(2px)',
+        opacity: 0.6,
+      }}
+      initial={{
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius,
+        opacity: 0,
+        scale: 0.5,
+      }}
+      animate={{
+        x: [
+          Math.cos(angle) * radius,
+          Math.cos(angle + Math.PI * 0.1) * (radius + 25),
+          Math.cos(angle) * radius,
+        ],
+        y: [
+          Math.sin(angle) * radius,
+          Math.sin(angle + Math.PI * 0.1) * (radius + 25),
+          Math.sin(angle) * radius,
+        ],
+        opacity: [0, 0.5, 0],
+        scale: [0.5, 1, 0.5],
+      }}
+      transition={{
+        duration: 14 + Math.random() * 4,
+        repeat: Infinity,
+        delay: index * 2.5,
+        ease: "easeInOut",
+      }}
+    >
+      {subject.name}
+    </motion.div>
+  );
+};
+
+// Floating study tools
+const FloatingStudyTool = ({ index }: { index: number }) => {
+  const tools = ['📚', '✏️', '📐', '🔬', '🎨', '🎵'];
+  const tool = tools[index % tools.length];
+  const angle = (index / 6) * Math.PI * 2;
+  const radius = 350 + Math.random() * 50;
+
+  return (
+    <motion.div
+      className="absolute flex items-center justify-center text-2xl select-none"
+      style={{
+        width: '40px',
+        height: '40px',
+        opacity: 0.4,
+      }}
+      initial={{
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius,
+        opacity: 0,
+        scale: 0.3,
+        rotate: 0,
+      }}
+      animate={{
+        x: [
+          Math.cos(angle) * radius,
+          Math.cos(angle + Math.PI * 0.05) * (radius + 20),
+          Math.cos(angle) * radius,
+        ],
+        y: [
+          Math.sin(angle) * radius,
+          Math.sin(angle + Math.PI * 0.05) * (radius + 20),
+          Math.sin(angle) * radius,
+        ],
+        opacity: [0, 0.4, 0],
+        scale: [0.3, 1, 0.3],
+        rotate: [0, 360],
+      }}
+      transition={{
+        duration: 16 + Math.random() * 6,
+        repeat: Infinity,
+        delay: index * 3,
+        ease: "easeInOut",
+      }}
+    >
+      {tool}
     </motion.div>
   );
 };
@@ -505,6 +613,20 @@ const LogoAnimation = () => {
             <FloatingEducationElement key={i} index={i} />
           ))}
         </div>
+
+        {/* Subject badges */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <FloatingSubjectBadge key={i} index={i} />
+          ))}
+        </div>
+
+        {/* Study tools */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <FloatingStudyTool key={i} index={i} />
+          ))}
+        </div>
       </motion.div>
     </div>
   );
@@ -525,7 +647,9 @@ function EducationalElement3D({ initialPosition, index }: { initialPosition: [nu
     { type: 'target', color: '#F77F00', scale: [1.3, 0.2, 1.3] },
     { type: 'globe', color: '#003049', scale: [1.2, 1.2, 1.2] },
     { type: 'network', color: '#D62828', scale: [1.5, 0.5, 1.5] },
-    { type: 'knowledge', color: '#FCBF49', scale: [1, 1, 1] }
+    { type: 'knowledge', color: '#FCBF49', scale: [1, 1, 1] },
+    { type: 'pencil', color: '#F77F00', scale: [0.3, 1.8, 0.3] },
+    { type: 'calculator', color: '#003049', scale: [1, 0.2, 1.4] }
   ];
 
   const element = elementTypes[index % elementTypes.length];
@@ -604,6 +728,30 @@ function EducationalElement3D({ initialPosition, index }: { initialPosition: [nu
             </mesh>
           </>
         );
+      case 'pencil':
+        return (
+          <>
+            <cylinderGeometry args={[0.15, 0.15, 1.8, 8]} />
+            <meshStandardMaterial color={element.color} opacity={0.3} transparent />
+            {/* Pencil tip */}
+            <mesh position={[0, 0.9, 0]}>
+              <coneGeometry args={[0.15, 0.3, 8]} />
+              <meshStandardMaterial color="#333" opacity={0.4} transparent />
+            </mesh>
+          </>
+        );
+      case 'calculator':
+        return (
+          <>
+            <boxGeometry args={element.scale as [number, number, number]} />
+            <meshStandardMaterial color={element.color} opacity={0.3} transparent />
+            {/* Calculator screen */}
+            <mesh position={[0, 0.15, 0.5]}>
+              <boxGeometry args={[0.8, 0.1, 0.4]} />
+              <meshStandardMaterial color="#000" opacity={0.5} transparent />
+            </mesh>
+          </>
+        );
       default:
         return (
           <>
@@ -631,7 +779,9 @@ function EducationalElement3D({ initialPosition, index }: { initialPosition: [nu
 function Scene() {
   const initialPositions: [number, number, number][] = [
     [-6, 0.5, -6], [0, 0.5, 0], [6, 0.5, 6],
-    [-9, 0.5, 0], [9, 0.5, 0], [0, 0.5, 9]
+    [-9, 0.5, 0], [9, 0.5, 0], [0, 0.5, 9],
+    [-3, 0.5, -9], [3, 0.5, 9], [-12, 0.5, -3],
+    [12, 0.5, 3]
   ];
 
   return (
@@ -817,6 +967,12 @@ export default function Hero() {
         ))}
         {[...Array(12)].map((_, i) => (
           <FloatingEducationElement key={`education-${i}`} index={i} />
+        ))}
+        {[...Array(6)].map((_, i) => (
+          <FloatingSubjectBadge key={`subject-${i}`} index={i} />
+        ))}
+        {[...Array(6)].map((_, i) => (
+          <FloatingStudyTool key={`tool-${i}`} index={i} />
         ))}
       </div>
     </section>
