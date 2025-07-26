@@ -1,4 +1,4 @@
-import { GraduationCap, Users, Globe2 } from 'lucide-react';
+import { GraduationCap, Users, Globe2, BookOpen, Brain, Lightbulb } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import HeroButton from './HeroButton';
 import { useEffect, useState, useRef } from 'react';
@@ -9,7 +9,7 @@ import * as THREE from 'three';
 // Animation text content
 const heroTexts = [
   {
-    title: "Transform Your Learning Journey",
+    title: "Transform Your Learning",
     subtitle: "With Expert Tutors Worldwide",
     emptyLine: "‎"
   },
@@ -195,23 +195,80 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
   );
 };
 
-const Particle = ({ index }: { index: number }) => {
-  const radius = Math.random() * 100 + 50;
-  const angle = (index * 2 * Math.PI) / 12;
-  const size = Math.random() * 8 + 4; // Random size between 4-12px
+const KnowledgeParticle = ({ index }: { index: number }) => {
+  const formulas = ['π', '∑', '∫', '∆'];
+  const content = formulas[index % formulas.length];
+
+  const radius = Math.random() * 200 + 150;
+  const angle = (index * 2 * Math.PI) / 6;
+  const color = '#F77F00';
 
   return (
     <motion.div
-      className="absolute rounded-full"
+      className="absolute flex items-center justify-center font-semibold text-lg select-none"
+      style={{
+        width: '28px',
+        height: '28px',
+        background: `radial-gradient(circle, ${color}10, ${color}05)`,
+        border: `1px solid ${color}15`,
+        borderRadius: '50%',
+        color: color,
+        opacity: 0.4,
+      }}
+      initial={{
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius,
+        opacity: 0,
+        scale: 0.5,
+      }}
+      animate={{
+        x: [
+          Math.cos(angle) * radius,
+          Math.cos(angle + Math.PI * 0.1) * (radius + 15),
+          Math.cos(angle) * radius,
+        ],
+        y: [
+          Math.sin(angle) * radius,
+          Math.sin(angle + Math.PI * 0.1) * (radius + 15),
+          Math.sin(angle) * radius,
+        ],
+        opacity: [0, 0.3, 0],
+        scale: [0.5, 1, 0.5],
+      }}
+      transition={{
+        duration: 15 + Math.random() * 5,
+        repeat: Infinity,
+        delay: index * 3,
+        ease: "easeInOut",
+      }}
+    >
+      {content}
+    </motion.div>
+  );
+};
+
+const FloatingEducationElement = ({ index }: { index: number }) => {
+  const elements = [
+    { icon: BookOpen, color: '#F77F00' },
+    { icon: GraduationCap, color: '#003049' },
+    { icon: Brain, color: '#D62828' },
+    { icon: Lightbulb, color: '#FCBF49' }
+  ];
+
+  const element = elements[index % elements.length];
+  const Icon = element.icon;
+  const angle = (index / 4) * Math.PI * 2;
+  const radius = 250 + Math.random() * 80;
+  const size = 32;
+
+  return (
+    <motion.div
+      className="absolute flex items-center justify-center rounded-xl"
       style={{
         width: `${size}px`,
         height: `${size}px`,
-        background: 'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 40%, rgba(247, 127, 0, 0.05) 60%, rgba(255, 255, 255, 0.1) 100%)',
-        boxShadow: `
-          inset -2px -2px 4px rgba(0, 0, 0, 0.1),
-          inset 2px 2px 4px rgba(255, 255, 255, 0.5),
-          0 0 8px rgba(255, 255, 255, 0.3)
-        `,
+        background: `linear-gradient(135deg, ${element.color}08, ${element.color}04)`,
+        border: `1px solid ${element.color}20`,
         backdropFilter: 'blur(2px)',
       }}
       initial={{
@@ -223,84 +280,164 @@ const Particle = ({ index }: { index: number }) => {
       animate={{
         x: [
           Math.cos(angle) * radius,
-          Math.cos(angle + Math.PI) * (radius + 20),
+          Math.cos(angle + Math.PI * 0.2) * (radius + 20),
           Math.cos(angle) * radius,
         ],
         y: [
           Math.sin(angle) * radius,
-          Math.sin(angle + Math.PI) * (radius + 20),
+          Math.sin(angle + Math.PI * 0.2) * (radius + 20),
           Math.sin(angle) * radius,
         ],
-        opacity: [0, 1, 0],
+        opacity: [0, 0.4, 0],
         scale: [0.5, 1, 0.5],
         rotate: [0, 360],
       }}
       transition={{
-        duration: 4 + Math.random() * 2,
+        duration: 12 + Math.random() * 6,
         repeat: Infinity,
-        delay: index * 0.3,
+        delay: index * 2,
         ease: "easeInOut",
       }}
     >
-      {/* Bubble shine effect */}
-      <div
-        className="absolute w-[30%] h-[30%] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%)',
-          top: '20%',
-          left: '20%',
-          transform: 'rotate(-45deg)',
-        }}
+      <Icon
+        size={16}
+        color={element.color}
+        style={{ opacity: 0.6 }}
       />
     </motion.div>
   );
 };
 
-const FloatingBubble = ({ index }: { index: number }) => {
-  const size = Math.random() * 6 + 3; // Random size between 3-9px
+// Subtle network connection lines representing online learning
+const NetworkConnections = () => {
+  const connections = Array.from({ length: 3 }, (_, i) => ({
+    id: i,
+    startAngle: (i * Math.PI * 2) / 3,
+    endAngle: ((i + 1) * Math.PI * 2) / 3,
+    radius: 280,
+  }));
+
   return (
-    <motion.div
-      className="absolute rounded-full"
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        background: 'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 40%, rgba(247, 127, 0, 0.05) 60%, rgba(255, 255, 255, 0.1) 100%)',
-        boxShadow: `
-          inset -1px -1px 2px rgba(0, 0, 0, 0.1),
-          inset 1px 1px 2px rgba(255, 255, 255, 0.5),
-          0 0 4px rgba(255, 255, 255, 0.3)
-        `,
-      }}
-      initial={{
-        x: Math.random() * 200 - 100,
-        y: Math.random() * 200 - 100,
-        scale: 0,
-        opacity: 0,
-      }}
-      animate={{
-        x: Math.random() * 200 - 100,
-        y: Math.random() * 200 - 100,
-        scale: [0, 1, 0],
-        opacity: [0, 0.7, 0],
-        rotate: 360,
-      }}
-      transition={{
-        duration: 3 + Math.random() * 2,
-        repeat: Infinity,
-        delay: index * 0.5,
-        ease: "easeInOut",
-      }}
-    >
-      <div
-        className="absolute w-[30%] h-[30%] rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%)',
-          top: '20%',
-          left: '20%',
-          transform: 'rotate(-45deg)',
-        }}
-      />
-    </motion.div>
+    <div className="absolute inset-0 pointer-events-none">
+      {connections.map((connection) => {
+        const startX = Math.cos(connection.startAngle) * connection.radius;
+        const startY = Math.sin(connection.startAngle) * connection.radius;
+        const endX = Math.cos(connection.endAngle) * connection.radius;
+        const endY = Math.sin(connection.endAngle) * connection.radius;
+
+        return (
+          <motion.svg
+            key={connection.id}
+            className="absolute inset-0 w-full h-full"
+            style={{ zIndex: -1 }}
+          >
+            <motion.line
+              x1={`${50 + (startX / 600) * 100}%`}
+              y1={`${50 + (startY / 600) * 100}%`}
+              x2={`${50 + (endX / 600) * 100}%`}
+              y2={`${50 + (endY / 600) * 100}%`}
+              stroke="#F77F00"
+              strokeWidth="1"
+              strokeOpacity="0.15"
+              strokeDasharray="3,6"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{
+                pathLength: [0, 1, 0],
+                opacity: [0, 0.2, 0],
+                strokeDashoffset: [0, -9]
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                delay: connection.id * 2,
+                ease: "easeInOut"
+              }}
+            />
+          </motion.svg>
+        );
+      })}
+    </div>
+  );
+};
+
+// Floating book pages animation
+const FloatingBookPages = () => {
+  const pages = Array.from({ length: 4 }, (_, i) => ({
+    id: i,
+    angle: (i * Math.PI * 2) / 4,
+    radius: 250 + Math.random() * 50,
+    delay: i * 1.5,
+  }));
+
+  return (
+    <div className="absolute inset-0 pointer-events-none">
+      {pages.map((page) => {
+        const x = Math.cos(page.angle) * page.radius;
+        const y = Math.sin(page.angle) * page.radius;
+
+        return (
+          <motion.div
+            key={page.id}
+            className="absolute"
+            style={{
+              left: `calc(50% + ${x}px)`,
+              top: `calc(50% + ${y}px)`,
+              transform: 'translate(-50%, -50%)',
+            }}
+            initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
+            animate={{
+              opacity: [0, 0.7, 0.5, 0],
+              scale: [0.5, 1, 0.8, 0.5],
+              rotateY: [-90, 0, -45, -90],
+              x: [0, 20, -10, 0],
+              y: [0, -15, 10, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              delay: page.delay,
+              ease: "easeInOut",
+            }}
+          >
+            {/* Book page */}
+            <div
+              className="relative w-16 h-20 rounded-r-lg shadow-lg"
+              style={{
+                background: 'linear-gradient(135deg, #EAE2B7 0%, #F5F5DC 50%, #EAE2B7 100%)',
+                border: '1px solid #D4C5A9',
+                transformStyle: 'preserve-3d',
+              }}
+            >
+              {/* Page lines */}
+              <div className="absolute inset-2 space-y-1">
+                {Array.from({ length: 6 }).map((_, lineIndex) => (
+                  <motion.div
+                    key={lineIndex}
+                    className="h-0.5 bg-gray-400 rounded"
+                    style={{ width: `${80 - lineIndex * 5}%` }}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: [0, 1, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: page.delay + lineIndex * 0.2,
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Page corner fold */}
+              <div
+                className="absolute top-0 right-0 w-3 h-3 bg-gray-200 transform rotate-45 origin-bottom-left"
+                style={{
+                  clipPath: 'polygon(0 0, 100% 0, 0 100%)',
+                }}
+              />
+            </div>
+          </motion.div>
+        );
+      })}
+    </div>
   );
 };
 
@@ -347,10 +484,10 @@ const LogoAnimation = () => {
         animate={controls}
         initial={{ scale: 0.8, opacity: 0 }}
       >
-        {/* Particles */}
+        {/* Knowledge Particles */}
         <div className="absolute inset-0 flex items-center justify-center">
           {Array.from({ length: 15 }).map((_, i) => (
-            <Particle key={i} index={i} />
+            <KnowledgeParticle key={i} index={i} />
           ))}
         </div>
 
@@ -390,10 +527,10 @@ const LogoAnimation = () => {
           />
         </motion.div>
 
-        {/* Floating bubbles */}
+        {/* Floating educational elements */}
         <div className="absolute inset-0">
           {Array.from({ length: 8 }).map((_, i) => (
-            <FloatingBubble key={i} index={i} />
+            <FloatingEducationElement key={i} index={i} />
           ))}
         </div>
       </motion.div>
@@ -402,39 +539,31 @@ const LogoAnimation = () => {
 };
 
 
-function AnimatedBox({ initialPosition, index }: { initialPosition: [number, number, number]; index: number }) {
-  const meshRef = useRef<THREE.Mesh>(null);
+function EducationalElement3D({ initialPosition, index }: { initialPosition: [number, number, number]; index: number }) {
+  const meshRef = useRef<THREE.Group>(null);
   const [targetPosition, setTargetPosition] = useState(new THREE.Vector3(...initialPosition));
   const currentPosition = useRef(new THREE.Vector3(...initialPosition));
 
-  // Primary colors from the color palette
-  const primaryColors = [
-    "#003049", // Prussian Blue
-    "#D62828", // Cinnabar
-    "#F77F00", // Orange Peel
-    "#FCBF49", // Maize
-    "#EAE2B7"  // Bone
+  // Educational element types
+  const elementTypes = [
+    { type: 'book', color: '#F77F00', scale: [1.5, 0.3, 1] },
+    { type: 'graduation', color: '#003049', scale: [1, 1.5, 1] },
+    { type: 'brain', color: '#D62828', scale: [1.2, 1.2, 1.2] },
+    { type: 'lightbulb', color: '#FCBF49', scale: [0.8, 1.4, 0.8] },
+    { type: 'target', color: '#F77F00', scale: [1.3, 0.2, 1.3] },
+    { type: 'globe', color: '#003049', scale: [1.2, 1.2, 1.2] },
+    { type: 'network', color: '#D62828', scale: [1.5, 0.5, 1.5] },
+    { type: 'knowledge', color: '#FCBF49', scale: [1, 1, 1] }
   ];
 
-  // Edge colors (using a complementary color from the palette)
-  const edgeColors = [
-    "#FCBF49", // Maize
-    "#EAE2B7", // Bone
-    "#003049", // Prussian Blue
-    "#D62828", // Cinnabar
-    "#F77F00"  // Orange Peel
-  ];
-
-  // Select color based on index
-  const cubeColor = primaryColors[index % primaryColors.length];
-  const edgeColor = edgeColors[index % edgeColors.length];
+  const element = elementTypes[index % elementTypes.length];
 
   const getAdjacentIntersection = (current: THREE.Vector3) => {
     const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];
     const randomDirection = directions[Math.floor(Math.random() * directions.length)];
     return new THREE.Vector3(
       current.x + randomDirection[0] * 3,
-      0.5,
+      0.5 + Math.sin(Date.now() * 0.001 + index) * 0.5, // Floating motion
       current.z + randomDirection[1] * 3
     );
   };
@@ -445,27 +574,85 @@ function AnimatedBox({ initialPosition, index }: { initialPosition: [number, num
       newPosition.x = Math.max(-15, Math.min(15, newPosition.x));
       newPosition.z = Math.max(-15, Math.min(15, newPosition.z));
       setTargetPosition(newPosition);
-    }, 1000);
+    }, 2000 + Math.random() * 2000); // Varied timing
 
     return () => clearInterval(interval);
   }, []);
 
   useFrame((state, delta) => {
     if (meshRef.current) {
-      currentPosition.current.lerp(targetPosition, 0.1);
+      currentPosition.current.lerp(targetPosition, 0.05);
       meshRef.current.position.copy(currentPosition.current);
+
+      // Add gentle rotation and floating animation
+      meshRef.current.rotation.y += delta * 0.5;
+      meshRef.current.position.y = currentPosition.current.y + Math.sin(state.clock.elapsedTime * 2 + index) * 0.3;
+
+      // Pulsing scale effect
+      const pulseScale = 1 + Math.sin(state.clock.elapsedTime * 3 + index) * 0.1;
+      meshRef.current.scale.setScalar(pulseScale);
     }
   });
 
+  const renderElement = () => {
+    switch (element.type) {
+      case 'book':
+        return (
+          <>
+            <boxGeometry args={element.scale as [number, number, number]} />
+            <meshStandardMaterial color={element.color} opacity={0.8} transparent />
+            {/* Book pages effect */}
+            <mesh position={[0, 0.05, 0]}>
+              <boxGeometry args={[1.4, 0.1, 0.9]} />
+              <meshStandardMaterial color="#EAE2B7" opacity={0.9} transparent />
+            </mesh>
+          </>
+        );
+      case 'graduation':
+        return (
+          <>
+            <coneGeometry args={[0.8, 1.2, 4]} />
+            <meshStandardMaterial color={element.color} opacity={0.7} transparent />
+            {/* Cap top */}
+            <mesh position={[0, 0.8, 0]}>
+              <boxGeometry args={[1.2, 0.1, 1.2]} />
+              <meshStandardMaterial color={element.color} opacity={0.8} transparent />
+            </mesh>
+          </>
+        );
+      case 'lightbulb':
+        return (
+          <>
+            <sphereGeometry args={[0.6, 8, 6]} />
+            <meshStandardMaterial color={element.color} opacity={0.7} transparent emissive={element.color} emissiveIntensity={0.2} />
+            {/* Bulb base */}
+            <mesh position={[0, -0.5, 0]}>
+              <cylinderGeometry args={[0.3, 0.3, 0.4, 8]} />
+              <meshStandardMaterial color="#666" opacity={0.8} transparent />
+            </mesh>
+          </>
+        );
+      default:
+        return (
+          <>
+            <boxGeometry args={element.scale as [number, number, number]} />
+            <meshStandardMaterial color={element.color} opacity={0.7} transparent />
+          </>
+        );
+    }
+  };
+
   return (
-    <mesh ref={meshRef} position={initialPosition}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={cubeColor} opacity={0.6} transparent />
+    <group ref={meshRef} position={initialPosition}>
+      <mesh>
+        {renderElement()}
+      </mesh>
+      {/* Glowing outline effect */}
       <lineSegments>
-        <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(1, 1, 1)]} />
-        <lineBasicMaterial attach="material" color={edgeColor} linewidth={2} />
+        <edgesGeometry attach="geometry" args={[new THREE.BoxGeometry(...element.scale as [number, number, number])]} />
+        <lineBasicMaterial attach="material" color={element.color} linewidth={2} opacity={0.6} transparent />
       </lineSegments>
-    </mesh>
+    </group>
   );
 }
 
@@ -474,27 +661,56 @@ function Scene() {
     [-9, 0.5, -9], [-3, 0.5, -3], [0, 0.5, 0],
     [3, 0.5, 3], [9, 0.5, 9], [-6, 0.5, 6],
     [6, 0.5, -6], [-12, 0.5, 0], [12, 0.5, 0],
-    [0, 0.5, 12]
+    [0, 0.5, 12], [-6, 0.5, -12], [6, 0.5, 12]
   ];
 
   return (
     <>
       <OrbitControls enableZoom={false} enablePan={false} />
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
+      <ambientLight intensity={0.6} />
+      <pointLight position={[10, 10, 10]} intensity={0.8} />
+      <pointLight position={[-10, 5, -10]} intensity={0.4} color="#F77F00" />
+      <spotLight position={[0, 20, 0]} intensity={0.5} angle={0.3} penumbra={1} color="#FCBF49" />
+
+      {/* Enhanced grid representing learning pathways */}
       <Grid
         renderOrder={-1}
         position={[0, 0, 0]}
         infiniteGrid
         cellSize={1}
-        cellThickness={0.5}
+        cellThickness={0.6}
         sectionSize={3}
-        sectionThickness={1}
-        sectionColor={[0, 0.19, 0.29]} // Prussian Blue (#003049) in RGB format
-        fadeDistance={50}
+        sectionThickness={1.2}
+        sectionColor="#003049" // Prussian Blue
+        fadeDistance={60}
       />
+
+      {/* Connection lines between educational elements */}
+      {initialPositions.map((position, index) => {
+        if (index < initialPositions.length - 1) {
+          const nextPosition = initialPositions[index + 1];
+          return (
+            <line key={`connection-${index}`}>
+              <bufferGeometry attach="geometry">
+                <bufferAttribute
+                  attach="attributes-position"
+                  count={2}
+                  array={new Float32Array([
+                    position[0], position[1], position[2],
+                    nextPosition[0], nextPosition[1], nextPosition[2]
+                  ])}
+                  itemSize={3}
+                />
+              </bufferGeometry>
+              <lineBasicMaterial attach="material" color="#F77F00" opacity={0.3} transparent />
+            </line>
+          );
+        }
+        return null;
+      })}
+
       {initialPositions.map((position, index) => (
-        <AnimatedBox key={index} initialPosition={position} index={index} />
+        <EducationalElement3D key={index} initialPosition={position} index={index} />
       ))}
     </>
   );
@@ -510,6 +726,23 @@ export default function Hero() {
           <Scene />
         </Canvas>
       </div>
+
+      {/* Dynamic learning pulse overlay */}
+      <motion.div
+        className="absolute inset-0 -z-10"
+        style={{
+          background: 'radial-gradient(circle at 50% 50%, rgba(247, 127, 0, 0.1) 0%, rgba(252, 191, 73, 0.05) 30%, transparent 60%)',
+        }}
+        animate={{
+          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 pt-16 pb-20">
@@ -602,12 +835,18 @@ export default function Hero() {
       </div>
 
       {/* Particles */}
+      {/* Network connections for online learning theme */}
+      <NetworkConnections />
+
+      {/* Floating book pages for interactive learning */}
+      <FloatingBookPages />
+
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(12)].map((_, i) => (
-          <Particle key={i} index={i} />
+        {[...Array(16)].map((_, i) => (
+          <KnowledgeParticle key={i} index={i} />
         ))}
-        {[...Array(20)].map((_, i) => (
-          <FloatingBubble key={i} index={i} />
+        {[...Array(12)].map((_, i) => (
+          <FloatingEducationElement key={`education-${i}`} index={i} />
         ))}
       </div>
     </section>
