@@ -360,13 +360,13 @@ const NetworkConnections = () => {
   );
 };
 
-// Floating book pages animation
+// Subtle floating book pages animation
 const FloatingBookPages = () => {
-  const pages = Array.from({ length: 4 }, (_, i) => ({
+  const pages = Array.from({ length: 2 }, (_, i) => ({
     id: i,
-    angle: (i * Math.PI * 2) / 4,
-    radius: 250 + Math.random() * 50,
-    delay: i * 1.5,
+    angle: (i * Math.PI),
+    radius: 320,
+    delay: i * 4,
   }));
 
   return (
@@ -384,56 +384,28 @@ const FloatingBookPages = () => {
               top: `calc(50% + ${y}px)`,
               transform: 'translate(-50%, -50%)',
             }}
-            initial={{ opacity: 0, scale: 0.5, rotateY: -90 }}
+            initial={{ opacity: 0, scale: 0.3 }}
             animate={{
-              opacity: [0, 0.7, 0.5, 0],
-              scale: [0.5, 1, 0.8, 0.5],
-              rotateY: [-90, 0, -45, -90],
-              x: [0, 20, -10, 0],
-              y: [0, -15, 10, 0],
+              opacity: [0, 0.3, 0],
+              scale: [0.3, 1, 0.3],
+              y: [0, -10, 0],
             }}
             transition={{
-              duration: 8,
+              duration: 12,
               repeat: Infinity,
               delay: page.delay,
               ease: "easeInOut",
             }}
           >
-            {/* Book page */}
+            {/* Simplified book page */}
             <div
-              className="relative w-16 h-20 rounded-r-lg shadow-lg"
+              className="relative w-8 h-10 rounded-r-md"
               style={{
-                background: 'linear-gradient(135deg, #EAE2B7 0%, #F5F5DC 50%, #EAE2B7 100%)',
-                border: '1px solid #D4C5A9',
-                transformStyle: 'preserve-3d',
+                background: 'linear-gradient(135deg, #EAE2B708, #F5F5DC05)',
+                border: '1px solid #D4C5A915',
+                opacity: 0.6,
               }}
-            >
-              {/* Page lines */}
-              <div className="absolute inset-2 space-y-1">
-                {Array.from({ length: 6 }).map((_, lineIndex) => (
-                  <motion.div
-                    key={lineIndex}
-                    className="h-0.5 bg-gray-400 rounded"
-                    style={{ width: `${80 - lineIndex * 5}%` }}
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: [0, 1, 0] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      delay: page.delay + lineIndex * 0.2,
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Page corner fold */}
-              <div
-                className="absolute top-0 right-0 w-3 h-3 bg-gray-200 transform rotate-45 origin-bottom-left"
-                style={{
-                  clipPath: 'polygon(0 0, 100% 0, 0 100%)',
-                }}
-              />
-            </div>
+            />
           </motion.div>
         );
       })}
@@ -581,15 +553,15 @@ function EducationalElement3D({ initialPosition, index }: { initialPosition: [nu
 
   useFrame((state, delta) => {
     if (meshRef.current) {
-      currentPosition.current.lerp(targetPosition, 0.05);
+      currentPosition.current.lerp(targetPosition, 0.02);
       meshRef.current.position.copy(currentPosition.current);
 
-      // Add gentle rotation and floating animation
-      meshRef.current.rotation.y += delta * 0.5;
-      meshRef.current.position.y = currentPosition.current.y + Math.sin(state.clock.elapsedTime * 2 + index) * 0.3;
+      // Very gentle rotation and floating animation
+      meshRef.current.rotation.y += delta * 0.2;
+      meshRef.current.position.y = currentPosition.current.y + Math.sin(state.clock.elapsedTime * 1 + index) * 0.15;
 
-      // Pulsing scale effect
-      const pulseScale = 1 + Math.sin(state.clock.elapsedTime * 3 + index) * 0.1;
+      // Subtle pulsing scale effect
+      const pulseScale = 1 + Math.sin(state.clock.elapsedTime * 2 + index) * 0.05;
       meshRef.current.scale.setScalar(pulseScale);
     }
   });
@@ -600,11 +572,11 @@ function EducationalElement3D({ initialPosition, index }: { initialPosition: [nu
         return (
           <>
             <boxGeometry args={element.scale as [number, number, number]} />
-            <meshStandardMaterial color={element.color} opacity={0.8} transparent />
+            <meshStandardMaterial color={element.color} opacity={0.3} transparent />
             {/* Book pages effect */}
             <mesh position={[0, 0.05, 0]}>
               <boxGeometry args={[1.4, 0.1, 0.9]} />
-              <meshStandardMaterial color="#EAE2B7" opacity={0.9} transparent />
+              <meshStandardMaterial color="#EAE2B7" opacity={0.4} transparent />
             </mesh>
           </>
         );
@@ -658,10 +630,8 @@ function EducationalElement3D({ initialPosition, index }: { initialPosition: [nu
 
 function Scene() {
   const initialPositions: [number, number, number][] = [
-    [-9, 0.5, -9], [-3, 0.5, -3], [0, 0.5, 0],
-    [3, 0.5, 3], [9, 0.5, 9], [-6, 0.5, 6],
-    [6, 0.5, -6], [-12, 0.5, 0], [12, 0.5, 0],
-    [0, 0.5, 12], [-6, 0.5, -12], [6, 0.5, 12]
+    [-6, 0.5, -6], [0, 0.5, 0], [6, 0.5, 6],
+    [-9, 0.5, 0], [9, 0.5, 0], [0, 0.5, 9]
   ];
 
   return (
