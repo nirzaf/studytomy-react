@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import CookieConsent from './components/common/CookieConsent';
 import { trackPageView } from './lib/trackingEvents';
 import { HelmetProvider } from 'react-helmet-async';
-import { preloadComponents, preloadCriticalResources, preloadComponent, getCachedModule } from './utils/preloader';
+import { preloadCriticalResources, preloadComponent, getCachedModule } from './utils/preloader';
 
 // Lazy load page components with preloading capability
 const Home = lazy(() => import('./pages/Home'));
@@ -34,16 +34,7 @@ const pageComponents = [
   { name: 'NotFound', loader: () => import('./pages/NotFound'), priority: 'low' as const }
 ];
 
-/**
- * Initiates preloading of all page components
- */
-const initializePreloading = () => {
-  preloadComponents(pageComponents, {
-    delay: 150,
-    maxConcurrent: 3,
-    useIdleCallback: true
-  });
-};
+
 
 // Loading component
 const PageLoader = () => (
@@ -144,7 +135,7 @@ const App = () => {
   return (
     <HelmetProvider>
       <Router>
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen overflow-x-hidden">
           <PageTracker /> 
           <Navbar />
           <main className="flex-grow mt-16">

@@ -8,10 +8,11 @@
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
+    @apply overflow-x-hidden;
   }
   
   body {
-    @apply antialiased text-gray-900 bg-white;
+    @apply antialiased text-gray-900 bg-white overflow-x-hidden;
   }
 }
 
