@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
+import {
   Menu, X, Sparkles, Phone, Mail, Globe, MessageCircle,
   Users, MessageSquare, School, BookOpen
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { FloatingEducationalIcon, KnowledgeParticles } from './animations/EducationalAnimations';
 
 const navItems = [
   { 
@@ -187,17 +188,42 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full z-50">
+      {/* Educational Background Animations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Floating Educational Icons */}
+        <FloatingEducationalIcon
+          index={0}
+          variant="minimal"
+          size="small"
+          opacity={0.15}
+          duration={20}
+        />
+        <FloatingEducationalIcon
+          index={2}
+          variant="minimal"
+          size="small"
+          opacity={0.12}
+          duration={25}
+        />
+
+        {/* Knowledge Particles */}
+        <KnowledgeParticles
+          count={4}
+          variant="minimal"
+        />
+      </div>
+
       {/* Main glass panel background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/80 backdrop-blur-xl border-b border-white/20"></div>
-      
+
       {/* Top reflection */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-20%,rgba(255,255,255,0.7),transparent_50%)]"></div>
-      
+
       {/* Left to right shine effect */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-1/2 h-[120%] -top-[10%] -left-[25%] bg-gradient-to-r from-transparent via-white/40 to-transparent rotate-12 animate-shine"></div>
       </div>
-      
+
       {/* Bottom edge highlight */}
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
 

@@ -5,6 +5,7 @@ import '../styles/subject-icons-consolidated-part3.css';
 import '../styles/subject-icons-consolidated-part4.css';
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from 'react';
 import SubjectsOnDemand from './SubjectsOnDemand';
+import { EducationalBackground, KnowledgeParticles } from './animations/EducationalAnimations';
 
 // Subject data (ensure iconClass matches CSS and React conditional rendering)
 const subjects = [
@@ -61,12 +62,20 @@ const Subjects = () => {
 
   return (
     <>
-      <section className="py-20 bg-gradient-to-b from-night/5 via-white to-celeste/10 relative overflow-hidden">
-        {/* Background elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-celeste/10 blur-3xl"></div>
-          <div className="absolute -bottom-32 -left-20 w-80 h-80 rounded-full bg-celeste/5 blur-3xl"></div>
-        </div>
+      <EducationalBackground variant="default" intensity="medium">
+        <section className="py-20 bg-gradient-to-b from-night/5 via-white to-celeste/10 relative overflow-hidden">
+          {/* Background elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-celeste/10 blur-3xl"></div>
+            <div className="absolute -bottom-32 -left-20 w-80 h-80 rounded-full bg-celeste/5 blur-3xl"></div>
+
+            {/* Additional Subject-Specific Knowledge Particles */}
+            <KnowledgeParticles
+              count={8}
+              variant="mathematical"
+              symbols={['∑', '∫', 'π', '∆', '√', 'α', 'β', 'θ', '∞', 'λ']}
+            />
+          </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
@@ -486,7 +495,8 @@ const Subjects = () => {
             <p>Additional subjects available upon request. <a href="/contact" className="text-gray-700 hover:text-celeste"><strong>Contact us</strong></a> for more information.</p>
           </div>
         </div>
-      </section>
+        </section>
+      </EducationalBackground>
       <SubjectsOnDemand />
     </>
   );

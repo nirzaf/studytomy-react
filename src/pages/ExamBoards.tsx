@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import ExamBoardsList from '../components/examboards/ExamBoardsList';
+import { EducationalBackground } from '../components/animations/EducationalAnimations';
 
 const ExamBoards = () => {
   useEffect(() => {
@@ -7,9 +8,11 @@ const ExamBoards = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 pb-16">
-      <ExamBoardsList />
-    </div>
+    <EducationalBackground variant="scientific" intensity="medium">
+      <div className="min-h-screen bg-gray-50 pt-24 pb-16">
+        <ExamBoardsList />
+      </div>
+    </EducationalBackground>
   );
 };
 

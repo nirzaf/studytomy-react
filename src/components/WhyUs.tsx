@@ -3,6 +3,8 @@ import { Shield, Users, UserCircle, Clock, GraduationCap, FileText, Star, Chevro
 import { useState } from 'react';
 import '../styles/WhyUs.css';
 import { EdexcelLogo, CambridgeLogo, IBLogo, AQALogo } from './ExamBoardLogos';
+import { EducationalBackground, FloatingAchievements } from './animations/EducationalAnimations';
+import { EducationalProgress } from './animations/EducationalExtras';
 
 interface CardProps {
   icon: React.ReactNode;
@@ -113,8 +115,14 @@ const cards: CardProps[] = [
 
 export default function WhyUs() {
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <EducationalBackground variant="default" intensity="medium">
+      <section className="py-24 bg-gray-50 relative">
+        {/* Floating Achievement Indicators */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <FloatingAchievements count={6} variant="celebration" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -225,6 +233,7 @@ export default function WhyUs() {
           <p className="mt-4 text-gray-500">No obligation, experience the difference firsthand</p>
         </motion.div>
       </div>
-    </section>
+      </section>
+    </EducationalBackground>
   );
 }

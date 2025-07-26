@@ -1,10 +1,37 @@
 import { Link } from 'react-router-dom';
 import WhatsAppButton from './WhatsAppButton';
+import { FloatingStudyTools } from './animations/EducationalExtras';
+import { KnowledgeParticles } from './animations/EducationalAnimations';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 py-4 min-h-[120px] relative">
-      <div className="container mx-auto px-4">
+    <footer className="bg-gray-800 py-4 min-h-[120px] relative overflow-hidden">
+      {/* Educational Background Animations */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Floating Study Tools */}
+        <FloatingStudyTools count={4} variant="mixed" />
+
+        {/* Knowledge Particles */}
+        <KnowledgeParticles count={6} variant="minimal" />
+      </div>
+
+      {/* Educational Quote Animation */}
+      <motion.div
+        className="absolute top-2 left-4 text-xs text-gray-500 opacity-30 select-none"
+        animate={{
+          opacity: [0.2, 0.4, 0.2],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        "Education is the most powerful weapon which you can use to change the world"
+      </motion.div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center space-y-2 text-white">
           <p className="min-h-[24px]">
             <Link to="/consent-preferences" className="hover:text-blue-400 transition-colors duration-200">

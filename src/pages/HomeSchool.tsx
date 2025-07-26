@@ -4,6 +4,7 @@ import HomeSchoolBenefits from '../components/homeschool/HomeSchoolBenefits';
 import HomeSchoolContent from '../components/homeschool/HomeSchoolContent';
 import HomeSchoolJoin from '../components/homeschool/HomeSchoolJoin';
 import ParentsCorner from '../components/homeschool/ParentsCorner';
+import { EducationalBackground } from '../components/animations/EducationalAnimations';
 
 const HomeSchool = () => {
   useEffect(() => {
@@ -11,13 +12,15 @@ const HomeSchool = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      <HomeSchoolHero />
-      <HomeSchoolBenefits />
-      <HomeSchoolContent />
-      <ParentsCorner />
-      <HomeSchoolJoin />
-    </div>
+    <EducationalBackground variant="artistic" intensity="medium">
+      <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+        <HomeSchoolHero />
+        <HomeSchoolBenefits />
+        <HomeSchoolContent />
+        <ParentsCorner />
+        <HomeSchoolJoin />
+      </div>
+    </EducationalBackground>
   );
 };
 

@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../styles/testimonials.css';
+import { FloatingAchievements, FloatingEducationalIcon } from './animations/EducationalAnimations';
 
 interface Testimonial {
   id: number;
@@ -109,7 +110,30 @@ export default function Testimonials() {
       }}
     >
       <div className="absolute inset-0 bg-black/80" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      {/* Educational Success Animations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Floating Achievement Icons */}
+        <FloatingAchievements count={8} variant="celebration" />
+
+        {/* Floating Educational Icons for Success */}
+        <FloatingEducationalIcon
+          index={1}
+          variant="vibrant"
+          size="medium"
+          opacity={0.3}
+          duration={18}
+        />
+        <FloatingEducationalIcon
+          index={3}
+          variant="vibrant"
+          size="medium"
+          opacity={0.25}
+          duration={22}
+        />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="mb-12">
           <p className="text-orange-400 font-medium mb-2">Testimonial</p>
           <h2 className="text-3xl font-bold text-white">What they say</h2>
