@@ -588,13 +588,7 @@ const Terms = () => {
       <h1 className="text-3xl font-bold mb-6 mt-16">Studytomy Terms of Use</h1>
       <p className="text-gray-600 mb-8">Last updated: 02 June 2024</p>
 
-      {/* Debug section - remove this after testing */}
-      <div className="mb-8 p-4 bg-yellow-100 border border-yellow-400 rounded">
-        <h3 className="font-bold mb-2">Debug Info:</h3>
-        <p>Total sections: {tableOfContents.length}</p>
-        <p>Additional sections: {additionalSections.length}</p>
-        <p>Current URL: {window.location.href}</p>
-      </div>
+
 
       <AgreementSection />
       <TableOfContents items={tableOfContents} />
