@@ -44,6 +44,303 @@ const additionalSections = [
     distribute any content without explicit permission.`
   },
   {
+    id: 'user-generated',
+    title: '5. USER GENERATED CONTRIBUTIONS',
+    content: `User Generated Contributions:
+
+    Types of Contributions:
+    • Reviews and testimonials
+    • Forum posts and comments
+    • Study group discussions
+    • Shared study materials
+    • Profile information and photos
+    • Feedback and suggestions
+
+    Content Standards:
+    • Must be original and accurate
+    • Must not violate any laws or regulations
+    • Must not infringe on third-party rights
+    • Must be appropriate for an educational environment
+    • Must not contain harmful, offensive, or inappropriate content
+
+    Our Rights:
+    • We may review, edit, or remove any user content
+    • We may use your content to improve our services
+    • We may display your content on our platform
+    • We may share your content with other users as appropriate
+
+    Your Responsibilities:
+    • Ensure you have rights to share the content
+    • Maintain appropriate and respectful language
+    • Report any inappropriate content you encounter
+    • Respect intellectual property rights of others`
+  },
+  {
+    id: 'contribution-license',
+    title: '6. CONTRIBUTION LICENSE',
+    content: `By submitting content to our platform, you grant us a worldwide, non-exclusive, royalty-free license to:
+
+    License Scope:
+    • Use, reproduce, and distribute your content
+    • Modify and adapt your content for our services
+    • Display your content on our platform and related services
+    • Use your content for marketing and promotional purposes
+    • License your content to other users for educational purposes
+
+    License Duration:
+    • The license remains in effect while your content is on our platform
+    • The license continues for archived or cached versions
+    • You may revoke the license by removing your content
+    • We may retain copies for legal and administrative purposes
+
+    Your Rights:
+    • You retain ownership of your original content
+    • You can use your content elsewhere
+    • You can modify or remove your content
+    • You can revoke the license at any time
+
+    Third-Party Use:
+    • Other users may view and use your content
+    • Users must respect your intellectual property rights
+    • We are not responsible for third-party misuse of your content`
+  },
+  {
+    id: 'guidelines',
+    title: '7. GUIDELINES FOR REVIEWS',
+    content: `Review Guidelines:
+
+    Review Standards:
+    • Reviews must be based on actual experiences
+    • Reviews must be honest and accurate
+    • Reviews must not contain false or misleading information
+    • Reviews must be respectful and constructive
+    • Reviews must not violate our community standards
+
+    Prohibited Content:
+    • Personal attacks or harassment
+    • Spam or promotional content
+    • Offensive or inappropriate language
+    • False or fraudulent reviews
+    • Reviews that violate privacy rights
+    • Reviews that promote illegal activities
+
+    Review Moderation:
+    • We review all submissions before publication
+    • We may edit or reject inappropriate reviews
+    • We may remove reviews that violate our guidelines
+    • We may suspend users who repeatedly violate guidelines
+    • We encourage constructive feedback and improvement suggestions
+
+    Review Benefits:
+    • Help other students make informed decisions
+    • Provide valuable feedback to tutors
+    • Contribute to platform improvement
+    • Build a supportive learning community`
+  },
+  {
+    id: 'social-media',
+    title: '8. SOCIAL MEDIA',
+    content: `Social Media Integration:
+
+    Platform Integration:
+    • We may integrate with various social media platforms
+    • You may share content from our platform to social media
+    • Social media features are subject to their respective terms
+    • We are not responsible for social media platform policies
+
+    Content Sharing:
+    • You may share your own content and experiences
+    • Respect privacy and confidentiality when sharing
+    • Do not share personal information of other users
+    • Follow social media platform guidelines
+    • Use appropriate hashtags and mentions
+
+    Social Media Conduct:
+    • Maintain professional behavior
+    • Represent our platform positively
+    • Do not engage in harassment or bullying
+    • Report inappropriate social media behavior
+    • Respect intellectual property rights
+
+    Our Social Media Presence:
+    • We maintain official social media accounts
+    • We may share user-generated content (with permission)
+    • We respond to social media inquiries and feedback
+    • We use social media for educational content and updates`
+  },
+  {
+    id: 'submissions',
+    title: '9. SUBMISSIONS',
+    content: `Content Submissions:
+
+    Submission Types:
+    • Study materials and resources
+    • Questions and answers
+    • Study tips and strategies
+    • Educational content and explanations
+    • Feedback and suggestions
+    • Bug reports and technical issues
+
+    Submission Requirements:
+    • Content must be original or properly attributed
+    • Content must be accurate and educational
+    • Content must not violate copyright or other rights
+    • Content must be appropriate for all ages
+    • Content must not contain personal information
+
+    Review Process:
+    • All submissions are reviewed before publication
+    • We may edit submissions for clarity or accuracy
+    • We may reject submissions that don't meet our standards
+    • We provide feedback on rejected submissions
+    • We may request revisions or improvements
+
+    Submission Rights:
+    • You retain ownership of your submissions
+    • You grant us license to use and distribute your submissions
+    • You can modify or remove your submissions
+    • You can request removal of your submissions`
+  },
+  {
+    id: 'third-party',
+    title: '10. THIRD-PARTY WEBSITES AND CONTENT',
+    content: `Third-Party Content and Links:
+
+    External Links:
+    • Our platform may contain links to third-party websites
+    • We do not endorse or control third-party content
+    • Third-party websites have their own terms and policies
+    • We are not responsible for third-party website content
+    • Use third-party websites at your own risk
+
+    Third-Party Services:
+    • We may integrate third-party services (payment, analytics, etc.)
+    • Third-party services have their own privacy policies
+    • We share data with third parties as outlined in our Privacy Policy
+    • Third-party services may collect additional information
+    • We are not responsible for third-party service actions
+
+    Content Attribution:
+    • We may display third-party content with proper attribution
+    • Third-party content is clearly marked
+    • We respect intellectual property rights of third parties
+    • We respond to legitimate takedown requests
+    • We maintain appropriate licensing for third-party content
+
+    User Responsibility:
+    • Verify third-party content before relying on it
+    • Read third-party terms and privacy policies
+    • Report inappropriate third-party content
+    • Use third-party services responsibly
+    • Respect third-party intellectual property rights`
+  },
+  {
+    id: 'advertisers',
+    title: '11. ADVERTISERS',
+    content: `Advertising and Sponsorship:
+
+    Advertising Content:
+    • We may display advertisements on our platform
+    • Advertisements are clearly marked as such
+    • We do not endorse advertised products or services
+    • Advertisements are subject to our content standards
+    • We may use targeted advertising based on user preferences
+
+    Sponsored Content:
+    • We may publish sponsored educational content
+    • Sponsored content is clearly identified
+    • Sponsored content meets our educational standards
+    • We maintain editorial control over sponsored content
+    • Sponsored content is relevant to our users
+
+    Advertising Standards:
+    • Advertisements must be appropriate for educational audiences
+    • Advertisements must not be misleading or deceptive
+    • Advertisements must comply with applicable laws
+    • Advertisements must not contain inappropriate content
+    • We review advertisements before publication
+
+    User Privacy:
+    • We protect user privacy in advertising
+    • We do not share personal information with advertisers
+    • Users can opt out of targeted advertising
+    • We use anonymized data for advertising purposes
+    • We comply with privacy regulations in advertising`
+  },
+  {
+    id: 'site-management',
+    title: '12. SITE MANAGEMENT',
+    content: `Platform Management and Administration:
+
+    Content Moderation:
+    • We actively monitor platform content
+    • We remove inappropriate or harmful content
+    • We enforce our community guidelines
+    • We may suspend or ban users who violate terms
+    • We respond to user reports and complaints
+
+    Technical Maintenance:
+    • We perform regular platform maintenance
+    • We may temporarily suspend services for updates
+    • We provide advance notice of scheduled maintenance
+    • We work to minimize service disruptions
+    • We maintain backup systems and data protection
+
+    Security Measures:
+    • We implement security measures to protect user data
+    • We monitor for security threats and vulnerabilities
+    • We respond to security incidents promptly
+    • We maintain secure payment processing
+    • We comply with security best practices
+
+    Quality Assurance:
+    • We monitor platform performance and reliability
+    • We collect user feedback for improvements
+    • We conduct regular quality assessments
+    • We work with tutors to maintain service quality
+    • We continuously improve our platform features`
+  },
+  {
+    id: 'privacy-policy',
+    title: '13. PRIVACY POLICY',
+    content: `Privacy and Data Protection:
+
+    Data Collection:
+    • We collect information you provide directly to us
+    • We collect information about your use of our services
+    • We collect information from third-party sources
+    • We collect technical information about your device
+    • We collect information about your interactions with our platform
+
+    Data Use:
+    • We use your data to provide our services
+    • We use your data to communicate with you
+    • We use your data to improve our services
+    • We use your data for security and fraud prevention
+    • We use your data to comply with legal obligations
+
+    Data Sharing:
+    • We share data with tutors and educational partners
+    • We share data with service providers and contractors
+    • We share data when required by law
+    • We share data with your consent
+    • We do not sell your personal information
+
+    Data Protection:
+    • We implement appropriate security measures
+    • We limit access to your personal information
+    • We train our staff on data protection
+    • We regularly review our security practices
+    • We comply with applicable data protection laws
+
+    Your Rights:
+    • You can access and update your personal information
+    • You can request deletion of your data
+    • You can opt out of certain data uses
+    • You can request data portability
+    • You can lodge complaints with supervisory authorities`
+  },
+  {
     id: 'limitations',
     title: '14. LIMITATIONS OF LIABILITY',
     content: `LIMITATIONS OF LIABILITY:
