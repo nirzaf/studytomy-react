@@ -35,13 +35,63 @@ const additionalSections = [
     id: 'services',
     title: '1. OUR SERVICES',
     content: `We provide online tutoring services through our platform. Our services include one-on-one tutoring sessions, 
-    study materials, and educational resources.`
+    study materials, and educational resources.
+
+    Service Description:
+    • Online tutoring sessions with qualified educators
+    • Access to comprehensive study materials
+    • Interactive learning tools and resources
+    • Progress tracking and assessment
+    • Support for various educational curricula
+
+    Service Availability:
+    • Services are available 24/7 through our platform
+    • Sessions can be scheduled at your convenience
+    • Technical support is provided during business hours
+    • Emergency support available for critical issues
+
+    Service Quality:
+    • All tutors are qualified and experienced
+    • Regular quality assessments and feedback
+    • Continuous improvement of our services
+    • Student satisfaction monitoring and response`
   },
   {
     id: 'intellectual-property',
     title: '2. INTELLECTUAL PROPERTY RIGHTS',
     content: `All content on our platform is protected by intellectual property rights. Users may not copy, reproduce, or 
-    distribute any content without explicit permission.`
+    distribute any content without explicit permission.
+
+    Our Intellectual Property:
+    • Platform design and functionality
+    • Educational content and materials
+    • Brand names, logos, and trademarks
+    • Software and technical implementations
+    • Original educational methodologies
+
+    User Content Rights:
+    • Users retain ownership of their original content
+    • Users grant us license to use their content
+    • We may modify content for platform compatibility
+    • Users can remove their content at any time
+
+    Third-Party Content:
+    • Some materials may be licensed from third parties
+    • Users must respect third-party copyrights
+    • We are not responsible for third-party content violations
+    • Users should report potential copyright issues
+
+    Permitted Uses:
+    • Personal educational purposes
+    • Sharing within study groups
+    • Academic research and citation
+    • Non-commercial educational activities
+
+    Prohibited Uses:
+    • Commercial distribution without permission
+    • Modification of our proprietary content
+    • Reverse engineering of our platform
+    • Unauthorized copying or reproduction`
   },
   {
     id: 'user-generated',
@@ -97,12 +147,7 @@ const additionalSections = [
     • You retain ownership of your original content
     • You can use your content elsewhere
     • You can modify or remove your content
-    • You can revoke the license at any time
-
-    Third-Party Use:
-    • Other users may view and use your content
-    • Users must respect your intellectual property rights
-    • We are not responsible for third-party misuse of your content`
+    • You can revoke the license at any time`
   },
   {
     id: 'guidelines',
@@ -110,26 +155,23 @@ const additionalSections = [
     content: `Review Guidelines:
 
     Review Standards:
-    • Reviews must be based on actual experiences
-    • Reviews must be honest and accurate
+    • Reviews must be based on actual experience
+    • Reviews should be constructive and helpful
     • Reviews must not contain false or misleading information
-    • Reviews must be respectful and constructive
-    • Reviews must not violate our community standards
+    • Reviews should focus on educational value and service quality
 
-    Prohibited Content:
+    Prohibited Review Content:
     • Personal attacks or harassment
+    • False or misleading statements
     • Spam or promotional content
     • Offensive or inappropriate language
-    • False or fraudulent reviews
-    • Reviews that violate privacy rights
-    • Reviews that promote illegal activities
+    • Violation of privacy or confidentiality
 
     Review Moderation:
-    • We review all submissions before publication
-    • We may edit or reject inappropriate reviews
-    • We may remove reviews that violate our guidelines
-    • We may suspend users who repeatedly violate guidelines
-    • We encourage constructive feedback and improvement suggestions
+    • We reserve the right to moderate all reviews
+    • Inappropriate reviews may be removed
+    • Users may be asked to revise reviews
+    • Repeated violations may result in account restrictions
 
     Review Benefits:
     • Help other students make informed decisions
@@ -143,30 +185,28 @@ const additionalSections = [
     content: `Social Media Integration:
 
     Platform Integration:
-    • We may integrate with various social media platforms
-    • You may share content from our platform to social media
-    • Social media features are subject to their respective terms
-    • We are not responsible for social media platform policies
+    • Our platform may integrate with social media services
+    • You can share your learning achievements
+    • Connect with other students and tutors
+    • Participate in educational discussions
+
+    Social Media Guidelines:
+    • Maintain appropriate and respectful behavior
+    • Protect your privacy and personal information
+    • Respect intellectual property rights
+    • Follow platform-specific terms of service
 
     Content Sharing:
-    • You may share your own content and experiences
-    • Respect privacy and confidentiality when sharing
-    • Do not share personal information of other users
-    • Follow social media platform guidelines
-    • Use appropriate hashtags and mentions
+    • You control what you share on social media
+    • We may provide sharing options for achievements
+    • Social media posts are subject to their platform rules
+    • We are not responsible for social media content
 
-    Social Media Conduct:
-    • Maintain professional behavior
-    • Represent our platform positively
-    • Do not engage in harassment or bullying
-    • Report inappropriate social media behavior
-    • Respect intellectual property rights
-
-    Our Social Media Presence:
-    • We maintain official social media accounts
-    • We may share user-generated content (with permission)
-    • We respond to social media inquiries and feedback
-    • We use social media for educational content and updates`
+    Privacy Considerations:
+    • Be mindful of what you share publicly
+    • Consider the privacy of other users
+    • Review privacy settings on social media platforms
+    • Report inappropriate social media behavior`
   },
   {
     id: 'submissions',
@@ -176,63 +216,56 @@ const additionalSections = [
     Submission Types:
     • Study materials and resources
     • Questions and answers
-    • Study tips and strategies
-    • Educational content and explanations
     • Feedback and suggestions
-    • Bug reports and technical issues
+    • Creative educational content
+    • Technical improvements
 
     Submission Requirements:
-    • Content must be original or properly attributed
-    • Content must be accurate and educational
-    • Content must not violate copyright or other rights
-    • Content must be appropriate for all ages
-    • Content must not contain personal information
+    • Content must be original or properly licensed
+    • Submissions must be relevant to education
+    • Content must meet quality standards
+    • Submissions must comply with our policies
 
     Review Process:
-    • All submissions are reviewed before publication
-    • We may edit submissions for clarity or accuracy
-    • We may reject submissions that don't meet our standards
-    • We provide feedback on rejected submissions
-    • We may request revisions or improvements
+    • All submissions are reviewed for quality
+    • Content may be edited for clarity or accuracy
+    • Inappropriate submissions will be rejected
+    • We may request modifications to submissions
 
     Submission Rights:
     • You retain ownership of your submissions
-    • You grant us license to use and distribute your submissions
-    • You can modify or remove your submissions
-    • You can request removal of your submissions`
+    • We may use submissions to improve our platform
+    • Submissions may be shared with other users
+    • You can withdraw submissions at any time`
   },
   {
     id: 'third-party',
     title: '10. THIRD-PARTY WEBSITES AND CONTENT',
-    content: `Third-Party Content and Links:
+    content: `Third-Party Integration:
 
     External Links:
-    • Our platform may contain links to third-party websites
-    • We do not endorse or control third-party content
-    • Third-party websites have their own terms and policies
-    • We are not responsible for third-party website content
-    • Use third-party websites at your own risk
+    • Our platform may contain links to external websites
+    • We do not endorse third-party content
+    • External sites have their own terms and policies
+    • We are not responsible for external content
 
     Third-Party Services:
-    • We may integrate third-party services (payment, analytics, etc.)
-    • Third-party services have their own privacy policies
-    • We share data with third parties as outlined in our Privacy Policy
-    • Third-party services may collect additional information
-    • We are not responsible for third-party service actions
-
-    Content Attribution:
-    • We may display third-party content with proper attribution
-    • Third-party content is clearly marked
-    • We respect intellectual property rights of third parties
-    • We respond to legitimate takedown requests
-    • We maintain appropriate licensing for third-party content
+    • We may use third-party services for functionality
+    • Payment processing and security services
+    • Analytics and performance monitoring
+    • Customer support and communication tools
 
     User Responsibility:
-    • Verify third-party content before relying on it
-    • Read third-party terms and privacy policies
-    • Report inappropriate third-party content
-    • Use third-party services responsibly
-    • Respect third-party intellectual property rights`
+    • Review third-party terms and policies
+    • Exercise caution when visiting external sites
+    • Report broken or inappropriate external links
+    • Understand that external sites are not under our control
+
+    Our Limitations:
+    • We cannot guarantee third-party service availability
+    • We are not liable for third-party actions
+    • Third-party services may have different privacy policies
+    • We will notify users of significant third-party changes`
   },
   {
     id: 'advertisers',
@@ -240,65 +273,57 @@ const additionalSections = [
     content: `Advertising and Sponsorship:
 
     Advertising Content:
-    • We may display advertisements on our platform
+    • Our platform may display advertisements
     • Advertisements are clearly marked as such
     • We do not endorse advertised products or services
     • Advertisements are subject to our content standards
-    • We may use targeted advertising based on user preferences
 
-    Sponsored Content:
-    • We may publish sponsored educational content
-    • Sponsored content is clearly identified
-    • Sponsored content meets our educational standards
-    • We maintain editorial control over sponsored content
-    • Sponsored content is relevant to our users
-
-    Advertising Standards:
+    Advertiser Guidelines:
     • Advertisements must be appropriate for educational audiences
     • Advertisements must not be misleading or deceptive
     • Advertisements must comply with applicable laws
-    • Advertisements must not contain inappropriate content
-    • We review advertisements before publication
+    • We reserve the right to reject or remove advertisements
 
-    User Privacy:
-    • We protect user privacy in advertising
-    • We do not share personal information with advertisers
-    • Users can opt out of targeted advertising
-    • We use anonymized data for advertising purposes
-    • We comply with privacy regulations in advertising`
+    User Experience:
+    • Advertisements should not interfere with learning
+    • We limit the frequency and placement of ads
+    • Users can report inappropriate advertisements
+    • We strive to maintain a balanced user experience
+
+    Revenue and Transparency:
+    • Advertising helps support our free services
+    • We are transparent about our advertising practices
+    • User data is not sold to advertisers
+    • We maintain editorial independence from advertisers`
   },
   {
     id: 'site-management',
     title: '12. SITE MANAGEMENT',
-    content: `Platform Management and Administration:
+    content: `Platform Management:
 
     Content Moderation:
     • We actively monitor platform content
-    • We remove inappropriate or harmful content
-    • We enforce our community guidelines
-    • We may suspend or ban users who violate terms
-    • We respond to user reports and complaints
+    • Inappropriate content is removed promptly
+    • Users can report problematic content
+    • We maintain community standards and guidelines
 
     Technical Maintenance:
-    • We perform regular platform maintenance
-    • We may temporarily suspend services for updates
-    • We provide advance notice of scheduled maintenance
-    • We work to minimize service disruptions
-    • We maintain backup systems and data protection
+    • Regular platform updates and improvements
+    • Security patches and vulnerability fixes
+    • Performance optimization and monitoring
+    • Backup and disaster recovery procedures
 
-    Security Measures:
-    • We implement security measures to protect user data
-    • We monitor for security threats and vulnerabilities
-    • We respond to security incidents promptly
-    • We maintain secure payment processing
-    • We comply with security best practices
+    User Support:
+    • Technical support for platform issues
+    • Help with account and billing questions
+    • Guidance on platform features and usage
+    • Response to user feedback and suggestions
 
-    Quality Assurance:
-    • We monitor platform performance and reliability
-    • We collect user feedback for improvements
-    • We conduct regular quality assessments
-    • We work with tutors to maintain service quality
-    • We continuously improve our platform features`
+    Policy Enforcement:
+    • Consistent application of our terms and policies
+    • Fair treatment of all users
+    • Transparent decision-making processes
+    • Appeals process for policy violations`
   },
   {
     id: 'privacy-policy',
@@ -306,97 +331,99 @@ const additionalSections = [
     content: `Privacy and Data Protection:
 
     Data Collection:
-    • We collect information you provide directly to us
-    • We collect information about your use of our services
-    • We collect information from third-party sources
-    • We collect technical information about your device
-    • We collect information about your interactions with our platform
+    • We collect information necessary for service provision
+    • Personal information is collected with consent
+    • Usage data helps improve our services
+    • We minimize data collection to essential information
 
-    Data Use:
-    • We use your data to provide our services
-    • We use your data to communicate with you
-    • We use your data to improve our services
-    • We use your data for security and fraud prevention
-    • We use your data to comply with legal obligations
+    Data Usage:
+    • Personal data is used to provide our services
+    • We do not sell or rent user data
+    • Data may be used for service improvement
+    • We respect user privacy preferences
 
-    Data Sharing:
-    • We share data with tutors and educational partners
-    • We share data with service providers and contractors
-    • We share data when required by law
-    • We share data with your consent
-    • We do not sell your personal information
+    Data Security:
+    • Industry-standard security measures
+    • Regular security audits and updates
+    • Limited access to personal information
+    • Encryption of sensitive data
 
-    Data Protection:
-    • We implement appropriate security measures
-    • We limit access to your personal information
-    • We train our staff on data protection
-    • We regularly review our security practices
-    • We comply with applicable data protection laws
+    User Rights:
+    • Access to your personal information
+    • Correction of inaccurate data
+    • Deletion of your data upon request
+    • Control over marketing communications
 
-    Your Rights:
-    • You can access and update your personal information
-    • You can request deletion of your data
-    • You can opt out of certain data uses
-    • You can request data portability
-    • You can lodge complaints with supervisory authorities`
+    Data Retention:
+    • Data is retained as long as necessary
+    • Inactive accounts may be deleted
+    • Legal requirements may extend retention
+    • Users can request data deletion`
   },
   {
     id: 'limitations',
     title: '14. LIMITATIONS OF LIABILITY',
-    content: `LIMITATIONS OF LIABILITY:
-    TO THE MAXIMUM EXTENT PERMITTED BY LAW:
+    content: `Liability Limitations:
 
-    • We will not be liable for any indirect, incidental, special, consequential, or punitive damages, including:
-      - Lost profits or revenues
-      - Lost data or content
-      - Lost business opportunities
-      - Personal injury or property damage
-      - Any other losses
+    Service Limitations:
+    • We provide services "as is" without warranties
+    • We are not liable for service interruptions
+    • Technical issues may affect service availability
+    • We strive for high service quality but cannot guarantee perfection
 
-    Monetary Limits:
-    • Our total liability shall not exceed the greater of:
-      - The amount paid by you to us in the 12 months prior to the claim
-      - $100 AUD
+    User Responsibility:
+    • Users are responsible for their own learning outcomes
+    • We are not liable for academic performance
+    • Users must verify information and materials
+    • We encourage critical thinking and verification
 
-    Exceptions:
-    These limitations do not apply to:
-    • Damages arising from death or personal injury
-    • Fraud or willful misconduct
-    • Any other liability that cannot be excluded by law
+    Financial Limitations:
+    • Our liability is limited to amounts paid for services
+    • We are not liable for indirect or consequential damages
+    • Claims must be made within specified timeframes
+    • Some jurisdictions may not allow liability limitations
 
-    Time Limitation:
-    • Any claim must be brought within one (1) year of the incident`
+    Force Majeure:
+    • We are not liable for events beyond our control
+    • Natural disasters and technical failures
+    • Government actions and regulatory changes
+    • Third-party service disruptions`
   },
   {
     id: 'indemnification',
     title: '15. INDEMNIFICATION',
-    content: `You agree to indemnify, defend, and hold harmless Studytomy and its affiliates from and against any claims, 
-    liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising 
-    out of or relating to:
+    content: `User Indemnification:
 
-    • Your violation of these Terms
-    • Your use of the Services
-    • Your Content or submissions
-    • Your interaction with other users
-    • Your violation of any third party rights
-    • Your violation of any laws, rules, or regulations
+    Your Obligations:
+    • You agree to defend and indemnify us
+    • Protection against claims arising from your use
+    • Coverage for violations of these terms
+    • Responsibility for your content and actions
 
-    Scope of Indemnification:
-    • Includes all direct and indirect damages
-    • Covers all reasonable legal fees and costs
-    • Applies to all related investigations and defenses
-    • Extends to our officers, directors, employees, and agents
+    Covered Claims:
+    • Violations of intellectual property rights
+    • Breach of these terms and conditions
+    • Misuse of our platform or services
+    • Harm caused to other users or third parties
 
-    Our Rights:
-    • We may assume exclusive defense and control of any matter
-    • You agree to cooperate with our defense of such claims
-    • We may settle any claim without your prior written consent`
+    Defense and Settlement:
+    • We have the right to control defense
+    • You must cooperate with our defense
+    • We may settle claims on reasonable terms
+    • You are responsible for settlement costs
+
+    Limitations:
+    • Indemnification does not cover our negligence
+    • We must provide prompt notice of claims
+    • You have the right to participate in defense
+    • Indemnification survives termination of service`
   },
   {
     id: 'user-data',
     title: '16. USER DATA',
-    content: `Data Collection and Use:
-    • We collect and process your personal data in accordance with our Privacy Policy
+    content: `Data Management:
+
+    Data Ownership:
     • You retain ownership of your data
     • We maintain security measures to protect your data
     • We perform regular backups but are not responsible for data loss
@@ -411,7 +438,19 @@ const additionalSections = [
     • We retain data as outlined in our Privacy Policy
     • We may delete inactive account data after 180 days
     • We comply with data protection regulations
-    • You can request data deletion subject to legal requirements`
+    • You can request data deletion subject to legal requirements
+
+    Data Security:
+    • Encryption of sensitive data
+    • Secure transmission protocols
+    • Regular security assessments
+    • Incident response procedures
+
+    Data Access:
+    • You can access your data through our platform
+    • Export functionality for your information
+    • Data portability options
+    • Transparent data handling practices`
   },
   {
     id: 'electronic',
@@ -436,7 +475,13 @@ const additionalSections = [
     • Electronic communications satisfy legal requirements
     • You can retain copies for your records
     • You can withdraw marketing consent at any time
-    • Essential service communications cannot be opted out`
+    • Essential service communications cannot be opted out
+
+    Electronic Signatures:
+    • Digital agreements are legally binding
+    • Click acceptance constitutes valid consent
+    • Electronic records are admissible in legal proceedings
+    • You acknowledge the validity of electronic transactions`
   },
   {
     id: 'miscellaneous',
@@ -464,19 +509,92 @@ const additionalSections = [
     Entire Agreement:
     • These Terms constitute the complete agreement
     • Supersedes all prior agreements and understandings
-    • Cannot be modified except in writing by us`
+    • Cannot be modified except in writing by us
+
+    Governing Law:
+    • These terms are governed by applicable law
+    • Disputes will be resolved in appropriate jurisdictions
+    • International users are subject to local laws`
   }
 ];
 
 const Terms = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Debug: Check if all sections are rendered with correct IDs
+    setTimeout(() => {
+      console.log('Checking rendered sections...');
+      tableOfContents.forEach(item => {
+        const element = document.getElementById(item.id);
+        console.log(`Section ${item.id}:`, element ? 'Found' : 'NOT FOUND');
+      });
+    }, 1000);
+    
+    // Add smooth scrolling behavior
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
+        e.preventDefault();
+        e.stopPropagation(); // Prevent event bubbling
+        
+        const id = target.getAttribute('href')?.substring(1);
+        console.log('Anchor clicked:', id); // Debug log
+        
+        if (id) {
+          // Wait a bit for the DOM to be ready
+          setTimeout(() => {
+            const element = document.getElementById(id);
+            console.log('Element found:', element); // Debug log
+            
+            if (element) {
+              // Add offset for fixed header
+              const headerHeight = 80; // Approximate header height
+              const elementPosition = element.offsetTop - headerHeight;
+              
+              console.log('Scrolling to position:', elementPosition); // Debug log
+              
+              window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+              });
+              
+              // Add visual feedback
+              element.style.scrollMarginTop = `${headerHeight}px`;
+              
+              // Update URL hash without triggering navigation
+              const currentHash = window.location.hash;
+              const newHash = `#${id}`;
+              if (currentHash !== newHash) {
+                window.history.replaceState(null, '', newHash);
+              }
+            } else {
+              console.warn('Element not found for ID:', id); // Debug warning
+            }
+          }, 100);
+        }
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    
+    return () => {
+      document.removeEventListener('click', handleAnchorClick);
+    };
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-4 py-8" style={{ scrollBehavior: 'smooth' }}>
       <h1 className="text-3xl font-bold mb-6 mt-16">Studytomy Terms of Use</h1>
       <p className="text-gray-600 mb-8">Last updated: 02 June 2024</p>
+
+      {/* Debug section - remove this after testing */}
+      <div className="mb-8 p-4 bg-yellow-100 border border-yellow-400 rounded">
+        <h3 className="font-bold mb-2">Debug Info:</h3>
+        <p>Total sections: {tableOfContents.length}</p>
+        <p>Additional sections: {additionalSections.length}</p>
+        <p>Current URL: {window.location.href}</p>
+      </div>
 
       <AgreementSection />
       <TableOfContents items={tableOfContents} />

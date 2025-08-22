@@ -117,3 +117,18 @@
   animation: float3 3s ease-in-out infinite;
   animation-delay: 0.4s;
 }
+
+/* Smooth scrolling for anchor navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure proper spacing for anchor navigation with fixed header */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Smooth transitions for better user experience */
+* {
+  transition: scroll-behavior 0.3s ease;
+}
