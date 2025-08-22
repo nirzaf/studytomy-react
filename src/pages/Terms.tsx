@@ -44,6 +44,104 @@ const additionalSections = [
     distribute any content without explicit permission.`
   },
   {
+    id: 'user-generated',
+    title: '5. USER GENERATED CONTRIBUTIONS',
+    content: `The Services may provide you with the opportunity to create, submit, post, display, transmit, perform, publish,
+    distribute, or broadcast content and materials to us or on the Services, including but not limited to text, writings,
+    video, audio, photographs, graphics, comments, suggestions, or personal information or other material (collectively,
+    "Contributions"). Contributions may be viewable by other users of the Services and through third-party websites. As such,
+    any Contributions you transmit may be treated as non-confidential and non-proprietary. When you create or make available
+    any Contributions, you thereby represent and warrant that...`
+  },
+  {
+    id: 'contribution-license',
+    title: '6. CONTRIBUTION LICENSE',
+    content: `By posting your Contributions to any part of the Services, you automatically grant, and you represent and warrant
+    that you have the right to grant, to us an unrestricted, unlimited, irrevocable, perpetual, non-exclusive, transferable,
+    royalty-free, fully-paid, worldwide right, and license to host, use, copy, reproduce, disclose, sell, resell, publish,
+    broad-cast, retitle, archive, store, cache, publicly perform, publicly display, reformat, translate, transmit, excerpt
+    (in whole or in part), and distribute such Contributions (including, without limitation, your image and voice) for any
+    purpose, commercial, advertising, or otherwise, and to prepare derivative works of, or incorporate into other works,
+    such Contributions, and grant and authorize sublicenses of the foregoing.`
+  },
+  {
+    id: 'guidelines',
+    title: '7. GUIDELINES FOR REVIEWS',
+    content: `We may provide you areas on the Services to leave reviews or ratings. When posting a review, you must comply with
+    the following criteria: (1) you should have firsthand experience with the person/entity being reviewed; (2) your reviews
+    should not contain offensive profanity, or abusive, racist, offensive, or hate language; (3) your reviews should not
+    contain discriminatory references based on religion, race, gender, national origin, age, marital status, sexual
+    orientation, or disability; (4) your reviews should not contain references to illegal activity; (5) you should not be
+    affiliated with competitors if posting negative reviews; (6) you should not make any conclusions as to the legality
+    of conduct; (7) you may not post any false or misleading statements; and (8) you may not organize a campaign encouraging
+    others to post reviews, whether positive or negative.`
+  },
+  {
+    id: 'social-media',
+    title: '8. SOCIAL MEDIA',
+    content: `As part of the functionality of the Services, you may link your account with online accounts you have with
+    third-party service providers (each such account, a “Third-Party Account”) by either: (1) providing your Third-Party
+    Account login information through the Services; or (2) allowing us to access your Third-Party Account, as is permitted
+    under the applicable terms and conditions that govern your use of each Third-Party Account. You represent and warrant
+    that you are entitled to disclose your Third-Party Account login information to us and/or grant us access to your
+    Third-Party Account, without breach by you of any of the terms and conditions that govern your use of the applicable
+    Third-Party Account, and without obligating us to pay any fees or making us subject to any usage limitations imposed
+    by the third-party service provider of the Third-Party Account.`
+  },
+  {
+    id: 'submissions',
+    title: '9. SUBMISSIONS',
+    content: `You acknowledge and agree that any questions, comments, suggestions, ideas, feedback, or other information
+    regarding the Services ("Submissions") provided by you to us are non-confidential and shall become our sole property.
+    We shall own exclusive rights, including all intellectual property rights, and shall be entitled to the unrestricted
+    use and dissemination of these Submissions for any lawful purpose, commercial or otherwise, without acknowledgment or
+    compensation to you.`
+  },
+  {
+    id: 'third-party',
+    title: '10. THIRD-PARTY WEBSITES AND CONTENT',
+    content: `The Services may contain (or you may be sent via the Site) links to other websites ("Third-Party Websites")
+    as well as articles, photographs, text, graphics, pictures, designs, music, sound, video, information, applications,
+    software, and other content or items belonging to or originating from third parties ("Third-Party Content"). Such
+    Third-Party Websites and Third-Party Content are not investigated, monitored, or checked for accuracy, appropriateness,
+    or completeness by us, and we are not responsible for any Third-Party Websites accessed through the Services or any
+    Third-Party Content posted on, available through, or installed from the Services, including the content, accuracy,
+    offensiveness, opinions, reliability, privacy practices, or other policies of or contained in the Third-Party Websites
+    or the Third-Party Content.`
+  },
+  {
+    id: 'advertisers',
+    title: '11. ADVERTISERS',
+    content: `We allow advertisers to display their advertisements and other information in certain areas of the Services,
+    such as sidebar advertisements or banner advertisements. If you are an advertiser, you shall take full responsibility
+    for any advertisements you place on the Services and any services provided on the Services or products sold through
+    those advertisements. Further, as an advertiser, you warrant and represent that you possess all rights and authority
+    to place advertisements on the Services, including, but not limited to, intellectual property rights, publicity rights,
+    and contractual rights.`
+  },
+  {
+    id: 'site-management',
+    title: '12. SITE MANAGEMENT',
+    content: `We reserve the right, but not the obligation, to: (1) monitor the Services for violations of these Legal Terms;
+    (2) take appropriate legal action against anyone who, in our sole discretion, violates the law or these Legal Terms,
+    including without limitation, reporting such user to law enforcement authorities; (3) in our sole discretion and without
+    limitation, refuse, restrict access to, limit the availability of, or disable (to the extent technologically feasible)
+    any of your Contributions or any portion thereof; (4) in our sole discretion and without limitation, notice, or liability,
+    to remove from the Services or otherwise disable all files and content that are excessive in size or are in any way
+    burdensome to our systems; and (5) otherwise manage the Services in a manner designed to protect our rights and property
+    and to facilitate the proper functioning of the Services.`
+  },
+  {
+    id: 'privacy-policy',
+    title: '13. PRIVACY POLICY',
+    content: `We care about data privacy and security. Please review our Privacy Policy:
+    [link to your privacy policy]. By using the Services, you agree to be bound by our Privacy Policy, which is incorporated
+    into these Legal Terms. Please be advised the Services are hosted in Australia. If you access the Services from any other
+    region of the world with laws or other requirements governing personal data collection, use, or disclosure that differ
+    from applicable laws in Australia, then through your continued use of the Services, you are transferring your data to
+    Australia, and you expressly consent to have your data transferred to and processed in Australia.`
+  },
+  {
     id: 'limitations',
     title: '14. LIMITATIONS OF LIABILITY',
     content: `LIMITATIONS OF LIABILITY:
