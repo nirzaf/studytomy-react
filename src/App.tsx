@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CookieConsent from './components/common/CookieConsent';
 import { trackPageView } from './lib/trackingEvents';
-import { HelmetProvider } from 'react-helmet-async';
 import { preloadCriticalResources, preloadComponent, getCachedModule } from './utils/preloader';
 
 // Lazy load page components with preloading capability
@@ -133,35 +132,33 @@ const App = () => {
   }, []);
 
   return (
-    <HelmetProvider>
-      <Router>
-        <div className="flex flex-col min-h-screen overflow-x-hidden">
-          <PageTracker /> 
-          <Navbar />
-          <main className="flex-grow mt-16">
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/exam-boards" element={<ExamBoards />} />
-                <Route path="/home-school" element={<HomeSchool />} />
-                <Route path="/career" element={<Career />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/book-trial" element={<BookTrial />} />
-                <Route path="/consent-preferences" element={<ConsentForm />} />
-                <Route path="/terms" element={<Terms />} />
-                
-                {/* Catch all undefined routes and show 404 page */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </main>
-          <Footer />
-          <CookieConsent />
-          <GTMNoScript />
-        </div>
-      </Router>
-    </HelmetProvider>
+    <Router>
+      <div className="flex flex-col min-h-screen overflow-x-hidden">
+        <PageTracker />
+        <Navbar />
+        <main className="flex-grow mt-16">
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/exam-boards" element={<ExamBoards />} />
+              <Route path="/home-school" element={<HomeSchool />} />
+              <Route path="/career" element={<Career />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/book-trial" element={<BookTrial />} />
+              <Route path="/consent-preferences" element={<ConsentForm />} />
+              <Route path="/terms" element={<Terms />} />
+
+              {/* Catch all undefined routes and show 404 page */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
+        <CookieConsent />
+        <GTMNoScript />
+      </div>
+    </Router>
   );
 };
 

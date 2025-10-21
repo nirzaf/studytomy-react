@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async';
 
 interface SchemaMarkupProps {
   type: 'Organization' | 'EducationalOrganization' | 'Course' | 'Service' | 'WebPage' | 'FAQPage';
@@ -108,11 +107,10 @@ const SchemaMarkup = ({ type, data }: SchemaMarkupProps) => {
   }
 
   return (
-    <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(schema)}
-      </script>
-    </Helmet>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
   );
 };
 
