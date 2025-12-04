@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Shield, Users, UserCircle, Clock, GraduationCap, FileText, Star, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
-import '../styles/WhyUs.css';
 import { EdexcelLogo, CambridgeLogo, IBLogo, AQALogo } from './ExamBoardLogos';
 import { EducationalBackground, FloatingAchievements } from './animations/EducationalAnimations';
 import { EducationalProgress } from './animations/EducationalExtras';

@@ -1,5 +1,5 @@
 import { GraduationCap, Users, Globe2, BookOpen, Brain, Lightbulb } from 'lucide-react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, type Variants } from 'framer-motion';
 import HeroButton from './HeroButton';
 import { useEffect, useState, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -46,7 +46,7 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
     return () => clearInterval(interval);
   }, [texts.length]);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {
       opacity: 0,
       rotateX: -20,
@@ -58,7 +58,7 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: [0.43, 0.13, 0.23, 0.96],
+        ease: [0.43, 0.13, 0.23, 0.96] as const,
         staggerChildren: 0.08
       }
     },
@@ -70,7 +70,7 @@ const AnimatedText = ({ texts }: { texts: typeof heroTexts }) => {
     }
   };
 
-  const wordVariants = {
+  const wordVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 20,
@@ -597,14 +597,18 @@ const LogoAnimation = () => {
             transition: { duration: 0.3 }
           }}
         >
-          <motion.img
-            src="https://ik.imagekit.io/quadrate/Studytomy/Studytomy_Logobook-02.png?updatedAt=1731862139834"
-            alt="Studytomy Logo"
+          <div
             className="relative mx-auto w-[200px] mb-16 drop-shadow-2xl"
             style={{
               filter: "drop-shadow(0 0 10px rgba(255,255,255,0.2))",
             }}
-          />
+          >
+            <img
+              src="https://ik.imagekit.io/quadrate/Studytomy/Studytomy_Logobook-02.png?updatedAt=1731862139834"
+              alt="Studytomy Logo"
+              className="w-full"
+            />
+          </div>
         </motion.div>
 
         {/* Floating educational elements */}
@@ -814,12 +818,13 @@ function Scene() {
               <bufferGeometry attach="geometry">
                 <bufferAttribute
                   attach="attributes-position"
-                  count={2}
-                  array={new Float32Array([
-                    position[0], position[1], position[2],
-                    nextPosition[0], nextPosition[1], nextPosition[2]
-                  ])}
-                  itemSize={3}
+                  args={[
+                    new Float32Array([
+                      position[0], position[1], position[2],
+                      nextPosition[0], nextPosition[1], nextPosition[2]
+                    ]),
+                    3
+                  ]}
                 />
               </bufferGeometry>
               <lineBasicMaterial attach="material" color="#F77F00" opacity={0.3} transparent />

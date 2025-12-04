@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface ResponsiveImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+type MotionSafeImageProps = Omit<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  'onAnimationStart' | 'onAnimationEnd' | 'onAnimationIteration'
+>;
+
+interface ResponsiveImageProps extends MotionSafeImageProps {
   src: string;
   alt: string;
   className?: string;
@@ -81,7 +86,7 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
       style={{ aspectRatio }}
     >
       <AnimatePresence mode="wait">
-        <motion.picture
+        <motion.div
           key={currentSrc}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -89,32 +94,32 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
           transition={{ duration: 0.3 }}
           className="w-full h-full"
         >
-          {/* WebP sources for modern browsers */}
-          <source
-            srcSet={`
+          <picture>
+            {/* WebP sources for modern browsers */}
+            <source
+              srcSet={`
               ${responsiveSrcs.small} 400w,
               ${responsiveSrcs.medium} 800w,
               ${responsiveSrcs.large} 1200w
             `}
-            sizes={sizes}
-            type="image/webp"
-          />
-          
-          {/* Fallback for browsers that don't support WebP */}
-          <motion.img
-            src={currentSrc}
-            alt={alt}
-            loading={priority ? 'eager' : 'lazy'}
-            decoding="async"
-            className={`w-full h-full object-cover ${
-              !isLoaded ? 'blur-sm scale-105' : ''
-            }`}
-            width={width}
-            height={height}
-            onError={handleError}
-            {...props}
-          />
-        </motion.picture>
+              sizes={sizes}
+              type="image/webp"
+            />
+            
+            {/* Fallback for browsers that don't support WebP */}
+            <img
+              src={currentSrc}
+              alt={alt}
+              loading={priority ? 'eager' : 'lazy'}
+              decoding="async"
+              className={`w-full h-full object-cover ${!isLoaded ? 'blur-sm scale-105' : ''}`}
+              width={width}
+              height={height}
+              onError={handleError}
+              {...props}
+            />
+          </picture>
+        </motion.div>
       </AnimatePresence>
       
       {/* Loading placeholder */}

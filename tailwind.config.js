@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx}',
+    './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/app/**/*.{js,ts,jsx,tsx}'
+  ],
   theme: {
     extend: {
       colors: {
@@ -93,12 +97,4 @@ export default {
     },
   },
   plugins: [],
-  variants: {
-    extend: {
-      display: ['group-hover'],
-      visibility: ['group-hover'],
-      opacity: ['group-hover'],
-      transform: ['group-hover'],
-    },
-  },
 };

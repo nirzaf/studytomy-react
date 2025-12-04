@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Transition } from 'framer-motion';
 import { BookOpen, GraduationCap, Brain, Lightbulb, Star, Sparkles } from 'lucide-react';
 import { educationalColors } from './animations/EducationalAnimations';
 
@@ -175,18 +175,18 @@ export const EducationalSectionTransition: React.FC<{
     }
   };
 
-  const getTransition = () => {
+  const getTransition = (): Transition => {
     switch (variant) {
       case 'bounce':
         return {
-          type: "spring",
+          type: 'spring',
           stiffness: 400,
           damping: 10,
           delay
         };
       case 'spring':
         return {
-          type: "spring",
+          type: 'spring',
           stiffness: 100,
           damping: 15,
           delay
@@ -194,7 +194,7 @@ export const EducationalSectionTransition: React.FC<{
       default:
         return {
           duration: 0.6,
-          ease: "easeOut",
+          ease: 'easeOut',
           delay
         };
     }

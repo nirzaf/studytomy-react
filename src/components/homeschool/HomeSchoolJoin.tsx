@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const HomeSchoolJoin = () => {
   return (
@@ -19,7 +19,7 @@ const HomeSchoolJoin = () => {
             personalized education they deserve.
           </p>
           <Link
-            to="/contact"
+            href="/contact"
             className="inline-block bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl"
           >
             Get Started Now

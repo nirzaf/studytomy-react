@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Quote } from 'lucide-react';
-import { supabase } from '../lib/supabaseClient';
+import { getSupabaseClient } from '../lib/supabaseClient';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import '../styles/testimonials.css';
 import { FloatingAchievements, FloatingEducationalIcon } from './animations/EducationalAnimations';
 
 interface Testimonial {
@@ -55,6 +52,12 @@ export default function Testimonials() {
 
   const fetchTestimonials = async () => {
     try {
+      const supabase = getSupabaseClient();
+      if (!supabase) {
+        setIsLoading(false);
+        return;
+      }
+
       const { data, error } = await supabase
         .from('testimonials')
         .select('*')

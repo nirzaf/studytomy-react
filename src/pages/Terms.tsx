@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import AgreementSection from './Terms/components/AgreementSection';
-import TableOfContents from './Terms/components/TableOfContents';
-import UserRepresentations from './Terms/components/UserRepresentations';
-import ProhibitedActivities from './Terms/components/ProhibitedActivities';
-import TermsSection from './Terms/components/TermsSection';
-import ContactSection from './Terms/components/ContactSection';
+import AgreementSection from '@/components/terms/AgreementSection';
+import TableOfContents from '@/components/terms/TableOfContents';
+import UserRepresentations from '@/components/terms/UserRepresentations';
+import ProhibitedActivities from '@/components/terms/ProhibitedActivities';
+import TermsSection from '@/components/terms/TermsSection';
+import ContactSection from '@/components/terms/ContactSection';
 
 // Table of contents data
 const tableOfContents = [

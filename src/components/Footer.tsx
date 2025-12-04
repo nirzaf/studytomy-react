@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import WhatsAppButton from './WhatsAppButton';
 import { FloatingStudyTools } from './animations/EducationalExtras';
 import { KnowledgeParticles } from './animations/EducationalAnimations';
@@ -34,12 +34,12 @@ const Footer = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center space-y-2 text-white">
           <p className="min-h-[24px]">
-            <Link to="/consent-preferences" className="hover:text-blue-400 transition-colors duration-200">
+            <Link href="/consent-preferences" className="hover:text-blue-400 transition-colors duration-200">
               Manage Cookie Preferences
             </Link>
           </p>
           <p className="min-h-[24px]">
-            <Link to="/terms" className="hover:text-blue-400 transition-colors duration-200">
+            <Link href="/terms" className="hover:text-blue-400 transition-colors duration-200">
               Terms of Service
             </Link>
           </p>

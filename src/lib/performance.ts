@@ -86,13 +86,19 @@ export const observeLongTasks = () => {
 // Initialize all performance monitoring
 export const initPerformanceMonitoring = () => {
   trackWebVitals();
-  observeLongTasks();
+  const observer = observeLongTasks();
 
-  // Monitor memory usage periodically
-  setInterval(() => {
+  const intervalId = setInterval(() => {
     const memory = getMemoryUsage();
     if (memory) {
       console.log('Memory Usage:', memory);
     }
-  }, 30000); // Check every 30 seconds
+  }, 30000);
+
+  return () => {
+    if (observer?.disconnect) {
+      observer.disconnect();
+    }
+    clearInterval(intervalId);
+  };
 };

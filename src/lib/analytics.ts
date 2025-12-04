@@ -1,8 +1,13 @@
 import Clarity from '@microsoft/clarity';
 
+declare global {
+  interface Window {
+    clarity?: any;
+  }
+}
+
 export const initClarity = () => {
   try {
-    // Check if Clarity is already initialized
     if (typeof window !== 'undefined' && !window.clarity) {
       Clarity.init('igippdunx8');
       console.log('Microsoft Clarity initialized successfully');
@@ -14,11 +19,9 @@ export const initClarity = () => {
 
 export const identifyUser = (userId: string, sessionId?: string, pageId?: string, friendlyName?: string) => {
   try {
-    // Check if Clarity is available before calling identify
     if (typeof window !== 'undefined' && window.clarity && typeof window.clarity.identify === 'function') {
       Clarity.identify(userId, sessionId, pageId, friendlyName);
     } else if (typeof window !== 'undefined' && window.clarity) {
-      // Fallback for older Clarity versions
       window.clarity('identify', userId, sessionId, pageId, friendlyName);
     }
   } catch (error) {

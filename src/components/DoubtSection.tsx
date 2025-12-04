@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircleQuestion, ArrowRight, Clock, Users, Star, Sparkles } from 'lucide-react';
 
@@ -9,7 +9,7 @@ const floatingAnimation = {
     transition: {
       duration: 4,
       repeat: Infinity,
-      ease: "easeInOut"
+      ease: 'easeInOut' as const
     }
   }
 };
@@ -144,7 +144,7 @@ export default function DoubtSection() {
             transition={{ delay: 0.4 }}
             className="flex-shrink-0"
           >
-            <Link to="/contact" className="inline-block group">
+            <Link href="/contact" className="inline-block group">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

@@ -8,19 +8,20 @@ const CelebrationBackground = ({ className = '' }: CelebrationBackgroundProps) =
   const canvasRef = useRef<HTMLCanvasElement>(null);
   
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvasElement = canvasRef.current;
+    if (!canvasElement) return;
+    const canvasTarget: HTMLCanvasElement = canvasElement;
     
-    const ctx = canvas.getContext('2d');
+    const ctx = canvasTarget.getContext('2d');
     if (!ctx) return;
     
     // Set canvas dimensions
     const resizeCanvas = () => {
-      const parent = canvas.parentElement;
+      const parent = canvasTarget.parentElement;
       if (!parent) return;
       
-      canvas.width = parent.offsetWidth;
-      canvas.height = parent.offsetHeight;
+      canvasTarget.width = parent.offsetWidth;
+      canvasTarget.height = parent.offsetHeight;
     };
     
     // Call resize initially and add event listener
@@ -41,8 +42,8 @@ const CelebrationBackground = ({ className = '' }: CelebrationBackgroundProps) =
       shape: 'circle' | 'star' | 'square';
       
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.x = Math.random() * canvasTarget.width;
+        this.y = Math.random() * canvasTarget.height;
         this.size = Math.random() * 5 + 2;
         
         // Color palette - celebration colors
@@ -74,10 +75,10 @@ const CelebrationBackground = ({ className = '' }: CelebrationBackgroundProps) =
         this.rotation += this.rotationSpeed;
         
         // Wrap around edges
-        if (this.x < -this.size) this.x = canvas.width + this.size;
-        if (this.x > canvas.width + this.size) this.x = -this.size;
-        if (this.y < -this.size) this.y = canvas.height + this.size;
-        if (this.y > canvas.height + this.size) this.y = -this.size;
+        if (this.x < -this.size) this.x = canvasTarget.width + this.size;
+        if (this.x > canvasTarget.width + this.size) this.x = -this.size;
+        if (this.y < -this.size) this.y = canvasTarget.height + this.size;
+        if (this.y > canvasTarget.height + this.size) this.y = -this.size;
         
         // Random slight opacity change for twinkling effect
         this.opacity += Math.random() * 0.02 - 0.01;
@@ -158,7 +159,7 @@ const CelebrationBackground = ({ className = '' }: CelebrationBackgroundProps) =
       
       // Clear canvas with very slight opacity to create trails
       ctx.fillStyle = 'rgba(0, 0, 0, 0.01)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, canvasTarget.width, canvasTarget.height);
       
       // Update and draw particles
       particles.forEach(particle => {
@@ -171,7 +172,7 @@ const CelebrationBackground = ({ className = '' }: CelebrationBackgroundProps) =
     
     // Start animation
     ctx.fillStyle = 'rgba(0, 0, 0, 0)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, canvasTarget.width, canvasTarget.height);
     const animationId = requestAnimationFrame(animate);
     
     // Cleanup

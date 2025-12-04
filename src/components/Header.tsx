@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { BookOpen, Sparkles, GraduationCap } from 'lucide-react';
 
 const Header = () => {
@@ -16,7 +16,7 @@ const Header = () => {
 
   const BookTrialButton = () => (
     <Link 
-      to="/book-trial"
+      href="/book-trial"
       className="group relative inline-flex items-center justify-center px-6 py-3 font-bold text-white rounded-xl shadow-2xl transition-all duration-300 ease-out hover:scale-105 overflow-hidden"
     >
       {/* Animated background gradient */}
@@ -70,7 +70,7 @@ const Header = () => {
               {menuItems.map((item) => (
                 <li key={item.path}>
                   <Link 
-                    to={item.path} 
+                    href={item.path} 
                     className="hover:text-orange-500 transition-colors"
                   >
                     {item.label}
@@ -94,7 +94,7 @@ const Header = () => {
                 {menuItems.map((item) => (
                   <li key={item.path} className="py-2">
                     <Link 
-                      to={item.path} 
+                      href={item.path} 
                       className="block hover:text-orange-500"
                       onClick={() => setIsMenuOpen(false)}
                     >

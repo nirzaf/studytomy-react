@@ -1,8 +1,4 @@
-import { motion } from 'framer-motion';
-import '../styles/subject-icons-consolidated.css';
-import '../styles/subject-icons-consolidated-part2.css';
-import '../styles/subject-icons-consolidated-part3.css';
-import '../styles/subject-icons-consolidated-part4.css';
+import { motion, type Variants } from 'framer-motion';
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, Key } from 'react';
 import SubjectsOnDemand from './SubjectsOnDemand';
 import { EducationalBackground, KnowledgeParticles } from './animations/EducationalAnimations';
@@ -31,7 +27,7 @@ const subjects = [
 
 const Subjects = () => {
   // Animation variants for staggered appearance
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -42,13 +38,13 @@ const Subjects = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 100,
         damping: 12
       }

@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+type MotionSafeImageProps = Omit<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  'onAnimationStart' | 'onAnimationEnd' | 'onAnimationIteration'
+>;
+
+interface OptimizedImageProps extends MotionSafeImageProps {
   src: string;
   alt: string;
   className?: string;
@@ -31,21 +36,22 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   return (
     <div className={`relative overflow-hidden ${className}`}>
       <AnimatePresence mode="wait">
-        <motion.img
+        <motion.div
           key={currentSrc}
-          src={currentSrc}
-          alt={alt}
-          loading="lazy"
-          decoding="async"
-          className={`w-full h-full object-cover ${
-            !isLoaded ? 'blur-sm scale-105' : ''
-          }`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          {...props}
-        />
+        >
+          <img
+            src={currentSrc}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            className={`w-full h-full object-cover ${!isLoaded ? 'blur-sm scale-105' : ''}`}
+            {...props}
+          />
+        </motion.div>
       </AnimatePresence>
     </div>
   );

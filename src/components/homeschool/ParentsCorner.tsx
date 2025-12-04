@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, BookOpen } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const ParentsCorner = () => {
   const benefits = [
@@ -122,7 +122,7 @@ const ParentsCorner = () => {
             online learning provides an effective, flexible, and affordable way to achieve your goals.
           </p>
           <Link
-            to="/book-trial"
+            href="/book-trial"
             className="inline-flex items-center px-6 py-3 rounded-lg bg-white text-blue-600 font-semibold hover:bg-blue-50 transition-colors"
           >
             Discover Our Programs

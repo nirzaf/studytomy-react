@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { supabase } from '../../lib/supabaseClient';
+import { getSupabaseClient } from '../../lib/supabaseClient';
 import { trackFormSubmission, trackButtonClick } from '../../lib/trackingEvents';
 
 interface FormData {
@@ -38,6 +38,14 @@ const ContactForm = () => {
     try {
       // Track the submission attempt
       trackButtonClick('contact_form_submit');
+
+      const supabase = getSupabaseClient();
+      if (!supabase) {
+        setMessage('Unable to submit the form right now. Please try again later.');
+        setShowFailureModal(true);
+        setLoading(false);
+        return;
+      }
 
       const { error } = await supabase
         .from('contacts')

@@ -1,4 +1,4 @@
-import { supabase } from './supabaseClient';
+import { getSupabaseClient } from './supabaseClient';
 
 interface VisitorData {
   visitor_id: string;
@@ -94,6 +94,11 @@ async function getLocationData(ip: string): Promise<VisitorData['location'] | un
 
 // Main tracking function that doesn't block
 export function trackVisitor() {
+  const supabase = getSupabaseClient();
+  if (!supabase) {
+    return;
+  }
+
   // Generate visitor ID immediately
   const visitorId = generateVisitorId();
   

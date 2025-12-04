@@ -1,19 +1,17 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import ExamBoardCard from './ExamBoardCard';
 import { examBoards } from './examBoardsData';
 
 const ExamBoardsList = () => {
-  const location = useLocation();
+  const router = useRouter();
   const [targetSection, setTargetSection] = useState<string | null>(null);
 
   useEffect(() => {
-    const hash = location.hash.slice(1); // Remove the # from the hash
-    if (hash) {
-      setTargetSection(hash);
-    }
-  }, [location]);
+    const hash = router.asPath ? router.asPath.split('#')[1] : null;
+    setTargetSection(hash || null);
+  }, [router.asPath]);
 
   return (
     <div className="container mx-auto px-4 -mt-8">

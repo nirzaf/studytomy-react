@@ -26,17 +26,17 @@ git push origin main
 #### 🔧 **Build Process**
 1. **Install Dependencies**
    ```bash
-   npm install
+   bun install
    ```
 
 2. **Type Checking**
    ```bash
-   npm run type-check
+   bun run lint
    ```
 
 3. **Build Application**
    ```bash
-   npm run build
+   bun run build
    ```
 
 4. **Deploy to Vercel**
@@ -48,10 +48,10 @@ git push origin main
 
 **Vercel Settings:**
 - **Framework Preset**: Vite
-- **Build Command**: `npm run build`
+- **Build Command**: `bun run build`
 - **Output Directory**: `dist`
-- **Install Command**: `npm install`
-- **Node.js Version**: 18.x
+- **Install Command**: `bun install`
+- **Runtime**: Bun 1.x or Node 18.x
 
 **Environment Variables:**
 ```bash
@@ -85,13 +85,13 @@ graph LR
 #### 🛠️ **Local Development**
 ```bash
 # Start development server
-npm run dev
+bun run dev
 
 # Build for production
-npm run build
+bun run build
 
 # Preview production build
-npm run preview
+bun run preview
 ```
 
 #### 🔍 **Build Monitoring**

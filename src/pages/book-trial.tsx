@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import HubSpotForm from './BookTrial/components/HubSpotForm';
-import PageTitle from './BookTrial/components/PageTitle';
+import HubSpotForm from '@/components/book-trial/HubSpotForm';
+import PageTitle from '@/components/book-trial/PageTitle';
 
 const BookTrial = () => {
   useEffect(() => {

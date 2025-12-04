@@ -1,8 +1,8 @@
-import HeroSection from './About/components/HeroSection';
-import MissionVision from './About/components/MissionVision';
-import KeyFeatures from './About/components/KeyFeatures';
-import Statistics from './About/components/Statistics';
-import { EducationalBackground } from '../components/animations/EducationalAnimations';
+import HeroSection from '@/components/about/HeroSection';
+import MissionVision from '@/components/about/MissionVision';
+import KeyFeatures from '@/components/about/KeyFeatures';
+import Statistics from '@/components/about/Statistics';
+import { EducationalBackground } from '@/components/animations/EducationalAnimations';
 
 export default function About() {
   return (

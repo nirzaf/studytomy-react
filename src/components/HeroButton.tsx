@@ -1,10 +1,10 @@
 import { Sparkles, Rocket } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export default function HeroButton() {
   return (
     <Link
-      to="/book-trial"
+      href="/book-trial"
       className="relative inline-block group"
     >
       <span className="absolute inset-0 w-full h-full transition-all duration-300 rounded-full filter blur-sm opacity-20 scale-[1.1] group-hover:scale-100 group-hover:opacity-70 bg-gradient-to-br from-orange-400 to-red-500 animate-gradient"></span>
