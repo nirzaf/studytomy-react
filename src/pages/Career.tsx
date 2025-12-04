@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
+import SEOHead from '../components/SEO/SEOHead';
 
 const Career = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,6 +15,13 @@ const Career = () => {
 
   return (
     <div className="relative">
+      <Head>
+        <SEOHead
+          title="Join Our Team - Tutoring Careers at Studytomy"
+          description="Become part of Studytomy's global tutoring team. Join our network of expert educators and make a difference in students' lives worldwide through online tutoring."
+          canonicalUrl="/career"
+        />
+      </Head>
       {isLoading && (
         <div className="absolute top-0 left-0 right-0 h-20 flex items-center justify-center bg-gray-100 bg-opacity-50 z-10">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const NotFound = () => {
@@ -15,6 +16,10 @@ const NotFound = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
+      <Head>
+        <title>404 - Page Not Found | Studytomy</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <h1 className="text-4xl font-bold text-gray-800 mb-4">404 - Page Not Found</h1>
       <p className="text-lg text-gray-600 mb-8 text-center">
         The page you&apos;re looking for doesn&apos;t exist. You&apos;ll be redirected to the homepage in 5 seconds.

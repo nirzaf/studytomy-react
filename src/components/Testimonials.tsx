@@ -34,7 +34,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
       <div className="text-white flex-grow flex flex-col">
         <p className="mb-4 text-sm leading-relaxed flex-grow">{testimonial.comments}</p>
         <div className="mt-auto">
-          <h6 className="font-semibold">{testimonial.name} ({testimonial.country})</h6>
+          <h3 className="font-semibold text-base">{testimonial.name} ({testimonial.country})</h3>
           <span className="text-sm text-orange-400">{testimonial.syllabus} - {testimonial.subject}</span>
         </div>
       </div>
@@ -106,7 +106,7 @@ export default function Testimonials() {
   }
 
   return (
-    <section 
+    <section
       className="py-20 bg-cover bg-center relative overflow-hidden"
       style={{
         backgroundImage: "url(https://ik.imagekit.io/studytomy/Studytomy_Testimonial_Background.jpg?updatedAt=1717449732211)"
@@ -141,7 +141,7 @@ export default function Testimonials() {
           <p className="text-orange-400 font-medium mb-2">Testimonial</p>
           <h2 className="text-3xl font-bold text-white">What they say</h2>
         </div>
-        
+
         <div className="testimonial-carousel">
           <Slider {...sliderSettings}>
             {testimonials.map((testimonial) => (

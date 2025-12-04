@@ -11,6 +11,7 @@ interface OptimizedImageProps extends MotionSafeImageProps {
   alt: string;
   className?: string;
   lowQualitySrc?: string;
+  priority?: boolean;
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -18,6 +19,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   alt,
   className = '',
   lowQualitySrc,
+  priority = false,
   ...props
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -46,7 +48,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
           <img
             src={currentSrc}
             alt={alt}
-            loading="lazy"
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : 'auto'}
             decoding="async"
             className={`w-full h-full object-cover ${!isLoaded ? 'blur-sm scale-105' : ''}`}
             {...props}

@@ -13,6 +13,16 @@ export const getSupabaseClient = (): SupabaseClient | null => {
     return null;
   }
 
-  supabase = createClient(supabaseUrl, supabaseAnonKey);
+  try {
+    const isHttp = supabaseUrl.startsWith('http://') || supabaseUrl.startsWith('https://');
+    if (!isHttp) {
+      console.warn('Invalid Supabase URL. It must start with http:// or https://');
+      return null;
+    }
+    supabase = createClient(supabaseUrl, supabaseAnonKey);
+  } catch (err) {
+    console.error('Failed to initialize Supabase client:', err);
+    return null;
+  }
   return supabase;
 };

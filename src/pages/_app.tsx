@@ -1,7 +1,8 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import SEOHead from '@/components/SEO/SEOHead';
+import { useEffect } from 'react';
 import AnalyticsScripts from '@/components/AnalyticsScripts';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -50,8 +51,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Studytomy - Epitome of E-Tutoring</title>
       </Head>
+      <SEOHead canonicalUrl={useRouter().asPath} />
       <AnalyticsScripts />
       <GTMNoScript />
       <div className="flex min-h-screen flex-col overflow-x-hidden">

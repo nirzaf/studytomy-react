@@ -258,6 +258,10 @@ const Navbar = () => {
                 className="h-10 w-auto sm:h-12"
                 src="https://ik.imagekit.io/studytomy/minimal%20primary%20logo%20mini.png?updatedAt=1732362156819"
                 alt="Studytomy"
+                width={48}
+                height={48}
+                loading="eager"
+                fetchPriority="high"
               />
             </Link>
             <Link href="/" className="ml-3 hidden sm:block">

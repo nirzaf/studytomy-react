@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import Head from 'next/head';
+import SEOHead from '../components/SEO/SEOHead';
 import AgreementSection from '@/components/terms/AgreementSection';
 import TableOfContents from '@/components/terms/TableOfContents';
 import UserRepresentations from '@/components/terms/UserRepresentations';
@@ -521,7 +523,7 @@ const additionalSections = [
 const Terms = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    
+
     // Debug: Check if all sections are rendered with correct IDs
     setTimeout(() => {
       console.log('Checking rendered sections...');
@@ -530,38 +532,38 @@ const Terms = () => {
         console.log(`Section ${item.id}:`, element ? 'Found' : 'NOT FOUND');
       });
     }, 1000);
-    
+
     // Add smooth scrolling behavior
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
         e.preventDefault();
         e.stopPropagation(); // Prevent event bubbling
-        
+
         const id = target.getAttribute('href')?.substring(1);
         console.log('Anchor clicked:', id); // Debug log
-        
+
         if (id) {
           // Wait a bit for the DOM to be ready
           setTimeout(() => {
             const element = document.getElementById(id);
             console.log('Element found:', element); // Debug log
-            
+
             if (element) {
               // Add offset for fixed header
               const headerHeight = 80; // Approximate header height
               const elementPosition = element.offsetTop - headerHeight;
-              
+
               console.log('Scrolling to position:', elementPosition); // Debug log
-              
+
               window.scrollTo({
                 top: elementPosition,
                 behavior: 'smooth'
               });
-              
+
               // Add visual feedback
               element.style.scrollMarginTop = `${headerHeight}px`;
-              
+
               // Update URL hash without triggering navigation
               const currentHash = window.location.hash;
               const newHash = `#${id}`;
@@ -577,36 +579,45 @@ const Terms = () => {
     };
 
     document.addEventListener('click', handleAnchorClick);
-    
+
     return () => {
       document.removeEventListener('click', handleAnchorClick);
     };
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8" style={{ scrollBehavior: 'smooth' }}>
-      <h1 className="text-3xl font-bold mb-6 mt-16">Studytomy Terms of Use</h1>
-      <p className="text-gray-600 mb-8">Last updated: 02 June 2024</p>
-
-
-
-      <AgreementSection />
-      <TableOfContents items={tableOfContents} />
-      <UserRepresentations />
-      <ProhibitedActivities />
-      
-      {/* Render additional sections */}
-      {additionalSections.map(section => (
-        <TermsSection
-          key={section.id}
-          id={section.id}
-          title={section.title}
-          content={section.content}
+    <>
+      <Head>
+        <SEOHead
+          title="Terms & Conditions - Studytomy Online Tutoring"
+          description="Read Studytomy's terms and conditions for our online tutoring services. Understand our policies, user agreements, and service guidelines."
+          canonicalUrl="/terms"
         />
-      ))}
+      </Head>
+      <div className="max-w-4xl mx-auto px-4 py-8" style={{ scrollBehavior: 'smooth' }}>
+        <h1 className="text-3xl font-bold mb-6 mt-16">Studytomy Terms of Use</h1>
+        <p className="text-gray-600 mb-8">Last updated: 02 June 2024</p>
 
-      <ContactSection />
-    </div>
+
+
+        <AgreementSection />
+        <TableOfContents items={tableOfContents} />
+        <UserRepresentations />
+        <ProhibitedActivities />
+
+        {/* Render additional sections */}
+        {additionalSections.map(section => (
+          <TermsSection
+            key={section.id}
+            id={section.id}
+            title={section.title}
+            content={section.content}
+          />
+        ))}
+
+        <ContactSection />
+      </div>
+    </>
   );
 };
 

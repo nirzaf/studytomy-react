@@ -16,10 +16,10 @@ const SEOHead = ({
   ogType = 'website',
   ogImage = 'https://ik.imagekit.io/studytomy/minimal%20primary%20logo%20mini.png?updatedAt=1732379724951',
 }: SEOProps) => {
-  // Construct the full canonical URL if a relative path is provided
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://studytomy.com';
   const fullCanonicalUrl = canonicalUrl
-    ? (canonicalUrl.startsWith('http') ? canonicalUrl : `https://studytomy.com${canonicalUrl}`)
-    : 'https://studytomy.com';
+    ? (canonicalUrl.startsWith('http') ? canonicalUrl : `${siteUrl}${canonicalUrl}`)
+    : siteUrl;
 
   return (
     <>
@@ -32,11 +32,20 @@ const SEOHead = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={fullCanonicalUrl} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={title} />
+      <meta property="og:locale" content="en_US" />
       <meta property="og:site_name" content="Studytomy" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+      <meta name="theme-color" content="#003049" />
+      <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="" />
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="" />
+      <link rel="dns-prefetch" href="https://www.clarity.ms" />
     </>
   );
 };
