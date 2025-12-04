@@ -25,3 +25,8 @@ dist-ssr
 
 # Environment variables
 .env
+.next/
+out/
+coverage/
+*.tsbuildinfo
+.eslintcache
