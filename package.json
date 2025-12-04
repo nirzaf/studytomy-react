@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap",
+    "build": "next build && next-sitemap --config next-sitemap.config.cjs",
     "lint": "next lint",
     "start": "next start"
   },
