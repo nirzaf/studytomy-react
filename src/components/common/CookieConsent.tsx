@@ -14,6 +14,7 @@ interface CookiePreferences {
 const CookieConsent = () => {
   const [showBanner, setShowBanner] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [allowAnalytics, setAllowAnalytics] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>({
     necessary: true, // Always required
     analytics: false,
@@ -118,7 +119,7 @@ const CookieConsent = () => {
                 <div className="flex-1">
                   <h3 className="font-semibold text-gray-900 mb-2">We use cookies</h3>
                   <p className="text-sm text-gray-600">
-                    We use cookies to enhance your browsing experience, serve personalized content, 
+                    We use cookies to enhance your browsing experience, serve personalized content,
                     and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
                   </p>
                 </div>
@@ -155,7 +156,7 @@ const CookieConsent = () => {
                     <X className="w-5 h-5" />
                   </button>
                 </div>
-                
+
                 <div className="grid gap-4">
                   {[
                     {
@@ -209,7 +210,7 @@ const CookieConsent = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="flex justify-end gap-2">
                   <button
                     onClick={handleRejectAll}
@@ -240,4 +241,4 @@ const CookieConsent = () => {
 };
 
 export default CookieConsent;
-  const [allowAnalytics, setAllowAnalytics] = useState(false);
+const [allowAnalytics, setAllowAnalytics] = useState(false);
