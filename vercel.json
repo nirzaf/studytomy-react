@@ -1,5 +1,5 @@
 {
-  "buildCommand": "next build",
+  "buildCommand": "bun run build",
   "outputDirectory": "out",
   "env": {
     "NEXT_TELEMETRY_DISABLED": "1"

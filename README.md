@@ -47,18 +47,19 @@ git push origin main
 #### 📊 **Build Configuration**
 
 **Vercel Settings:**
-- **Framework Preset**: Vite
+- **Framework Preset**: Next.js
 - **Build Command**: `bun run build`
-- **Output Directory**: `dist`
+- **Output Directory**: `out` (Static Export)
 - **Install Command**: `bun install`
 - **Runtime**: Bun 1.x or Node 18.x
 
 **Environment Variables:**
 ```bash
 # Production
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_key
-VITE_GTM_ID=your_gtm_id
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
+NEXT_PUBLIC_GTM_ID=your_gtm_id
+NEXT_PUBLIC_SITE_URL=https://studytomy.com
 ```
 
 #### 🔄 **Deployment Workflow**
@@ -77,7 +78,7 @@ graph LR
 
 #### 📈 **Performance Optimizations**
 - **Code Splitting**: Automatic route-based splitting
-- **Asset Optimization**: Vite's built-in optimizations
+- **Image Optimization**: Next.js Image component (unoptimized for static export)
 - **Preloading**: Background component preloading
 - **Caching**: Intelligent browser caching strategies
 - **Compression**: Gzip compression enabled
@@ -90,12 +91,12 @@ bun run dev
 # Build for production
 bun run build
 
-# Preview production build
-bun run preview
+# Start production server
+bun run start
 ```
 
 #### 🔍 **Build Monitoring**
-- **Build Time**: ~4-5 seconds
+- **Build Time**: ~1-2 minutes
 - **Bundle Size**: Optimized with code splitting
 - **Lighthouse Score**: 90+ performance
 - **Core Web Vitals**: Optimized
