@@ -5,6 +5,7 @@ module.exports = {
   outDir: './out',
   generateIndexSitemap: false,
   exclude: ['/consent-preferences'],
+  trailingSlash: true,
   robotsTxtOptions: {
     policies: [
       {

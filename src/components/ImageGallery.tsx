@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { generateSrcSet, generateLQIP } from '../utils/imageOptimization';
+import NextImage from 'next/image';
+import { generateLQIP } from '../utils/imageOptimization';
 
 const originalImages = [
   "https://ik.imagekit.io/quadrate/Studytomy/Creative%20september%204%20.png?updatedAt=1732009510839",
@@ -29,15 +30,15 @@ export default function ImageGallery() {
 
   const updateImagesPerView = useCallback(() => {
     if (!containerRef.current) return;
-    
+
     const containerWidth = containerRef.current.offsetWidth;
     const imageWidth = 400; // Base image width
     const gap = 32; // 8rem (gap-8) converted to pixels
-    
+
     // Calculate how many images can fit with gaps
     const availableWidth = containerWidth - 96; // Subtracting padding (48px on each side)
     const possibleImages = Math.floor((availableWidth + gap) / (imageWidth + gap));
-    
+
     // Limit to between 1 and 3 images
     const newImagesPerView = Math.max(1, Math.min(3, possibleImages));
     setImagesPerView(newImagesPerView);
@@ -142,7 +143,7 @@ export default function ImageGallery() {
         <h2 className="text-4xl font-bold text-center mb-16 text-[#003049]">
           Our Learning Journey
         </h2>
-        
+
         <div className="relative max-w-[1400px] mx-auto">
           {/* Image Container with Navigation Space */}
           <div ref={containerRef} className="relative overflow-hidden py-8 px-12 md:px-16">
@@ -181,11 +182,11 @@ export default function ImageGallery() {
                 }}
               >
                 {getVisibleImages().map((image, idx) => (
-                  <div 
+                  <div
                     key={`${currentIndex}-${idx}`}
                     className={`${getImageWidth()} flex-shrink-0`}
                   >
-                    <motion.div 
+                    <motion.div
                       className="relative aspect-[4/3] rounded-xl overflow-hidden bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] group"
                       whileHover={{ scale: 1.02 }}
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
@@ -195,30 +196,16 @@ export default function ImageGallery() {
                         <div className="absolute inset-0 bg-gradient-to-r from-[#F77F00] via-[#FCBF49] to-[#F77F00] animate-border-slide" />
                         <div className="animate-shine" />
                       </div>
-                      
+
                       {/* Image Container with Inner Shadow */}
                       <div className="absolute inset-[2px] rounded-lg overflow-hidden bg-white">
-                        <picture>
-                          <source
-                            srcSet={generateSrcSet(image)}
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            type="image/webp"
-                          />
-                          <img
-                            src={image}
-                            alt={`Gallery image ${((currentIndex + idx - 2) % originalImages.length) + 1}`}
-                            className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                            loading="lazy"
-                            decoding="async"
-                            width="400"
-                            height="300"
-                            style={{
-                              backgroundImage: `url(${generateLQIP(image)})`,
-                              backgroundSize: 'cover',
-                              backgroundPosition: 'center',
-                            }}
-                          />
-                        </picture>
+                        <NextImage
+                          src={image}
+                          alt={`Gallery image ${((currentIndex + idx - 2) % originalImages.length) + 1}`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover transform group-hover:scale-105 transition-transform duration-500"
+                        />
 
                         {/* Overlay on Hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#003049]/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -236,18 +223,16 @@ export default function ImageGallery() {
               <button
                 key={index}
                 onClick={() => handleDotClick(index)}
-                className={`min-w-[44px] min-h-[44px] p-2 rounded-full transition-all duration-300 flex items-center justify-center ${
-                  (currentIndex - 2) % originalImages.length === index
-                    ? 'bg-[#F77F00]/20'
-                    : 'bg-transparent hover:bg-[#FCBF49]/20'
-                }`}
+                className={`min-w-[44px] min-h-[44px] p-2 rounded-full transition-all duration-300 flex items-center justify-center ${(currentIndex - 2) % originalImages.length === index
+                  ? 'bg-[#F77F00]/20'
+                  : 'bg-transparent hover:bg-[#FCBF49]/20'
+                  }`}
                 aria-label={`Go to image ${index + 1}`}
               >
-                <div className={`h-2.5 rounded-full transition-all duration-300 ${
-                  (currentIndex - 2) % originalImages.length === index
-                    ? 'bg-[#F77F00] w-8'
-                    : 'bg-[#FCBF49]/30 w-2.5'
-                }`} />
+                <div className={`h-2.5 rounded-full transition-all duration-300 ${(currentIndex - 2) % originalImages.length === index
+                  ? 'bg-[#F77F00] w-8'
+                  : 'bg-[#FCBF49]/30 w-2.5'
+                  }`} />
               </button>
             ))}
           </div>

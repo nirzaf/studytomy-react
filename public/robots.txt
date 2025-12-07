@@ -9,5 +9,8 @@ Allow: /*.js$
 Disallow: /admin/
 Disallow: /wp-admin/
 
+# Disallow utility pages
+Disallow: /consent-preferences/
+
 # Sitemap location
 Sitemap: https://studytomy.com/sitemap.xml

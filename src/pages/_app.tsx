@@ -1,15 +1,14 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import SEOHead from '@/components/SEO/SEOHead';
 import { useEffect } from 'react';
-import AnalyticsScripts from '@/components/AnalyticsScripts';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import CookieConsent from '@/components/common/CookieConsent';
-import GTMNoScript from '@/components/GTMNoScript';
+import dynamic from 'next/dynamic';
+const CookieConsent = dynamic(() => import('@/components/common/CookieConsent'), { ssr: false });
 import { trackPageView } from '@/lib/trackingEvents';
 import { initPerformanceMonitoring } from '@/lib/performance';
+import { inter, pacifico } from '@/lib/fonts';
 import '@/styles/index.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -52,10 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <SEOHead canonicalUrl={useRouter().asPath} />
-      <AnalyticsScripts />
-      <GTMNoScript />
-      <div className="flex min-h-screen flex-col overflow-x-hidden">
+      <div className={`${inter.variable} ${pacifico.variable} font-sans flex min-h-screen flex-col overflow-x-hidden`}>
         <PageTracker />
         <Navbar />
         <main className="mt-16 flex-grow">

@@ -17,9 +17,13 @@ const SEOHead = ({
   ogImage = 'https://ik.imagekit.io/studytomy/minimal%20primary%20logo%20mini.png?updatedAt=1732379724951',
 }: SEOProps) => {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://studytomy.com';
-  const fullCanonicalUrl = canonicalUrl
-    ? (canonicalUrl.startsWith('http') ? canonicalUrl : `${siteUrl}${canonicalUrl}`)
-    : siteUrl;
+  const ensureTrailingSlash = (url: string) => (url.endsWith('/') ? url : `${url}/`);
+  const fullCanonicalUrl = (() => {
+    if (!canonicalUrl) return ensureTrailingSlash(siteUrl);
+    if (canonicalUrl.startsWith('http')) return ensureTrailingSlash(canonicalUrl);
+    const combined = `${siteUrl}${canonicalUrl}`;
+    return ensureTrailingSlash(combined);
+  })();
 
   return (
     <>

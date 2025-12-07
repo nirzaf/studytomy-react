@@ -1,9 +1,12 @@
 import { GraduationCap, Users, Globe2, BookOpen, Brain, Lightbulb } from 'lucide-react';
 import { motion, useAnimation, type Variants } from 'framer-motion';
+import Image from 'next/image';
 import HeroButton from './HeroButton';
 import { useEffect, useState, useRef } from 'react';
 import dynamic from 'next/dynamic';
+
 import StaticHeroFallback from './StaticHeroFallback';
+import TrustPulse from './TrustPulse';
 
 // Dynamically import 3D Scene to improve LCP
 const Scene3D = dynamic(() => import('./Scene3D'), {
@@ -210,13 +213,11 @@ const KnowledgeParticle = ({ index }: { index: number }) => {
 
   return (
     <motion.div
-      className="absolute flex items-center justify-center font-semibold text-lg select-none"
+      aria-hidden="true"
+      className="absolute flex items-center justify-center font-semibold text-lg select-none w-7 h-7 rounded-full"
       style={{
-        width: '28px',
-        height: '28px',
         background: `radial-gradient(circle, ${color}10, ${color}05)`,
         border: `1px solid ${color}15`,
-        borderRadius: '50%',
         color: color,
         opacity: 0.4,
       }}
@@ -270,13 +271,13 @@ const FloatingEducationElement = ({ index }: { index: number }) => {
 
   return (
     <motion.div
-      className="absolute flex items-center justify-center rounded-xl"
+      aria-hidden="true"
+      className="absolute flex items-center justify-center rounded-xl backdrop-blur-[2px]"
       style={{
         width: `${size}px`,
         height: `${size}px`,
         background: `linear-gradient(135deg, ${element.color}08, ${element.color}04)`,
         border: `1px solid ${element.color}20`,
-        backdropFilter: 'blur(2px)',
       }}
       initial={{
         x: Math.cos(angle) * radius,
@@ -332,13 +333,12 @@ const FloatingSubjectBadge = ({ index }: { index: number }) => {
 
   return (
     <motion.div
-      className="absolute flex items-center justify-center px-3 py-1 rounded-full text-xs font-medium select-none"
+      aria-hidden="true"
+      className="absolute flex items-center justify-center px-3 py-1 rounded-full text-xs font-medium select-none backdrop-blur-[2px] opacity-60"
       style={{
         background: `linear-gradient(135deg, ${subject.color}08, ${subject.color}04)`,
         border: `1px solid ${subject.color}20`,
         color: subject.color,
-        backdropFilter: 'blur(2px)',
-        opacity: 0.6,
       }}
       initial={{
         x: Math.cos(angle) * radius,
@@ -381,12 +381,8 @@ const FloatingStudyTool = ({ index }: { index: number }) => {
 
   return (
     <motion.div
-      className="absolute flex items-center justify-center text-2xl select-none"
-      style={{
-        width: '40px',
-        height: '40px',
-        opacity: 0.4,
-      }}
+      aria-hidden="true"
+      className="absolute flex items-center justify-center text-2xl select-none w-10 h-10 opacity-40"
       initial={{
         x: Math.cos(angle) * radius,
         y: Math.sin(angle) * radius,
@@ -441,8 +437,7 @@ const NetworkConnections = () => {
         return (
           <motion.svg
             key={connection.id}
-            className="absolute inset-0 w-full h-full"
-            style={{ zIndex: -1 }}
+            className="absolute inset-0 w-full h-full -z-10"
           >
             <motion.line
               x1={`${50 + (startX / 600) * 100}%`}
@@ -604,18 +599,14 @@ const LogoAnimation = () => {
         >
           <div
             className="relative mx-auto w-[200px] mb-16 drop-shadow-2xl"
-            style={{
-              filter: "drop-shadow(0 0 10px rgba(255,255,255,0.2))",
-            }}
           >
-            <img
+            <Image
               src="https://ik.imagekit.io/quadrate/Studytomy/Studytomy_Logobook-02.png?updatedAt=1731862139834"
               alt="Studytomy Logo"
               width={200}
               height={200}
-              loading="eager"
-              fetchPriority="high"
-              className="w-full"
+              priority
+              className="w-full h-auto"
             />
           </div>
         </motion.div>
@@ -779,6 +770,7 @@ export default function Hero() {
           <FloatingStudyTool key={`tool-${i}`} index={i} />
         ))}
       </div>
+      <TrustPulse />
     </section>
   );
 }

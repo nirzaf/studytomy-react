@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState, type ReactNode } from 'react';
 import {
@@ -253,15 +254,14 @@ const Navbar = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0">
-              <img
-                className="h-10 w-auto sm:h-12"
+            <Link href="/" className="flex-shrink-0 relative h-10 w-10 sm:h-12 sm:w-12">
+              <Image
                 src="https://ik.imagekit.io/studytomy/minimal%20primary%20logo%20mini.png?updatedAt=1732362156819"
                 alt="Studytomy"
-                width={48}
-                height={48}
-                loading="eager"
-                fetchPriority="high"
+                fill
+                sizes="(max-width: 640px) 40px, 48px"
+                priority
+                className="object-contain"
               />
             </Link>
             <Link href="/" className="ml-3 hidden sm:block">

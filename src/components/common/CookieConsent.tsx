@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import AnalyticsScripts from '@/components/AnalyticsScripts';
+import GTMNoScript from '@/components/GTMNoScript';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Settings, Check } from 'lucide-react';
 
@@ -31,6 +33,7 @@ const CookieConsent = () => {
       try {
         const savedPreferences = JSON.parse(consent);
         setPreferences(savedPreferences);
+        setAllowAnalytics(!!savedPreferences.analytics);
         loadScriptsBasedOnConsent(savedPreferences);
       } catch (error) {
         console.error('Error parsing cookie preferences:', error);
@@ -68,6 +71,7 @@ const CookieConsent = () => {
       functional: true,
     };
     setPreferences(allAccepted);
+    setAllowAnalytics(true);
     localStorage.setItem('cookie-consent', JSON.stringify(allAccepted));
     loadScriptsBasedOnConsent(allAccepted);
     setShowBanner(false);
@@ -81,12 +85,14 @@ const CookieConsent = () => {
       functional: false,
     };
     setPreferences(onlyNecessary);
+    setAllowAnalytics(false);
     localStorage.setItem('cookie-consent', JSON.stringify(onlyNecessary));
     setShowBanner(false);
   };
 
   const handleSavePreferences = () => {
     localStorage.setItem('cookie-consent', JSON.stringify(preferences));
+    setAllowAnalytics(!!preferences.analytics);
     loadScriptsBasedOnConsent(preferences);
     setShowBanner(false);
     setShowSettings(false);
@@ -223,8 +229,15 @@ const CookieConsent = () => {
           </div>
         </motion.div>
       )}
+      {allowAnalytics && (
+        <>
+          <AnalyticsScripts />
+          <GTMNoScript />
+        </>
+      )}
     </AnimatePresence>
   );
 };
 
 export default CookieConsent;
+  const [allowAnalytics, setAllowAnalytics] = useState(false);
